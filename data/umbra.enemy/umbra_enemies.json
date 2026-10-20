@@ -1,0 +1,43 @@
+{"entries": [
+  {"id": "hark", "name": "The Hark", "kind": "listener",
+   "blurb": "Tall, eyeless, ears like cupped hands. It does not see. It listens.",
+   "stats": {"speed_patrol": 25, "speed_investigate": 38, "speed_hunt": 70, "hearing": 1.0,
+             "reaction_min": 0.45, "reaction_max": 0.85, "panic_loudness": 12.0, "panic_intensity": 0.3,
+             "stun": 1.8, "touch_range": 1.05, "listen_time": 2.6, "search_points": 3, "search_radius": 5.5,
+             "door_time": 0.9, "bang_to_break": 6, "attack_cooldown": 4.0, "windup": 0.4, "memory_decay": 0.12,
+             "ward_fear": 1.0, "listen_boost": 1.5},
+   "facts": [
+     {"id": "hears", "event": "hark_heard", "text": "Eyeless. It turns toward sound, not light."},
+     {"id": "lured", "event": "hark_lured", "text": "A thrown tin pulled it away from the path. It goes to where the noise was, not to where you are."},
+     {"id": "panic", "event": "hark_panic", "text": "Very loud noises make it recoil for a moment. That moment is a door's width of safety."},
+     {"id": "sneak", "event": "hark_missed", "text": "A slow, careful step does not carry. It passed within two tiles of me and did not turn."},
+     {"id": "lock", "event": "hark_locked", "text": "It cannot turn a lock. It will pound a locked door until the wood gives, though."}
+   ]},
+  {"id": "stillwatch", "name": "The Stillwatch", "kind": "watcher",
+   "blurb": "Pale, narrow, patient. It sees only what is lit, and stops dead when a beam finds its face.",
+   "stats": {"speed_creep": 24, "speed_rush": 44, "range": 14.0, "fov": 130, "reaction": 0.35,
+             "light_min": 0.16, "peripheral": 1.6, "unobserved_delay": 0.5, "recoil_after": 6.5,
+             "recoil_time": 5.0, "touch_range": 0.95, "attack_cooldown": 4.0, "gutter_range": 6.5,
+             "memory_decay": 0.1, "ward_fear": 1.0, "light_greed": 1.0},
+   "facts": [
+     {"id": "lit", "event": "watch_saw_lit", "text": "It noticed me only because I was lit. A shuttered lamp and a dark corridor are the same as nowhere to it."},
+     {"id": "freeze", "event": "watch_froze", "text": "A beam on its face freezes it in place. Look away and it moves again."},
+     {"id": "recoil", "event": "watch_recoiled", "text": "Too long in the beam and it shies away for a while. The beam is not free: it spends battery."},
+     {"id": "doors", "event": "watch_door", "text": "It cannot open a closed door. A shut door is the same as a wall to it."},
+     {"id": "ward", "event": "watch_warded", "text": "It will not cross the light of a Lantern Ward."}
+   ]},
+  {"id": "understudy", "name": "The Understudy", "kind": "wanderer",
+   "blurb": "A figure in a coat that fits slightly wrong. It reads the rooms you leave behind and learns where you like to hide.",
+   "stats": {"speed_patrol": 29, "speed_search": 36, "speed_hunt": 64, "range": 10.0, "fov": 100,
+             "peripheral": 2.4, "reaction": 0.5, "hearing": 0.7, "hide_check_base": 0.3, "door_time": 0.8,
+             "search_time": 3.0, "evidence_door": 0.55, "evidence_item": 0.6, "evidence_loot": 0.5,
+             "evidence_blood": 0.6, "mimic_chance": 0.12, "attack_cooldown": 4.0, "memory_decay": 0.06,
+             "touch_range": 1.0, "ward_fear": 1.0, "revisit_s": 45},
+   "facts": [
+     {"id": "doors", "event": "under_door", "text": "It notices a door that is not how it left it, and goes to see who moved it."},
+     {"id": "search", "event": "under_search", "text": "Room by room, corners and hiding places first, then the next room along. It never skips a cupboard."},
+     {"id": "habit", "event": "under_habit", "text": "It checks the places I hide most often before the rest. Repeating myself is what it feeds on."},
+     {"id": "loot", "event": "under_loot", "text": "Emptied cabinets and torn open drawers are a trail it can follow."},
+     {"id": "locked", "event": "under_locked", "text": "A locked door stops it. It will look for another way round."}
+   ]}
+]}

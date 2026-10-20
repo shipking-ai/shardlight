@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# development scratch (debug scripts, screenshots, logs)
+shots/
+# user data written by the game
+userdata/
+# regenerable audio (about 47 MB): run `python tools/gen_audio.py`
+assets/audio/music/
+assets/audio/sfx/
+assets/audio/MANIFEST.json

@@ -1,0 +1,1026 @@
+{
+"entries": [
+{
+"id": "wickering",
+"name": "Wickering",
+"rows": [
+"jbggTjggTbgTgggTgjggTTgggjggggggTgTggTgggTTgggTgg",
+"jgggjjjjgTggggggggggjgggggbgggggjTTggggTbgbggTTgj",
+"TgjbTggTjTbgggjjgjTggggjjgggTgggbggTTjggTgjgjgbgg",
+"ggg,,,,,,,,,,ggbggggggbgggbgggggggggggggggggggggg",
+"Tjg,,,,,,,,,,gg,,,,,,,ggggg,,,,,,ggggggggggggggbb",
+"Tgj,,,,,,,,,,gg,,,,,,,ggggg,,,,,,gggggggggggggTTb",
+"bbg,,,,,,,,,,gg,,,,,,,ggggg,,,,,,gggggggggggggjjT",
+"gjj,,,,,,,,,,gg,,,,,,,ggggg,,,,,,gggggggggggggggg",
+"TTg,,,,,,,,,,gg,,,,,,,ggggg,,,,,,gggggggggggggggg",
+"1ccccccccccccccccccccccccccccccccccccccccccccccc2",
+"ccccLcccccccLccccccXLccc@cccLcccccccLcccccccLcccc",
+"TgbggggggggggggggggggcNcccccggggggggggggggggggjTT",
+"TTgggggggbgbbbbggggggcccocccgggggggbgggggggggggbT",
+"gjg,,,,,,gg,,,,,,ggggcccccu,,,,,,,gg,,,,,,ggggggg",
+"ggg,,,,,,gg,,,,,,ggggcccccc,,,,,,,gg,,,,,,gggggjj",
+"jgg,,,,,,gg,,,,,,ggggggcccg,,,,,,,gg,,,,,,gggggjg",
+"ggg,,,,,,gg,,,,,,ggggggcccg,,,,,,,gg,,,,,,ggggggT",
+"jgg,,,,,,gg,,,,,,ggggggcccg,,,,,,,gg,,,,,,ggggggg",
+"gTcccccccccccccccccccccccccccccccccccccccccccccTg",
+"TgccLcccccccLcccccccLcccccccLcccccccLcccccccLccgT",
+"Tjgggggggggggggggggggggcccgggggggggggggggggggggjg",
+"ggjggggggggggggggggggggcccggggggggggggggggggggggT",
+"gTjgbbgggggggggggggbTgLc!cLTgTgggTggTggggggTjggTT",
+"jggjjTbgTgggTgggggbgggTcccbgbjgbgggTgbgggTgggbjgb",
+"gggTbggTgjggjjgjgbggTgjc3cgggggTgjggggggTjbgggggg"
+],
+"w": 49,
+"h": 25,
+"default_ground": "grass",
+"spots": {
+"@": "front",
+"1": "gate_w",
+"3": "gate_s",
+"!": "arrival",
+"2": "gate_e"
+},
+"markers": {},
+"buildings": [
+{
+"id": "inn",
+"x": 3,
+"y": 3,
+"w": 10,
+"h": 6,
+"style": "inn",
+"label": "The Kettle & Wick",
+"lit": true,
+"enter": "inn"
+},
+{
+"id": "store",
+"x": 15,
+"y": 4,
+"w": 7,
+"h": 5,
+"style": "shop",
+"label": "Pell & Daughter, General Goods",
+"lit": true,
+"shop": "general",
+"enter": "store"
+},
+{
+"id": "lamp_house",
+"x": 27,
+"y": 4,
+"w": 6,
+"h": 5,
+"style": "lamp_house",
+"label": "Marrow's Lamp House",
+"lit": false,
+"enter": "lamp_house"
+},
+{
+"id": "cottage_a",
+"x": 3,
+"y": 13,
+"w": 6,
+"h": 5,
+"style": "cottage",
+"label": "Cottage",
+"lit": true,
+"enter": "cottage"
+},
+{
+"id": "healer",
+"x": 11,
+"y": 13,
+"w": 6,
+"h": 5,
+"style": "cottage",
+"label": "The Poultice Door",
+"lit": true,
+"shop": "healer",
+"enter": "healer"
+},
+{
+"id": "smithy",
+"x": 27,
+"y": 13,
+"w": 7,
+"h": 5,
+"style": "smithy",
+"label": "Ansel's Smithy",
+"lit": true,
+"shop": "smith",
+"enter": "smithy"
+},
+{
+"id": "cottage_b",
+"x": 36,
+"y": 13,
+"w": 6,
+"h": 5,
+"style": "cottage",
+"label": "Cottage",
+"lit": true,
+"enter": "cottage"
+}
+],
+"meta": {
+"faction": "wickering",
+"interior": ""
+},
+"mirror": true
+},
+{
+"id": "tidewick",
+"name": "Tidewick",
+"rows": [
+"stbsstbTssssbtssbtssbbsstsssssssssssssTTsTssstwwvvvvvvv",
+"btssstsbsssbssssssstTssTTssssTsssssssssTTbsTTswwwvvvvvv",
+"sbsbsbTsTsbbtsssssssssbstbsbbTbssbsssssssssssswwvvvvvvv",
+"sstssbbbssssbbsbssbsbsssss,,,,,,,,,ssssssssTTtwwvvvvvvv",
+"bss,,,,,,,,ss,,,,,,,ssssss,,,,,,,,,ssssssssssswwwvvvvvv",
+"Tsb,,,,,,,,ss,,,,,,,ssssss,,,,,,,,,ssssssssssswwvvvvvvv",
+"ssT,,,,,,,,ss,,,,,,,ssssss,,,,,,,,,ssssssssttswwvvvvvvv",
+"sst,,,,,,,,ss,,,,,,,ssssss,,,,,,,,,ssssssssbsswwwJvvvvv",
+"ssb,,,,,,,,ss,,,,,,,ssssss,,,,,,,,,sssssssusssPwPvPvPvv",
+"1cccccccccccccccccccccccccccccccccccccccccccpppppppppvv",
+"ccccLcccccccLcccccccccc@ccccLXccccccLcccccccpppppppppvv",
+"tsbssssssssssssssssscNcccccsssssssssssssssssssPwPvPvPvv",
+"ssbssssbsbsssbbssssscccocccbsbbssssssssssssnTswwvvvvvvv",
+"tss,,,,,,,,ss,,,,,,scccccu,,,,,,ssssssssssssbTwwwvJvvvv",
+"ssT,,,,,,,,ss,,,,,,scccccc,,,,,,ssssssssssstsswwvvvvvvv",
+"ssb,,,,,,,,ss,,,,,,ssscccs,,,,,,sssssssssssssbwwvvvvvvv",
+"sts,,,,,,,,ss,,,,,,ssscccs,,,,,,sssssssssssTsTwwwvvvvvv",
+"sss,,,,,,,,ss,,,,,,ssscccs,,,,,,sssssssssssssTwwvvvvvvv",
+"tsccccccccccccccccccccccccccccccccccccccccccsswwvvvvvvv",
+"ssccLcccccccLcccccccccccccccLcccccccLcccccccTbwwwvvvvvv",
+"sssssssssssssssssssssscccssssssssssssssssssssswwvvvvvvv",
+"bssssssssssssssssssssscccssssssssssssssssssssTwwvvvvvvv",
+"sbTsTststststTTssTsstLc!cLssssbtssssbsssssTstswwwvvvvvv",
+"ssstTsssssssbsbssbsstscccssbstbtstsssssssTststwwvvvvvvv",
+"bstbbsssbbstsTsssTsstsc3cssbbsssssssbssbsttssswwvvvvvvv"
+],
+"w": 55,
+"h": 25,
+"default_ground": "sand",
+"spots": {
+"@": "front",
+"1": "gate_w",
+"3": "gate_s",
+"!": "arrival"
+},
+"markers": {},
+"buildings": [
+{
+"id": "harbormaster",
+"x": 3,
+"y": 4,
+"w": 8,
+"h": 5,
+"style": "hall",
+"label": "Harbourmaster's Office",
+"lit": true,
+"enter": "harbormaster"
+},
+{
+"id": "chandler",
+"x": 13,
+"y": 4,
+"w": 7,
+"h": 5,
+"style": "shop",
+"label": "Gull & Rope Chandlery",
+"lit": true,
+"shop": "chandler",
+"enter": "store"
+},
+{
+"id": "tavern",
+"x": 26,
+"y": 3,
+"w": 9,
+"h": 6,
+"style": "inn",
+"label": "The Drowned Rat",
+"lit": true,
+"enter": "tavern"
+},
+{
+"id": "carpenter",
+"x": 3,
+"y": 13,
+"w": 8,
+"h": 5,
+"style": "smithy",
+"label": "Brisk the Carpenter",
+"lit": true,
+"shop": "carpenter",
+"enter": "carpenter"
+},
+{
+"id": "cottage_a",
+"x": 13,
+"y": 13,
+"w": 6,
+"h": 5,
+"style": "cottage",
+"label": "Net-Mender's Cottage",
+"lit": true,
+"enter": "cottage"
+},
+{
+"id": "cottage_b",
+"x": 26,
+"y": 13,
+"w": 6,
+"h": 5,
+"style": "cottage",
+"label": "Cottage",
+"lit": true,
+"enter": "cottage"
+}
+],
+"meta": {
+"faction": "tidewick"
+},
+"mirror": true
+},
+{
+"id": "harrow_cairn",
+"name": "Harrow Cairn",
+"rows": [
+"txt;;;;;;tY;;tx;t;;x;xY;;;;;;;Y;xx;;;;;;;tx;x;",
+";;;;x;;;;;;;x;;;;;t;;;Y;;;;;;;;;;x;;;;;;xY;;;x",
+";;;xxtxx;YY;;;Y;;x;t;;;;;;xx;;;x;;;tx;;;;Yx;Y;",
+";;;,,,,,,,,;;;;;;;;;;;;;;;,,,,,,,,,;;;xx;;;Y;;",
+";;x,,,,,,,,;;;;;;;;;;;;;;;,,,,,,,,,;;,,,,,,;;;",
+"YY;,,,,,,,,;;;;;;;;;;;;;;;,,,,,,,,,;;,,,,,,Yt;",
+";;;,,,,,,,,;;;;;;;;;;;;;;;,,,,,,,,,;;,,,,,,;;;",
+"Y;;,,,,,,,,;;;;;;;;;;;;;;;,,,,,,,,,;;,,,,,,;x;",
+";t;,,,,,,,,;;;;;;;;;;;;;;;,,,,,,,,,;;,,,,,,x;;",
+"1cccccccccccccccccccccccccccccccccccccccccccc2",
+"ccccLccccXccLcccccccccc@ccccLccXccccLccccccccc",
+"x;;;;;;;;;;;;;;;;;;;cNccccc;;;;;;;;;;;;;;;;Y;;",
+"x;xx;;;;;;xxxx;;;x;xcccoccc;;xxx;;;;;;;;;;;;;;",
+";;;,,,,,,;;,,,,,,,,;cccccu,,,,,,;;;;;;;;;;;Y;;",
+";;;,,,,,,;;,,,,,,,,;cccccc,,,,,,;;;;;;;;;;;;;;",
+";x;,,,,,,;;,,,,,,,,;;;ccc;,,,,,,;;;;;;;;;;;;;;",
+"x;t,,,,,,;;,,,,,,,,;;;ccc;,,,,,,;;;;;;;;;;;t;;",
+";;;,,,,,,;;,,,,,,,,;;;ccc;,,,,,,;;;;;;;;;;;;;;",
+";;ccccccccccccccccccccccccccccccccccccccccccx;",
+";;ccLcccccccLcccccccccccccccLcccccccLccccccct;",
+"x;t;;;;;;;;;;;;;;;;;;;ccc;;;;;;;;;;;;;;;;;;xt;",
+"Y;;;;;;;;;;;;;;;;;;;;;ccc;;;;;;;;;;;;;;;;;;;;;",
+";;;;;x;Y;xY;Y;;;;tt;xLc!cL;xx;;;;;;t;;;Y;;;;;;",
+";;;Yt;;;;;x;t;x;;t;;;tccc;;t;;;;;;;;;Y;;;;;t;t",
+"Y;;;;;;;;;t;;;;;;;;;;;c3c;t;;;;;;;t;;Yx;;;;;tY"
+],
+"w": 46,
+"h": 25,
+"default_ground": "moor",
+"spots": {
+"@": "front",
+"1": "gate_w",
+"3": "gate_s",
+"!": "arrival",
+"2": "gate_e"
+},
+"markers": {},
+"buildings": [
+{
+"id": "forge_hall",
+"x": 3,
+"y": 3,
+"w": 8,
+"h": 6,
+"style": "smithy",
+"label": "The Harrow Forge",
+"lit": true,
+"shop": "smith2",
+"enter": "forge"
+},
+{
+"id": "moot",
+"x": 26,
+"y": 3,
+"w": 9,
+"h": 6,
+"style": "hall",
+"label": "Moot House",
+"lit": true,
+"enter": "moot"
+},
+{
+"id": "cottage_a",
+"x": 37,
+"y": 4,
+"w": 6,
+"h": 5,
+"style": "longhouse",
+"label": "Cairnkeeper's House",
+"lit": true,
+"enter": "cairnkeeper"
+},
+{
+"id": "cottage_b",
+"x": 3,
+"y": 13,
+"w": 6,
+"h": 5,
+"style": "longhouse",
+"label": "Longhouse",
+"lit": true,
+"enter": "cottage"
+},
+{
+"id": "alehouse",
+"x": 11,
+"y": 13,
+"w": 8,
+"h": 5,
+"style": "inn",
+"label": "The Heather Cup",
+"lit": true,
+"enter": "alehouse"
+},
+{
+"id": "cottage_c",
+"x": 26,
+"y": 13,
+"w": 6,
+"h": 5,
+"style": "longhouse",
+"label": "Longhouse",
+"lit": true,
+"enter": "cottage"
+}
+],
+"meta": {
+"faction": "harrow"
+},
+"mirror": true
+},
+{
+"id": "reedholm",
+"name": "Reedholm",
+"rows": [
+"RmmRmmmm6m6mmmVKmmRmVRmmmmmm6mmm666RmRm6mmR6mm",
+"mmR6mRmVRRRmmmmmVRmmR6RmKmmKmVRmmmmmmmmmKmmKmm",
+"mmKbmbmmmmbmbRmKbmbmmKmRm6mVKmRmVmmmRmRmmRmmRV",
+"mmm,,,,,,,mm,,,,,,,mmmmmmm,,,,,,mmmmmmmmmmmRmm",
+"VKV,,,,,,,mm,,,,,,,mmmmmmm,,,,,,mmmmmmmmmmmVRR",
+"m6V,,,,,,,mm,,,,,,,mmmmmmm,,,,,,mmmmmmmmmmmRRK",
+"mmm,,,,,,,mm,,,,,,,mmmmmmm,,,,,,mmmmmmmmmmmmmm",
+"6mm,,,,,,,mm,,,,,,,mmmmmmm,,,,,,mmmmmmmmmmmmVR",
+"1pppppppppppppppppppppppppppppppppppppppppppp2",
+"ppppLpppppupLpppppppppp@ppppLpppppppLXpppppppp",
+"mmRmmmmmmmmmmmmmmmmmpNpppppmmmmmmmmmmmmmmmm6KV",
+"VmbbbbmmmmmmbmmmbmmbpppopppmmbbmmmmmmmmmmmmmmR",
+"mmm,,,,,,mm,,,,,,,,mpppppu,,,,,,mmmmmmmmmmmmmK",
+"mVR,,,,,,mm,,,,,,,,mpppppp,,,,,,mmmmmmmmmmmRmm",
+"KmR,,,,,,mm,,,,,,,,mmmpppm,,,,,,mmmmmmmmmmmRmV",
+"mmm,,,,,,mm,,,,,,,,mmmpppm,,,,,,mmmmmmmmmmmmmm",
+"6m6,,,,,,mm,,,,,,,,mmmpppm,,,,,,mmmmmmmmmmmm6K",
+"mmppppppppppppppppppppppppppppppppppppppppppmR",
+"mmppLpppppppLpppppppppppppppLpppppppLpppppppV6",
+"Km6mmmmmmmmmmmmmmmmmmmpppmmmmmmmmmmmmmmmmmmmRR",
+"mmRmmmmmmmmmmmmmmmmmmmpppmmmmmmmmmmmmmmmmmmmVm",
+"6mRKmVVmRmRRmmRm6KmRmLp!pLmmmmVKVmmmmmmmRm6mmm",
+"KKm66KRmmRmm6mmmmm6mmmpppmmmKm6mmm6mmRmmKKRmmK",
+"m6KmmmmmmmmRmmmmVRmVmmp3pmmmmmmRRmmmm6mmmmRmRR"
+],
+"w": 46,
+"h": 24,
+"default_ground": "mud",
+"spots": {
+"@": "front",
+"1": "gate_w",
+"3": "gate_s",
+"!": "arrival",
+"2": "gate_e"
+},
+"markers": {},
+"buildings": [
+{
+"id": "healer",
+"x": 3,
+"y": 3,
+"w": 7,
+"h": 5,
+"style": "hut",
+"label": "Sister Ilse's Hospice",
+"lit": true,
+"shop": "healer2",
+"enter": "hospice"
+},
+{
+"id": "trader",
+"x": 12,
+"y": 3,
+"w": 7,
+"h": 5,
+"style": "shop",
+"label": "Reed & Cattail Trading",
+"lit": true,
+"shop": "marsh",
+"enter": "store"
+},
+{
+"id": "stilts_a",
+"x": 26,
+"y": 3,
+"w": 6,
+"h": 5,
+"style": "hut",
+"label": "Stilt House",
+"lit": true,
+"enter": "cottage"
+},
+{
+"id": "stilts_b",
+"x": 3,
+"y": 12,
+"w": 6,
+"h": 5,
+"style": "hut",
+"label": "Stilt House",
+"lit": true,
+"enter": "cottage"
+},
+{
+"id": "oilpress",
+"x": 11,
+"y": 12,
+"w": 8,
+"h": 5,
+"style": "smithy",
+"label": "Lamp-Oil Press",
+"lit": true,
+"shop": "oil",
+"enter": "oilpress"
+},
+{
+"id": "stilts_c",
+"x": 26,
+"y": 12,
+"w": 6,
+"h": 5,
+"style": "hut",
+"label": "Stilt House",
+"lit": true,
+"enter": "cottage"
+}
+],
+"meta": {
+"faction": "reedholm"
+},
+"mirror": true
+},
+{
+"id": "hollow_hall",
+"name": "Hollow Hall",
+"rows": [
+"..................................",
+"..................................",
+"..gggggggggggggggggggggggggggggg..",
+"..ghhhhhhghhhhhhhhhhhhhhhhhhhhhg..",
+"..gh__________________________hg..",
+"..gh______,,,,,,,,,,,,,,______hg..",
+"..gh______,,,,,,,,,,,,,,______hg..",
+"..gh______,,,,,,,,,,,,,,______hg..",
+"..gh__]I__,,,,,,,,,,,,,,__[___hg..",
+"..gh______,,,,,,,,,,,,,,______hg..",
+"..gh______,,,,,,,,,,,,,,______hg..",
+"..gh______,,,,,,,,,,,,,,______hg..",
+"..gh__________________________hg..",
+"..gh____________ll____________hg..",
+"..gh___I_O__I___ll___I____I___hg..",
+"..gh__________Z_ll_Z____O_____hg..",
+"..gh____________ll____________hg..",
+"..gh____G_______ll_______G____hg..",
+"..gh_______}____ll____________hg..",
+"..gh_____G______ll___{_____G__hg..",
+"..gh__t_____x___ll____________hg..",
+"..gh____________ll__________t_hg..",
+"..ghhhhhhhghhhhhllhhhhhhhhhhhhhg..",
+"..gggggggggggggggggggggggggggggg..",
+"..gggggggggggggg@lgggggggggggggg..",
+"..gggggggggggggggggggggggggggggg..",
+"..................................",
+".................................."
+],
+"w": 34,
+"h": 28,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "chest",
+"loot": "ruin_chest",
+"id": "hall_chest_a",
+"obj": "chest"
+},
+"]": {
+"kind": "chest",
+"loot": "ruin_chest",
+"id": "hall_chest_b",
+"obj": "chest"
+},
+"{": {
+"kind": "spawn",
+"enemy": "shade",
+"count": 2,
+"radius": 4
+},
+"}": {
+"kind": "spawn",
+"enemy": "shade",
+"count": 1,
+"radius": 3
+}
+},
+"buildings": [
+{
+"id": "hall",
+"x": 10,
+"y": 5,
+"w": 14,
+"h": 7,
+"style": "ruined_hall",
+"label": "Hollow Hall",
+"lit": false,
+"door": 7,
+"enter": "hollow_hall"
+}
+],
+"meta": {
+"interior": "hollow_hall"
+},
+"mirror": true
+},
+{
+"id": "farmstead",
+"name": "Tamsin's Farm",
+"rows": [
+"..........................",
+".gggggggggggggggggggggggg.",
+".ggggggTggggggggggggggggg.",
+".gggTgggggg]bggggggggHHgg.",
+".gggggggggggggggggggggggg.",
+".gggg[gggggggggggggggggHg.",
+".gggggggggggggggggggggggg.",
+".================gggggggg.",
+".=ffffffffffffff=,,,,,,,g.",
+".=f8f8f8f8f8f8ff=,,,,,,,g.",
+".=ffffffffffffff=,,,,,,,g.",
+".=f8f8f8f8f8f8ff=,,,,,,,g.",
+".=ffffffffffffffdddd,,,,g.",
+".=f8f8f8f8f8f8ff=ggddgggg.",
+".=ffffffffffffff=ggddgggg.",
+".=f8f8f8f8f8f8ff=goddgugg.",
+".=ffffffffffffff=ggddggXg.",
+".=======dd=======ggd@gggg.",
+".gggggggddggggggggggggggg.",
+".........................."
+],
+"w": 26,
+"h": 20,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "chest",
+"loot": "farm_chest",
+"id": "farm_chest",
+"obj": "chest"
+},
+"]": {
+"kind": "npc",
+"npc": "tamsin_pasture",
+"obj": ""
+}
+},
+"buildings": [
+{
+"id": "farmhouse",
+"x": 17,
+"y": 8,
+"w": 7,
+"h": 5,
+"style": "farmhouse",
+"label": "Tamsin's Farmhouse",
+"lit": true,
+"enter": "farmhouse"
+}
+],
+"meta": {
+"interior": "farmhouse"
+},
+"mirror": true
+},
+{
+"id": "cairn_of_debts",
+"name": "Cairn of Debts",
+"rows": [
+"........................",
+".;;;;;;;;;~~~~~;;;;;;;;.",
+".;;;;;;;~~~~~~~~~;;;;;;.",
+".;;;;hhhhhh~hhhhhhh;;;;.",
+".;;x;h~~~~~~~~~~~~h;;;;.",
+".;;;;h~U~~~~~G~~U~h~;i;.",
+".;;;;h~~~~~~[~~~~~h~;;;.",
+".;;;~h~~~~~~~~~~~~h~~;;.",
+".;;;~h~~~G~~~~G~~~h~~;;.",
+".;;;~h~~~~~~~~~~~~h~~;;.",
+".;;;~h~~~~~~~~~~~~h~~;;.",
+".;;;~h~~~~G~~~~~~~]~~;;.",
+".;;;;h~U~~~~~~~~U~h~;;;.",
+".;;;;h~~~~~~~~~~~~h~;;;.",
+".;i;;hhhhhhddhhhhhh;;;;.",
+".;;;;;~~~~~dd~~~~~~;x;;.",
+".;;;;;;;~~{dd~~~~;;;;;;.",
+".;;;;;;;;;~dd~~;;;;;;;;.",
+".;;;;;;;;;;d@;;;;;;;;;;.",
+"........................"
+],
+"w": 24,
+"h": 20,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "entrance",
+"area": "cairn_of_debts",
+"obj": "stairdown"
+},
+"]": {
+"kind": "chest",
+"loot": "ruin_chest",
+"id": "cairn_chest",
+"obj": "chest"
+},
+"{": {
+"kind": "spawn",
+"enemy": "shade",
+"count": 2,
+"radius": 4
+}
+},
+"buildings": [],
+"meta": {
+"interior": "cairn_of_debts"
+},
+"mirror": true
+},
+{
+"id": "drowned_chapel",
+"name": "The Drowned Chapel",
+"rows": [
+"............................",
+".mmmmmmmwwwwwwwwwwwwwmmmmmm.",
+".mmmmmmwwwwwwwwwwwwwwwmmmmm.",
+".mmmmmwwwwwwwwvwwwwwwwwmmmm.",
+".mmmmVwwwwwvvvvvvvwwwwwmmmm.",
+".mmmmwwwwwhhhhhvhhhwwwRwmmm.",
+".mmmmwwwwvhvmmmmmvhvwwwwmmm.",
+".mmmmwwwwvhmGm[mmGhvwwwwmmm.",
+".mmmmwRwwvhmmmmmmmhvwwwwmmm.",
+".mmmwwwwvvhmmmmmmmhvvwwwwmm.",
+".mmmmwwwwvhImmmmmIhvwwwwmmm.",
+".mmmmwwwwvhmm]mmmmhvwwwwmmm.",
+".mmRmwwwwvhhhhmhhhhvwwwRmmm.",
+".mmmmwwwwwvvvpppvvvwwwwwmmm.",
+".mmmmmwwwwwvvpppvvwwwwwmmmm.",
+".mmmmmw{wwwwwpppwwwwwwVmmmm.",
+".mmmRmmwwwwwwpppwwwwwwmmmmm.",
+".mmmmmmmwwwwwpppwwww}mmmmmm.",
+".mmmmmmmmmwwwpppwwwmmmmmmmm.",
+".mmmmmmmmmmmmpppmmmmmmmmmmm.",
+".mmmmmmmmmmmmp@pmmmmmmmmmmm.",
+"............................"
+],
+"w": 28,
+"h": 22,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "entrance",
+"area": "drowned_chapel",
+"obj": "stairdown"
+},
+"]": {
+"kind": "chest",
+"loot": "ruin_chest",
+"id": "chapel_chest",
+"obj": "chest"
+},
+"{": {
+"kind": "spawn",
+"enemy": "drowned",
+"count": 2,
+"radius": 4
+},
+"}": {
+"kind": "spawn",
+"enemy": "bogwight",
+"count": 1,
+"radius": 3
+}
+},
+"buildings": [],
+"meta": {
+"interior": "drowned_chapel"
+},
+"mirror": true
+},
+{
+"id": "sedge_hut",
+"name": "Sedge Hut",
+"rows": [
+"................",
+".mmmmmmmmmwwwmm.",
+".mRmVmmmmwwwwwm.",
+".mmmmmmmwwwwwww.",
+".mm,,,,,,wwwwww.",
+".mm,,,,,,wwwwww.",
+".mm,,,,,,wwwwRm.",
+".mm,,,,,,mwJwmm.",
+".mmmmppmmnmmmmm.",
+".mmmmppmmmRmmmm.",
+".mRmmppmmmmmmmm.",
+".mmmm@pmmRmm6mm.",
+".mmmmmmmmm[mmmm.",
+"................"
+],
+"w": 16,
+"h": 14,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "npc",
+"npc": "sedge_hermit",
+"obj": ""
+}
+},
+"buildings": [
+{
+"id": "hut",
+"x": 3,
+"y": 4,
+"w": 6,
+"h": 4,
+"style": "hut",
+"label": "Sedge Hut",
+"lit": true,
+"enter": "sedge_hut"
+}
+],
+"meta": {
+"interior": "sedge_hut"
+},
+"mirror": true
+},
+{
+"id": "listening_stones",
+"name": "The Listening Stones",
+"rows": [
+"......................",
+".;;;;;;;;;;;;;;;;;;;;.",
+".;;;;;;;;;;;;;;;;;;;;.",
+".;;;;;;;;;;;;;;;;;;;;.",
+".;;;x;;;;lllll;;;;x;;.",
+".;;;;;;llllillll;;;;;.",
+".;;;;;llilllllill;;;;.",
+".;;;;lllllllllllll;;;.",
+".;;;;lilllllllllil;;;.",
+".;;;lllllllllllllll;;.",
+".;;;lllllllllllllll;;.",
+".;;;lilllll[lllllil;;.",
+".;;;lllllllllllllll;;.",
+".;;;lllllllllllllll;;.",
+".;;;;lilllllllllil;;;.",
+".;;;;lllllllllllll;;;.",
+".;;;;;llilllllill;;;;.",
+".;;;;;;lllldllll;;x;;.",
+".;;;x;;;;lldll;;;;;;;.",
+".;;;;;;;;;;@;;;;;;;;;.",
+".;;;;;;;;;;d;;;;;;;;;.",
+"......................"
+],
+"w": 22,
+"h": 22,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "entrance",
+"area": "listening_stones",
+"obj": "stairdown",
+"hidden": true
+}
+},
+"buildings": [],
+"meta": {
+"interior": "listening_stones"
+},
+"mirror": true
+},
+{
+"id": "bandit_camp",
+"name": "Rook's Camp",
+"rows": [
+"..........................",
+".ggggggggggggdggggggggggg.",
+".ggggggggdddddddddggggggg.",
+".ggg++++++++++++++++++ggg.",
+".ggg+ggdddddddddddddg+ggg.",
+".ggg+gd^^ddddddd^^dd[+ggg.",
+".ggg+ddddddd]dddddddd+ggg.",
+".ggg+dddddddddddddddd+ggg.",
+".ggg+Hddddddddddddddu+ggg.",
+".ggg+dddd{dddddWddddd+ggg.",
+".ggg+ddddddd*dddddddd+dgg.",
+".ggg+d^^ddWddddddd^^d+ggg.",
+".ggg+dddddddddddddddd+ggg.",
+".ggg+dddddddddddd}ddd+ggg.",
+".ggg+dddXudddddddddXd+ggg.",
+".ggg+gddddddddddddddd+ggg.",
+".ggg++++++++dd++++++++ggg.",
+".gggggggdddddddddddgggggg.",
+".ggggggggddd@dddddggggggg.",
+".........................."
+],
+"w": 26,
+"h": 20,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "chest",
+"loot": "camp_chest",
+"id": "camp_chest",
+"obj": "chest"
+},
+"]": {
+"kind": "spawn",
+"enemy": "rook_captain",
+"count": 1,
+"radius": 2,
+"unique": true
+},
+"{": {
+"kind": "spawn",
+"enemy": "bandit",
+"count": 3,
+"radius": 4
+},
+"}": {
+"kind": "spawn",
+"enemy": "bandit_archer",
+"count": 2,
+"radius": 4
+}
+},
+"buildings": [],
+"meta": {
+"faction": "rooks"
+},
+"mirror": true
+},
+{
+"id": "roots_entrance",
+"name": "The Hollow Roots",
+"rows": [
+"..................",
+".::::::::::::::::.",
+".::::::::y:::::::.",
+".::K::yyyyyyy:K::.",
+".::::y4yyyyy4y:::.",
+".::::yyyyyyyyy:::.",
+".::::yyyy[yyyy:::.",
+".:K:yyyyyyyyy]y::.",
+".::::yyyyyyyyy::K.",
+".::::yyyyyyyyy:::.",
+".::::yyyydy4yy:::.",
+".:::K:y4ydyyy:K::.",
+".::::::::d:::::::.",
+".::::::::@:::::::.",
+".::::::::d:::::::.",
+".................."
+],
+"w": 18,
+"h": 16,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "entrance",
+"area": "hollow_roots",
+"obj": "stairdown"
+},
+"]": {
+"kind": "spawn",
+"enemy": "crawler",
+"count": 2,
+"radius": 3
+}
+},
+"buildings": [],
+"meta": {
+"interior": "hollow_roots"
+},
+"mirror": true
+},
+{
+"id": "wolf_den",
+"name": "Wolf Den",
+"rows": [
+"................",
+".::::::::::::::.",
+".:::::~~x~~::::.",
+".:::x~~~~~~~x::.",
+".:::~~~~~~]~~::.",
+".:::~~~~~~~~~::.",
+".:::~~~t[~~~~::.",
+".:::~~~~~t~~~::.",
+".::x~~t~~~~~~::.",
+".::::~~~~~~~:x:.",
+".:::::~~~~~::::.",
+".:::::::@::::::.",
+"................"
+],
+"w": 16,
+"h": 13,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "spawn",
+"enemy": "wolf",
+"count": 3,
+"radius": 4
+},
+"]": {
+"kind": "chest",
+"loot": "den_cache",
+"id": "den_chest",
+"obj": "chest"
+}
+},
+"buildings": [],
+"meta": {},
+"mirror": true
+},
+{
+"id": "wayshrine",
+"name": "Wayshrine",
+"rows": [
+"...........",
+".ggggggggg.",
+".gggcccggg.",
+".ggLcccLgg.",
+".gcccZcccg.",
+".gccc[cccg.",
+".gcccccccg.",
+".ggjcWcjgg.",
+".gggc@cggg.",
+".ggggdgggg.",
+".....d....."
+],
+"w": 11,
+"h": 11,
+"default_ground": "",
+"spots": {
+"@": "front"
+},
+"markers": {
+"[": {
+"kind": "shrine",
+"obj": ""
+}
+},
+"buildings": [],
+"meta": {},
+"mirror": true
+}
+]
+}

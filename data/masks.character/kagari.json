@@ -1,0 +1,699 @@
+{
+ "entries": [
+  {
+   "id": "kagari",
+   "name": "Kagari",
+   "title": "Mask of Rage",
+   "feeling": "Rage",
+   "archetype": "rushdown",
+   "desc": "Fast, close and loud. Kagari wins by never letting the other fighter breathe.",
+   "color": [
+    214,
+    72,
+    52
+   ],
+   "accent": [
+    255,
+    200,
+    90
+   ],
+   "health": 980,
+   "walk_f": 42,
+   "walk_b": 32,
+   "jump": {
+    "pre": 4,
+    "vy": 150,
+    "vx": 36,
+    "gravity": 8
+   },
+   "dash_f": {
+    "frames": 13,
+    "vx": 104,
+    "cancel": 8
+   },
+   "dash_b": {
+    "frames": 18,
+    "vx": 84,
+    "invuln": 6,
+    "recovery": 4
+   },
+   "push_half": 10,
+   "hurt": {
+    "stand": [
+     -13,
+     0,
+     26,
+     78
+    ],
+    "crouch": [
+     -13,
+     0,
+     26,
+     46
+    ],
+    "air": [
+     -13,
+     8,
+     26,
+     60
+    ]
+   },
+   "mech": "Rushdown: fastest walk and dash, strong frame traps, but fragile.",
+   "moves": {
+    "5L": {
+     "name": "Jab",
+     "kind": "normal",
+     "startup": 4,
+     "active": 3,
+     "recovery": 7,
+     "stance": "stand",
+     "hit": {
+      "damage": 28,
+      "hitstun": 12,
+      "blockstun": 10,
+      "hitstop": 7,
+      "push_hit": 7,
+      "push_block": 8,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        42,
+        26,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5M",
+        "2M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5M": {
+     "name": "Strike",
+     "kind": "normal",
+     "startup": 6,
+     "active": 3,
+     "recovery": 11,
+     "stance": "stand",
+     "hit": {
+      "damage": 50,
+      "hitstun": 16,
+      "blockstun": 12,
+      "hitstop": 9,
+      "push_hit": 9,
+      "push_block": 10,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "M",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        36,
+        38,
+        18
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5H": {
+     "name": "Heavy Strike",
+     "kind": "normal",
+     "startup": 10,
+     "active": 4,
+     "recovery": 17,
+     "stance": "stand",
+     "hit": {
+      "damage": 82,
+      "hitstun": 28,
+      "blockstun": 14,
+      "hitstop": 11,
+      "push_hit": 12,
+      "push_block": 12,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       26,
+       90
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "H",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        30,
+        46,
+        36
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2L": {
+     "name": "Low Jab",
+     "kind": "normal",
+     "startup": 4,
+     "active": 3,
+     "recovery": 8,
+     "stance": "crouch",
+     "hit": {
+      "damage": 24,
+      "hitstun": 13,
+      "blockstun": 10,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 7,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        6,
+        26,
+        14
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2M",
+        "5M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2M": {
+     "name": "Sweeping Low",
+     "kind": "normal",
+     "startup": 7,
+     "active": 3,
+     "recovery": 14,
+     "stance": "crouch",
+     "hit": {
+      "damage": 46,
+      "hitstun": 18,
+      "blockstun": 13,
+      "hitstop": 9,
+      "push_hit": 10,
+      "push_block": 10,
+      "height": "low",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2M",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        0,
+        44,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2H": {
+     "name": "Rising Strike",
+     "kind": "normal",
+     "startup": 9,
+     "active": 4,
+     "recovery": 21,
+     "stance": "crouch",
+     "hit": {
+      "damage": 74,
+      "hitstun": 30,
+      "blockstun": 15,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       10,
+       118
+      ],
+      "knockdown": true
+     },
+     "desc": "Anti-air launcher.",
+     "input": "2H",
+     "hitboxes": [
+      {
+       "rect": [
+        2,
+        28,
+        30,
+        62
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 4,
+       "kind": "strike"
+      }
+     ]
+    },
+    "j.L": {
+     "name": "Air Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 6,
+     "recovery": 6,
+     "stance": "air",
+     "hit": {
+      "damage": 30,
+      "hitstun": 17,
+      "blockstun": 15,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 6,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "j.L",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        24,
+        26,
+        20
+       ]
+      }
+     ],
+     "land_recovery": 4
+    },
+    "j.H": {
+     "name": "Air Heavy",
+     "kind": "normal",
+     "startup": 9,
+     "active": 6,
+     "recovery": 8,
+     "stance": "air",
+     "hit": {
+      "damage": 66,
+      "hitstun": 21,
+      "blockstun": 19,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 8,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1,
+      "launch": [
+       24,
+       78
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "j.H",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        6,
+        6,
+        36,
+        44
+       ]
+      }
+     ],
+     "land_recovery": 6
+    },
+    "throw": {
+     "name": "Throw",
+     "input": "L+M",
+     "kind": "throw",
+     "startup": 5,
+     "active": 2,
+     "recovery": 22,
+     "hit": {
+      "damage": 90,
+      "hitstun": 20,
+      "blockstun": 0,
+      "hitstop": 10,
+      "knockdown": true,
+      "launch": [
+       26,
+       95
+      ],
+      "starter": 80,
+      "meter_hit": 40,
+      "spark": "heavy",
+      "unblockable": true
+     },
+     "throw": {
+      "reach": 26,
+      "tech": true,
+      "grab_frames": 24
+     },
+     "desc": "Beats blocking. Tech by pressing L+M within 8 frames."
+    },
+    "flare": {
+     "name": "Flare Rush",
+     "kind": "special",
+     "startup": 12,
+     "active": 4,
+     "recovery": 17,
+     "stance": "stand",
+     "hit": {
+      "damage": 62,
+      "hitstun": 24,
+      "blockstun": 18,
+      "hitstop": 9,
+      "push_hit": 10,
+      "push_block": 10,
+      "height": "mid",
+      "meter_hit": 30,
+      "meter_block": 14,
+      "chip": 12,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "Lunging punch that closes the whole screen gap.",
+     "input": "236M",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        36,
+        44,
+        24
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "super"
+       ]
+      }
+     ],
+     "move": [
+      {
+       "from": 8,
+       "to": 15,
+       "vx": 118
+      }
+     ]
+    },
+    "flareL": {
+     "name": "Short Flare",
+     "kind": "special",
+     "startup": 9,
+     "active": 3,
+     "recovery": 15,
+     "stance": "stand",
+     "hit": {
+      "damage": 44,
+      "hitstun": 19,
+      "blockstun": 14,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 24,
+      "meter_block": 10,
+      "chip": 10,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "236L",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        36,
+        38,
+        24
+       ]
+      }
+     ],
+     "move": [
+      {
+       "from": 6,
+       "to": 11,
+       "vx": 78
+      }
+     ]
+    },
+    "rising": {
+     "name": "Rising Cinder",
+     "kind": "special",
+     "startup": 5,
+     "active": 5,
+     "recovery": 34,
+     "stance": "stand",
+     "hit": {
+      "damage": 92,
+      "hitstun": 38,
+      "blockstun": 10,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 40,
+      "meter_block": 20,
+      "chip": 15,
+      "starter": 85,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       16,
+       128
+      ],
+      "knockdown": true
+     },
+     "desc": "Reversal uppercut: invincible startup, hugely punishable on block.",
+     "input": "623H",
+     "hitboxes": [
+      {
+       "rect": [
+        0,
+        10,
+        34,
+        74
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 8,
+       "kind": "all"
+      }
+     ]
+    },
+    "slide": {
+     "name": "Cinder Slide",
+     "kind": "special",
+     "startup": 14,
+     "active": 3,
+     "recovery": 17,
+     "stance": "crouch",
+     "hit": {
+      "damage": 56,
+      "hitstun": 17,
+      "blockstun": 13,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 8,
+      "height": "low",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1,
+      "knockdown": true
+     },
+     "desc": "Low slide; mixes with Flare Rush.",
+     "input": "214M",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        0,
+        52,
+        12
+       ]
+      }
+     ],
+     "move": [
+      {
+       "from": 10,
+       "to": 16,
+       "vx": 70
+      }
+     ]
+    },
+    "wildfire": {
+     "name": "Wildfire",
+     "kind": "super",
+     "startup": 8,
+     "active": 8,
+     "recovery": 40,
+     "stance": "stand",
+     "hit": {
+      "damage": 230,
+      "hitstun": 47,
+      "blockstun": 27,
+      "hitstop": 14,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 0,
+      "meter_block": 0,
+      "chip": 0,
+      "starter": 100,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       30,
+       120
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "236236H",
+     "hitboxes": [
+      {
+       "rect": [
+        6,
+        20,
+        66,
+        60
+       ]
+      }
+     ],
+     "cost": 500,
+     "superflash": 34,
+     "invuln": [
+      {
+       "from": 1,
+       "to": 8,
+       "kind": "all"
+      }
+     ],
+     "move": [
+      {
+       "from": 6,
+       "to": 14,
+       "vx": 60
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

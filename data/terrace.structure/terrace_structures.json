@@ -1,0 +1,56 @@
+{
+ "entries": [
+  {
+   "id": "beacon",
+   "name": "Beacon",
+   "kind": "beacon",
+   "emit": true,
+   "desc": "A small brick tower with a lit Prism in a glass cage. Shows from very far away.",
+   "pattern": [
+    "BBB",
+    "GPG",
+    "BBB",
+    ".B.",
+    ".B.",
+    "BBB"
+   ],
+   "legend": {
+    "B": "brick",
+    "G": "glass",
+    "P": "prism"
+   }
+  },
+  {
+   "id": "keystone",
+   "name": "The Keystone",
+   "kind": "keystone",
+   "emit": true,
+   "plinth": true,
+   "desc": "The great gate of Making. Raise it on the plinth, light it, and keep vigil through one night.",
+   "pattern": [
+    "    P    ",
+    "   OLO   ",
+    "  BBGBB  ",
+    "  I...I  ",
+    "  I...I  ",
+    "  I...I  ",
+    " BBBBBBB ",
+    " C.....C ",
+    " C.....C ",
+    "BBBBBBBBB",
+    "BBBBBBBBB",
+    "TTTTTTTTT"
+   ],
+   "legend": {
+    "B": "brick",
+    "I": "iron_block",
+    "C": "copper_block",
+    "G": "gold_block",
+    "L": "lumina_block",
+    "O": "obsidian",
+    "P": "prism",
+    "T": "plinth"
+   }
+  }
+ ]
+}

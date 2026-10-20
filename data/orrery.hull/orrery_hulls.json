@@ -1,0 +1,21 @@
+{"entries": [
+  {"id": "wayfarer", "name": "Wayfarer", "style": "wayfarer", "price": 0, "desc": "Balanced survey hull. Does everything adequately and nothing for show.",
+   "stats": {"hull": 120, "shield": 80, "shield_regen": 9, "shield_delay": 3.0, "energy": 100, "energy_regen": 22,
+             "thrust": 260, "max_speed": 230, "boost": 1.8, "rot": 190, "strafe": 0.5, "mass": 10, "power": 10,
+             "slots": 5, "cooling": 18, "heat_cap": 100, "cargo": 24, "fuel": 16, "range": 165, "missiles": 4, "decoys": 2}},
+  {"id": "lark", "name": "Lark", "style": "lark", "price": 5200, "desc": "A courier frame: fast, long-legged, thin in the hold.",
+   "stats": {"hull": 90, "shield": 90, "shield_regen": 10, "shield_delay": 2.8, "energy": 110, "energy_regen": 26,
+             "thrust": 320, "max_speed": 280, "boost": 1.8, "rot": 230, "strafe": 0.55, "mass": 8, "power": 9,
+             "slots": 4, "cooling": 20, "heat_cap": 100, "cargo": 14, "fuel": 22, "range": 185, "missiles": 3, "decoys": 3}},
+  {"id": "bulwark", "name": "Bulwark", "style": "bulwark", "price": 7200, "desc": "A hauler built like a vault door. Surge restores half the shield in one breath.",
+   "ability": "surge",
+   "stats": {"hull": 240, "shield": 120, "shield_regen": 8, "shield_delay": 3.4, "energy": 120, "energy_regen": 24,
+             "thrust": 200, "max_speed": 190, "boost": 1.6, "rot": 140, "strafe": 0.35, "mass": 18, "power": 13,
+             "slots": 6, "cooling": 20, "heat_cap": 120, "cargo": 40, "fuel": 20, "range": 150, "missiles": 6, "decoys": 3}},
+  {"id": "salt_runner", "name": "Salt Runner", "style": "salt", "price": 6400, "unlock": "orrery.ship.salt_runner",
+   "desc": "Light, brittle and ridiculously quick. Salt Slip blinks the hull a short way along its heading and hides it from shots for a moment.",
+   "ability": "salt_slip",
+   "stats": {"hull": 70, "shield": 50, "shield_regen": 12, "shield_delay": 2.2, "energy": 105, "energy_regen": 28,
+             "thrust": 380, "max_speed": 310, "boost": 2.2, "rot": 260, "strafe": 0.7, "mass": 6, "power": 9,
+             "slots": 4, "cooling": 22, "heat_cap": 90, "cargo": 12, "fuel": 18, "range": 195, "missiles": 3, "decoys": 3}}
+]}

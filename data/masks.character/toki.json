@@ -1,0 +1,643 @@
+{
+ "entries": [
+  {
+   "id": "toki",
+   "name": "Toki",
+   "title": "Warden of Hours",
+   "feeling": "Patience",
+   "archetype": "time",
+   "desc": "She is never late and never early. She waits for you to run out of your own time.",
+   "color": [
+    182,
+    150,
+    255
+   ],
+   "accent": [
+    255,
+    235,
+    190
+   ],
+   "health": 980,
+   "walk_f": 30,
+   "walk_b": 28,
+   "jump": {
+    "pre": 4,
+    "vy": 150,
+    "vx": 36,
+    "gravity": 8
+   },
+   "dash_f": {
+    "frames": 15,
+    "vx": 80,
+    "cancel": 10
+   },
+   "dash_b": {
+    "frames": 18,
+    "vx": 84,
+    "invuln": 6,
+    "recovery": 4
+   },
+   "push_half": 10,
+   "hurt": {
+    "stand": [
+     -13,
+     0,
+     26,
+     78
+    ],
+    "crouch": [
+     -13,
+     0,
+     26,
+     46
+    ],
+    "air": [
+     -13,
+     8,
+     26,
+     60
+    ]
+   },
+   "mech": "Time: places a slow zone (opponent acts at 2/3 speed inside it) and echo hits that return 34 frames later.",
+   "moves": {
+    "5L": {
+     "name": "Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 3,
+     "recovery": 9,
+     "stance": "stand",
+     "hit": {
+      "damage": 26,
+      "hitstun": 14,
+      "blockstun": 12,
+      "hitstop": 7,
+      "push_hit": 7,
+      "push_block": 8,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        42,
+        27,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5M",
+        "2M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5M": {
+     "name": "Strike",
+     "kind": "normal",
+     "startup": 8,
+     "active": 3,
+     "recovery": 13,
+     "stance": "stand",
+     "hit": {
+      "damage": 48,
+      "hitstun": 18,
+      "blockstun": 14,
+      "hitstop": 9,
+      "push_hit": 9,
+      "push_block": 10,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "M",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        36,
+        39,
+        18
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5H": {
+     "name": "Heavy Strike",
+     "kind": "normal",
+     "startup": 12,
+     "active": 4,
+     "recovery": 20,
+     "stance": "stand",
+     "hit": {
+      "damage": 78,
+      "hitstun": 31,
+      "blockstun": 17,
+      "hitstop": 11,
+      "push_hit": 12,
+      "push_block": 12,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       26,
+       90
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "H",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        30,
+        48,
+        36
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2L": {
+     "name": "Low Jab",
+     "kind": "normal",
+     "startup": 4,
+     "active": 3,
+     "recovery": 8,
+     "stance": "crouch",
+     "hit": {
+      "damage": 23,
+      "hitstun": 13,
+      "blockstun": 10,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 7,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        6,
+        27,
+        14
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2M",
+        "5M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2M": {
+     "name": "Sweeping Low",
+     "kind": "normal",
+     "startup": 7,
+     "active": 3,
+     "recovery": 14,
+     "stance": "crouch",
+     "hit": {
+      "damage": 44,
+      "hitstun": 18,
+      "blockstun": 13,
+      "hitstop": 9,
+      "push_hit": 10,
+      "push_block": 10,
+      "height": "low",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2M",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        0,
+        46,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2H": {
+     "name": "Rising Strike",
+     "kind": "normal",
+     "startup": 9,
+     "active": 4,
+     "recovery": 21,
+     "stance": "crouch",
+     "hit": {
+      "damage": 71,
+      "hitstun": 30,
+      "blockstun": 15,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       10,
+       118
+      ],
+      "knockdown": true
+     },
+     "desc": "Anti-air launcher.",
+     "input": "2H",
+     "hitboxes": [
+      {
+       "rect": [
+        2,
+        28,
+        31,
+        62
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 4,
+       "kind": "strike"
+      }
+     ]
+    },
+    "j.L": {
+     "name": "Air Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 6,
+     "recovery": 6,
+     "stance": "air",
+     "hit": {
+      "damage": 28,
+      "hitstun": 17,
+      "blockstun": 15,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 6,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "j.L",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        24,
+        27,
+        20
+       ]
+      }
+     ],
+     "land_recovery": 4
+    },
+    "j.H": {
+     "name": "Air Heavy",
+     "kind": "normal",
+     "startup": 9,
+     "active": 6,
+     "recovery": 8,
+     "stance": "air",
+     "hit": {
+      "damage": 63,
+      "hitstun": 21,
+      "blockstun": 19,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 8,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1,
+      "launch": [
+       24,
+       78
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "j.H",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        6,
+        6,
+        37,
+        44
+       ]
+      }
+     ],
+     "land_recovery": 6
+    },
+    "throw": {
+     "name": "Throw",
+     "input": "L+M",
+     "kind": "throw",
+     "startup": 5,
+     "active": 2,
+     "recovery": 22,
+     "hit": {
+      "damage": 90,
+      "hitstun": 20,
+      "blockstun": 0,
+      "hitstop": 10,
+      "knockdown": true,
+      "launch": [
+       26,
+       95
+      ],
+      "starter": 80,
+      "meter_hit": 40,
+      "spark": "heavy",
+      "unblockable": true
+     },
+     "throw": {
+      "reach": 26,
+      "tech": true,
+      "grab_frames": 24
+     },
+     "desc": "Beats blocking. Tech by pressing L+M within 8 frames."
+    },
+    "zone": {
+     "name": "Slow Hour",
+     "kind": "special",
+     "startup": 14,
+     "active": 1,
+     "recovery": 26,
+     "stance": "stand",
+     "hit": {
+      "damage": 0,
+      "hitstun": 26,
+      "blockstun": 26,
+      "hitstop": 7,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "Opponents inside the zone move at two thirds speed. One zone at a time.",
+     "input": "236L",
+     "zone": {
+      "frame": 14,
+      "rect": [
+       -48,
+       0,
+       96,
+       90
+      ],
+      "offset": 74,
+      "life": 190,
+      "slow": 3
+     }
+    },
+    "echo": {
+     "name": "Echo Slash",
+     "kind": "special",
+     "startup": 10,
+     "active": 3,
+     "recovery": 24,
+     "stance": "stand",
+     "hit": {
+      "damage": 54,
+      "hitstun": 27,
+      "blockstun": 22,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 10,
+      "starter": 100,
+      "spark": "slash",
+      "juggle": 1
+     },
+     "desc": "The same slash lands again 34 frames later where Toki was standing.",
+     "input": "214M",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        30,
+        46,
+        40
+       ]
+      }
+     ],
+     "echo": true
+    },
+    "rewind": {
+     "name": "Rewind Step",
+     "kind": "special",
+     "startup": 5,
+     "active": 4,
+     "recovery": 26,
+     "stance": "stand",
+     "hit": {
+      "damage": 60,
+      "hitstun": 29,
+      "blockstun": 7,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 85,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       12,
+       120
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "623L",
+     "hitboxes": [
+      {
+       "rect": [
+        0,
+        10,
+        28,
+        74
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 6,
+       "kind": "strike"
+      }
+     ]
+    },
+    "stopped": {
+     "name": "Stopped Clock",
+     "kind": "super",
+     "startup": 12,
+     "active": 4,
+     "recovery": 40,
+     "stance": "stand",
+     "hit": {
+      "damage": 200,
+      "hitstun": 43,
+      "blockstun": 27,
+      "hitstop": 14,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 0,
+      "meter_block": 0,
+      "chip": 0,
+      "starter": 100,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       20,
+       110
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "236236M",
+     "hitboxes": [
+      {
+       "rect": [
+        4,
+        10,
+        74,
+        70
+       ]
+      }
+     ],
+     "cost": 500,
+     "superflash": 40,
+     "invuln": [
+      {
+       "from": 1,
+       "to": 12,
+       "kind": "all"
+      }
+     ],
+     "zone": {
+      "frame": 12,
+      "rect": [
+       -70,
+       0,
+       140,
+       90
+      ],
+      "offset": 40,
+      "life": 160,
+      "slow": 2
+     }
+    }
+   },
+   "requires_unlock": "masks.rival.warden_of_hours"
+  }
+ ]
+}

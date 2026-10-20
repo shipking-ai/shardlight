@@ -1,0 +1,1034 @@
+{
+ "entries": [
+  {
+   "id": "planks",
+   "station": "hand",
+   "inputs": {
+    "log": 1
+   },
+   "outputs": {
+    "planks": 4
+   },
+   "group": "basics",
+   "hint": "Chop trees with the axe or bare hands."
+  },
+  {
+   "id": "stick",
+   "station": "hand",
+   "inputs": {
+    "planks": 2
+   },
+   "outputs": {
+    "stick": 4
+   },
+   "group": "basics"
+  },
+  {
+   "id": "workbench",
+   "station": "hand",
+   "inputs": {
+    "planks": 10
+   },
+   "outputs": {
+    "workbench": 1
+   },
+   "group": "stations",
+   "hint": "Place it, then stand near it."
+  },
+  {
+   "id": "torch",
+   "station": "hand",
+   "inputs": {
+    "stick": 1,
+    "coal": 1
+   },
+   "outputs": {
+    "torch": 4
+   },
+   "group": "basics"
+  },
+  {
+   "id": "torch_sap",
+   "station": "hand",
+   "inputs": {
+    "stick": 2,
+    "wool": 1
+   },
+   "outputs": {
+    "torch": 2
+   },
+   "group": "basics"
+  },
+  {
+   "id": "chest",
+   "station": "workbench",
+   "inputs": {
+    "planks": 8
+   },
+   "outputs": {
+    "chest": 1
+   },
+   "group": "stations"
+  },
+  {
+   "id": "door",
+   "station": "workbench",
+   "inputs": {
+    "planks": 6
+   },
+   "outputs": {
+    "door": 1
+   },
+   "group": "building"
+  },
+  {
+   "id": "ladder",
+   "station": "workbench",
+   "inputs": {
+    "stick": 7
+   },
+   "outputs": {
+    "ladder": 3
+   },
+   "group": "building"
+  },
+  {
+   "id": "fence",
+   "station": "workbench",
+   "inputs": {
+    "planks": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "fence": 3
+   },
+   "group": "building"
+  },
+  {
+   "id": "furnace",
+   "station": "workbench",
+   "inputs": {
+    "stone": 14
+   },
+   "outputs": {
+    "furnace": 1
+   },
+   "group": "stations"
+  },
+  {
+   "id": "loom",
+   "station": "workbench",
+   "inputs": {
+    "planks": 8,
+    "stick": 6
+   },
+   "outputs": {
+    "loom": 1
+   },
+   "group": "stations"
+  },
+  {
+   "id": "forge",
+   "station": "workbench",
+   "inputs": {
+    "brick": 8,
+    "iron_ingot": 6
+   },
+   "outputs": {
+    "forge": 1
+   },
+   "group": "stations"
+  },
+  {
+   "id": "bed",
+   "station": "loom",
+   "inputs": {
+    "cloth": 3,
+    "planks": 4
+   },
+   "outputs": {
+    "bed": 1
+   },
+   "group": "building"
+  },
+  {
+   "id": "bucket",
+   "station": "workbench",
+   "inputs": {
+    "copper_ingot": 3
+   },
+   "outputs": {
+    "bucket": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "shears",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 2
+   },
+   "outputs": {
+    "shears": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "glass_pane",
+   "station": "furnace",
+   "inputs": {
+    "sand": 2
+   },
+   "outputs": {
+    "glass": 2
+   },
+   "group": "smelting",
+   "heat": 2
+  },
+  {
+   "id": "brick_bake",
+   "station": "furnace",
+   "inputs": {
+    "stone": 2
+   },
+   "outputs": {
+    "brick": 2
+   },
+   "group": "smelting",
+   "heat": 2
+  },
+  {
+   "id": "smelt_copper",
+   "station": "furnace",
+   "inputs": {
+    "raw_copper": 1
+   },
+   "outputs": {
+    "copper_ingot": 1
+   },
+   "group": "smelting",
+   "heat": 2
+  },
+  {
+   "id": "smelt_iron",
+   "station": "furnace",
+   "inputs": {
+    "raw_iron": 1
+   },
+   "outputs": {
+    "iron_ingot": 1
+   },
+   "group": "smelting",
+   "heat": 3
+  },
+  {
+   "id": "smelt_gold",
+   "station": "furnace",
+   "inputs": {
+    "raw_gold": 1
+   },
+   "outputs": {
+    "gold_ingot": 1
+   },
+   "group": "smelting",
+   "heat": 4
+  },
+  {
+   "id": "smelt_cinder",
+   "station": "furnace",
+   "inputs": {
+    "raw_cinder": 1
+   },
+   "outputs": {
+    "cinder_iron": 1
+   },
+   "group": "smelting",
+   "heat": 5,
+   "unlock": "terrace.material.cinder_iron",
+   "hint": "Cinder iron from the deep. Smelt it here."
+  },
+  {
+   "id": "cook_meat",
+   "station": "furnace",
+   "inputs": {
+    "meat_raw": 1
+   },
+   "outputs": {
+    "meat_cooked": 1
+   },
+   "group": "food",
+   "heat": 2
+  },
+  {
+   "id": "cook_mutton",
+   "station": "furnace",
+   "inputs": {
+    "mutton_raw": 1
+   },
+   "outputs": {
+    "mutton_cooked": 1
+   },
+   "group": "food",
+   "heat": 2
+  },
+  {
+   "id": "bake_tuber",
+   "station": "furnace",
+   "inputs": {
+    "tuber": 1
+   },
+   "outputs": {
+    "baked_tuber": 1
+   },
+   "group": "food",
+   "heat": 1
+  },
+  {
+   "id": "bake_bread",
+   "station": "furnace",
+   "inputs": {
+    "wheat": 3
+   },
+   "outputs": {
+    "bread": 1
+   },
+   "group": "food",
+   "heat": 2
+  },
+  {
+   "id": "cure_jerky",
+   "station": "furnace",
+   "inputs": {
+    "meat_raw": 1,
+    "salt": 1
+   },
+   "outputs": {
+    "salt_jerky": 2
+   },
+   "group": "food",
+   "heat": 1
+  },
+  {
+   "id": "cloth",
+   "station": "loom",
+   "inputs": {
+    "wool": 2
+   },
+   "outputs": {
+    "cloth": 1
+   },
+   "group": "basics"
+  },
+  {
+   "id": "iron_block",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 4
+   },
+   "outputs": {
+    "iron_block": 1
+   },
+   "group": "monument"
+  },
+  {
+   "id": "copper_block",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 4
+   },
+   "outputs": {
+    "copper_block": 1
+   },
+   "group": "monument"
+  },
+  {
+   "id": "gold_block",
+   "station": "forge",
+   "inputs": {
+    "gold_ingot": 4
+   },
+   "outputs": {
+    "gold_block": 1
+   },
+   "group": "monument"
+  },
+  {
+   "id": "lumina_block",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 4
+   },
+   "outputs": {
+    "lumina_block": 1
+   },
+   "group": "monument"
+  },
+  {
+   "id": "prism",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 4,
+    "glass": 2,
+    "gold_ingot": 1
+   },
+   "outputs": {
+    "prism": 1
+   },
+   "group": "monument",
+   "hint": "Lit at the forge. The Keystone and beacons burn with it."
+  },
+  {
+   "id": "choir_alloy",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 2,
+    "lumina_shard": 2,
+    "gold_ingot": 1
+   },
+   "outputs": {
+    "choir_alloy": 1
+   },
+   "group": "echo",
+   "heat": 4,
+   "unlock": "terrace.recipe.choir_alloy",
+   "hint": "A held note, cast into metal."
+  },
+  {
+   "id": "wood_pickaxe",
+   "station": "workbench",
+   "inputs": {
+    "planks": 5,
+    "stick": 2
+   },
+   "outputs": {
+    "wood_pickaxe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "wood_axe",
+   "station": "workbench",
+   "inputs": {
+    "planks": 5,
+    "stick": 2
+   },
+   "outputs": {
+    "wood_axe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "wood_shovel",
+   "station": "workbench",
+   "inputs": {
+    "planks": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "wood_shovel": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "wood_hoe",
+   "station": "workbench",
+   "inputs": {
+    "planks": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "wood_hoe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "wood_sword",
+   "station": "workbench",
+   "inputs": {
+    "planks": 3,
+    "stick": 1
+   },
+   "outputs": {
+    "wood_sword": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "stone_pickaxe",
+   "station": "workbench",
+   "inputs": {
+    "stone": 5,
+    "stick": 2
+   },
+   "outputs": {
+    "stone_pickaxe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "stone_axe",
+   "station": "workbench",
+   "inputs": {
+    "stone": 5,
+    "stick": 2
+   },
+   "outputs": {
+    "stone_axe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "stone_shovel",
+   "station": "workbench",
+   "inputs": {
+    "stone": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "stone_shovel": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "stone_hoe",
+   "station": "workbench",
+   "inputs": {
+    "stone": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "stone_hoe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "stone_sword",
+   "station": "workbench",
+   "inputs": {
+    "stone": 3,
+    "stick": 1
+   },
+   "outputs": {
+    "stone_sword": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "copper_pickaxe",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "copper_pickaxe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "copper_axe",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "copper_axe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "copper_shovel",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "copper_shovel": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "copper_hoe",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "copper_hoe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "copper_sword",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 2,
+    "stick": 1
+   },
+   "outputs": {
+    "copper_sword": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "copper_head",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 4
+   },
+   "outputs": {
+    "copper_head": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "copper_chest",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 6
+   },
+   "outputs": {
+    "copper_chest": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "copper_legs",
+   "station": "forge",
+   "inputs": {
+    "copper_ingot": 5
+   },
+   "outputs": {
+    "copper_legs": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "iron_pickaxe",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "iron_pickaxe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "iron_axe",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "iron_axe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "iron_shovel",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "iron_shovel": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "iron_hoe",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "iron_hoe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "iron_sword",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 2,
+    "stick": 1
+   },
+   "outputs": {
+    "iron_sword": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "iron_head",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 4
+   },
+   "outputs": {
+    "iron_head": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "iron_chest",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 6
+   },
+   "outputs": {
+    "iron_chest": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "iron_legs",
+   "station": "forge",
+   "inputs": {
+    "iron_ingot": 5
+   },
+   "outputs": {
+    "iron_legs": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "lumina_pickaxe",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 3,
+    "stick": 2,
+    "iron_ingot": 1
+   },
+   "outputs": {
+    "lumina_pickaxe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "lumina_axe",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 3,
+    "stick": 2,
+    "iron_ingot": 1
+   },
+   "outputs": {
+    "lumina_axe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "lumina_shovel",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "lumina_shovel": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "lumina_hoe",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "lumina_hoe": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "lumina_sword",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 2,
+    "stick": 1,
+    "iron_ingot": 1
+   },
+   "outputs": {
+    "lumina_sword": 1
+   },
+   "group": "tools"
+  },
+  {
+   "id": "lumina_head",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 4
+   },
+   "outputs": {
+    "lumina_head": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "lumina_chest",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 6
+   },
+   "outputs": {
+    "lumina_chest": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "lumina_legs",
+   "station": "forge",
+   "inputs": {
+    "lumina_shard": 5
+   },
+   "outputs": {
+    "lumina_legs": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "cinder_pickaxe",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "cinder_pickaxe": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_axe",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "cinder_axe": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_shovel",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "cinder_shovel": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_hoe",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "cinder_hoe": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_sword",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 2,
+    "stick": 1
+   },
+   "outputs": {
+    "cinder_sword": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_head",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 4
+   },
+   "outputs": {
+    "cinder_head": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_chest",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 6
+   },
+   "outputs": {
+    "cinder_chest": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_legs",
+   "station": "forge",
+   "inputs": {
+    "cinder_iron": 5
+   },
+   "outputs": {
+    "cinder_legs": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "choir_pickaxe",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "choir_pickaxe": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_axe",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 3,
+    "stick": 2
+   },
+   "outputs": {
+    "choir_axe": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_shovel",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "choir_shovel": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_hoe",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 2,
+    "stick": 2
+   },
+   "outputs": {
+    "choir_hoe": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_sword",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 2,
+    "stick": 1
+   },
+   "outputs": {
+    "choir_sword": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_head",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 4
+   },
+   "outputs": {
+    "choir_head": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_chest",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 6
+   },
+   "outputs": {
+    "choir_chest": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_legs",
+   "station": "forge",
+   "inputs": {
+    "choir_alloy": 5
+   },
+   "outputs": {
+    "choir_legs": 1
+   },
+   "group": "echo",
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "cloth_head",
+   "station": "loom",
+   "inputs": {
+    "cloth": 2
+   },
+   "outputs": {
+    "cloth_head": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "cloth_chest",
+   "station": "loom",
+   "inputs": {
+    "cloth": 3
+   },
+   "outputs": {
+    "cloth_chest": 1
+   },
+   "group": "armor"
+  },
+  {
+   "id": "cloth_legs",
+   "station": "loom",
+   "inputs": {
+    "cloth": 2
+   },
+   "outputs": {
+    "cloth_legs": 1
+   },
+   "group": "armor"
+  }
+ ]
+}

@@ -1,0 +1,769 @@
+{
+ "entries": [
+  {
+   "id": "mirei",
+   "name": "Mirei",
+   "title": "Mask of Sorrow",
+   "feeling": "Sorrow",
+   "archetype": "zoner",
+   "desc": "Keeps the world at arm's length with needles of pale light. Hates being touched.",
+   "color": [
+    96,
+    130,
+    230
+   ],
+   "accent": [
+    220,
+    240,
+    255
+   ],
+   "health": 940,
+   "walk_f": 32,
+   "walk_b": 30,
+   "jump": {
+    "pre": 4,
+    "vy": 160,
+    "vx": 34,
+    "gravity": 8
+   },
+   "dash_f": {
+    "frames": 16,
+    "vx": 84,
+    "cancel": 10
+   },
+   "dash_b": {
+    "frames": 18,
+    "vx": 84,
+    "invuln": 6,
+    "recovery": 4
+   },
+   "push_half": 10,
+   "hurt": {
+    "stand": [
+     -13,
+     0,
+     26,
+     78
+    ],
+    "crouch": [
+     -13,
+     0,
+     26,
+     46
+    ],
+    "air": [
+     -13,
+     8,
+     26,
+     60
+    ]
+   },
+   "mech": "Zoner: one needle on screen at a time; strong anti-air and a fast back-hop.",
+   "moves": {
+    "5L": {
+     "name": "Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 3,
+     "recovery": 9,
+     "stance": "stand",
+     "hit": {
+      "damage": 26,
+      "hitstun": 14,
+      "blockstun": 12,
+      "hitstop": 7,
+      "push_hit": 7,
+      "push_block": 8,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        42,
+        28,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5M",
+        "2M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5M": {
+     "name": "Strike",
+     "kind": "normal",
+     "startup": 8,
+     "active": 3,
+     "recovery": 13,
+     "stance": "stand",
+     "hit": {
+      "damage": 47,
+      "hitstun": 18,
+      "blockstun": 14,
+      "hitstop": 9,
+      "push_hit": 9,
+      "push_block": 10,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "M",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        36,
+        41,
+        18
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5H": {
+     "name": "Heavy Strike",
+     "kind": "normal",
+     "startup": 12,
+     "active": 4,
+     "recovery": 20,
+     "stance": "stand",
+     "hit": {
+      "damage": 77,
+      "hitstun": 31,
+      "blockstun": 17,
+      "hitstop": 11,
+      "push_hit": 12,
+      "push_block": 12,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       26,
+       90
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "H",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        30,
+        50,
+        36
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2L": {
+     "name": "Low Jab",
+     "kind": "normal",
+     "startup": 4,
+     "active": 3,
+     "recovery": 8,
+     "stance": "crouch",
+     "hit": {
+      "damage": 22,
+      "hitstun": 13,
+      "blockstun": 10,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 7,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        6,
+        28,
+        14
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2M",
+        "5M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2M": {
+     "name": "Sweeping Low",
+     "kind": "normal",
+     "startup": 7,
+     "active": 3,
+     "recovery": 14,
+     "stance": "crouch",
+     "hit": {
+      "damage": 43,
+      "hitstun": 18,
+      "blockstun": 13,
+      "hitstop": 9,
+      "push_hit": 10,
+      "push_block": 10,
+      "height": "low",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2M",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        0,
+        48,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2H": {
+     "name": "Rising Strike",
+     "kind": "normal",
+     "startup": 9,
+     "active": 4,
+     "recovery": 21,
+     "stance": "crouch",
+     "hit": {
+      "damage": 70,
+      "hitstun": 30,
+      "blockstun": 15,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       10,
+       118
+      ],
+      "knockdown": true
+     },
+     "desc": "Anti-air launcher.",
+     "input": "2H",
+     "hitboxes": [
+      {
+       "rect": [
+        2,
+        28,
+        33,
+        62
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 4,
+       "kind": "strike"
+      }
+     ]
+    },
+    "j.L": {
+     "name": "Air Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 6,
+     "recovery": 6,
+     "stance": "air",
+     "hit": {
+      "damage": 28,
+      "hitstun": 17,
+      "blockstun": 15,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 6,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "j.L",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        24,
+        28,
+        20
+       ]
+      }
+     ],
+     "land_recovery": 4
+    },
+    "j.H": {
+     "name": "Air Heavy",
+     "kind": "normal",
+     "startup": 9,
+     "active": 6,
+     "recovery": 8,
+     "stance": "air",
+     "hit": {
+      "damage": 62,
+      "hitstun": 21,
+      "blockstun": 19,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 8,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1,
+      "launch": [
+       24,
+       78
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "j.H",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        6,
+        6,
+        39,
+        44
+       ]
+      }
+     ],
+     "land_recovery": 6
+    },
+    "throw": {
+     "name": "Throw",
+     "input": "L+M",
+     "kind": "throw",
+     "startup": 5,
+     "active": 2,
+     "recovery": 22,
+     "hit": {
+      "damage": 90,
+      "hitstun": 20,
+      "blockstun": 0,
+      "hitstop": 10,
+      "knockdown": true,
+      "launch": [
+       26,
+       95
+      ],
+      "starter": 80,
+      "meter_hit": 40,
+      "spark": "heavy",
+      "unblockable": true
+     },
+     "throw": {
+      "reach": 26,
+      "tech": true,
+      "grab_frames": 24
+     },
+     "desc": "Beats blocking. Tech by pressing L+M within 8 frames."
+    },
+    "needleL": {
+     "name": "Slow Needle",
+     "kind": "special",
+     "startup": 13,
+     "active": 2,
+     "recovery": 22,
+     "stance": "stand",
+     "hit": {
+      "damage": 40,
+      "hitstun": 29,
+      "blockstun": 25,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 8,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "Slow needle; leaves you plus at range.",
+     "input": "236L",
+     "projectile": {
+      "frame": 14,
+      "rect": [
+       -9,
+       -5,
+       18,
+       10
+      ],
+      "offset": [
+       26,
+       46
+      ],
+      "vx": 52,
+      "life": 90,
+      "hit": {
+       "damage": 40,
+       "hitstun": 18,
+       "blockstun": 14,
+       "hitstop": 8,
+       "chip": 8,
+       "push_hit": 8,
+       "push_block": 9,
+       "spark": "light",
+       "meter_hit": 20,
+       "meter_block": 8
+      },
+      "hits": 1,
+      "limit": 1
+     }
+    },
+    "needleM": {
+     "name": "Fast Needle",
+     "kind": "special",
+     "startup": 13,
+     "active": 2,
+     "recovery": 26,
+     "stance": "stand",
+     "hit": {
+      "damage": 48,
+      "hitstun": 31,
+      "blockstun": 27,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "236M",
+     "projectile": {
+      "frame": 14,
+      "rect": [
+       -9,
+       -5,
+       18,
+       10
+      ],
+      "offset": [
+       26,
+       46
+      ],
+      "vx": 96,
+      "life": 90,
+      "hit": {
+       "damage": 48,
+       "hitstun": 18,
+       "blockstun": 13,
+       "hitstop": 8,
+       "chip": 8,
+       "push_hit": 9,
+       "push_block": 10,
+       "spark": "light",
+       "meter_hit": 22,
+       "meter_block": 8
+      },
+      "hits": 1,
+      "limit": 1
+     }
+    },
+    "needleH": {
+     "name": "Pale Comet",
+     "kind": "special",
+     "startup": 18,
+     "active": 2,
+     "recovery": 30,
+     "stance": "stand",
+     "hit": {
+      "damage": 70,
+      "hitstun": 34,
+      "blockstun": 29,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "Slow two-hit comet that eats lighter needles.",
+     "input": "236H",
+     "projectile": {
+      "frame": 18,
+      "rect": [
+       -12,
+       -10,
+       24,
+       20
+      ],
+      "offset": [
+       28,
+       44
+      ],
+      "vx": 74,
+      "life": 110,
+      "limit": 1,
+      "hits": 2,
+      "destroy_on_hit": false,
+      "hit": {
+       "damage": 38,
+       "hitstun": 22,
+       "blockstun": 16,
+       "hitstop": 6,
+       "chip": 10,
+       "push_hit": 6,
+       "push_block": 8,
+       "spark": "med",
+       "meter_hit": 20,
+       "meter_block": 8
+      }
+     }
+    },
+    "lance": {
+     "name": "Dawn Lance",
+     "kind": "special",
+     "startup": 6,
+     "active": 4,
+     "recovery": 30,
+     "stance": "stand",
+     "hit": {
+      "damage": 76,
+      "hitstun": 33,
+      "blockstun": 9,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 85,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       12,
+       124
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "623M",
+     "hitboxes": [
+      {
+       "rect": [
+        0,
+        10,
+        32,
+        80
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 6,
+       "kind": "strike"
+      }
+     ]
+    },
+    "hop": {
+     "name": "Veil Hop",
+     "kind": "special",
+     "startup": 3,
+     "active": 1,
+     "recovery": 28,
+     "stance": "stand",
+     "hit": {
+      "damage": 0,
+      "hitstun": 28,
+      "blockstun": 28,
+      "hitstop": 7,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "Backward hop, invulnerable while it moves.",
+     "input": "214L",
+     "invuln": [
+      {
+       "from": 1,
+       "to": 12,
+       "kind": "all"
+      }
+     ],
+     "move": [
+      {
+       "from": 1,
+       "to": 12,
+       "vx": -96,
+       "vy": 0
+      }
+     ]
+    },
+    "rain": {
+     "name": "Rain of Pins",
+     "kind": "super",
+     "startup": 16,
+     "active": 3,
+     "recovery": 40,
+     "stance": "stand",
+     "hit": {
+      "damage": 0,
+      "hitstun": 42,
+      "blockstun": 42,
+      "hitstop": 7,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "236236L",
+     "cost": 500,
+     "superflash": 30,
+     "projectile": {
+      "frame": 16,
+      "rect": [
+       -70,
+       -4,
+       140,
+       8
+      ],
+      "offset": [
+       10,
+       44
+      ],
+      "vx": 70,
+      "life": 70,
+      "limit": 1,
+      "hits": 7,
+      "destroy_on_hit": false,
+      "hit": {
+       "damage": 34,
+       "hitstun": 22,
+       "blockstun": 16,
+       "hitstop": 5,
+       "chip": 15,
+       "push_hit": 4,
+       "push_block": 6,
+       "spark": "light",
+       "meter_hit": 0,
+       "meter_block": 0,
+       "starter": 100
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,387 @@
+{
+ "entries": [
+  {
+   "id": "hopper",
+   "name": "Hopper",
+   "role": "herbivore",
+   "habitat": "surface",
+   "biomes": [
+    "meadow",
+    "forest",
+    "frozen"
+   ],
+   "size": [
+    9,
+    7
+   ],
+   "hp": 6,
+   "speed": 46,
+   "jump": 2,
+   "hunger_rate": 0.12,
+   "lifespan_days": 14,
+   "maturity_days": 1.0,
+   "repro_cooldown_days": 0.8,
+   "litter": [
+    1,
+    2
+   ],
+   "food_min": 55,
+   "patch_cap": 9,
+   "perception": 110,
+   "flee": [
+    "ridgewolf",
+    "player"
+   ],
+   "diet": [
+    "forage"
+   ],
+   "tame_food": [
+    "wheat",
+    "seed_wheat"
+   ],
+   "drops": [
+    {
+     "item": "meat_raw",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "color": [
+    186,
+    150,
+    110
+   ],
+   "accent": [
+    240,
+    226,
+    200
+   ],
+   "call": "terrace_hopper"
+  },
+  {
+   "id": "woolback",
+   "name": "Woolback",
+   "role": "herbivore",
+   "habitat": "surface",
+   "biomes": [
+    "meadow",
+    "forest"
+   ],
+   "size": [
+    14,
+    9
+   ],
+   "hp": 14,
+   "speed": 28,
+   "jump": 1,
+   "hunger_rate": 0.1,
+   "lifespan_days": 18,
+   "maturity_days": 1.6,
+   "repro_cooldown_days": 1.4,
+   "litter": [
+    1,
+    1
+   ],
+   "food_min": 60,
+   "patch_cap": 5,
+   "perception": 90,
+   "flee": [
+    "ridgewolf"
+   ],
+   "diet": [
+    "forage",
+    "crops"
+   ],
+   "tame_food": [
+    "wheat",
+    "tuber"
+   ],
+   "drops": [
+    {
+     "item": "mutton_raw",
+     "min": 1,
+     "max": 2
+    },
+    {
+     "item": "wool",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "color": [
+    236,
+    230,
+    216
+   ],
+   "accent": [
+    90,
+    80,
+    74
+   ],
+   "call": "terrace_woolback"
+  },
+  {
+   "id": "ridgewolf",
+   "name": "Ridgewolf",
+   "role": "predator",
+   "habitat": "surface",
+   "biomes": [
+    "meadow",
+    "forest",
+    "frozen"
+   ],
+   "size": [
+    14,
+    8
+   ],
+   "hp": 16,
+   "speed": 62,
+   "jump": 2,
+   "hunger_rate": 0.16,
+   "lifespan_days": 20,
+   "maturity_days": 2.0,
+   "repro_cooldown_days": 3.0,
+   "litter": [
+    1,
+    2
+   ],
+   "food_min": 70,
+   "patch_cap": 1,
+   "perception": 150,
+   "flee": [],
+   "diet": [
+    "hopper",
+    "woolback"
+   ],
+   "damage": 9,
+   "attack_rate": 0.0035,
+   "drops": [
+    {
+     "item": "meat_raw",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "color": [
+    104,
+    110,
+    128
+   ],
+   "accent": [
+    200,
+    206,
+    220
+   ],
+   "call": "terrace_wolf"
+  },
+  {
+   "id": "bumblet",
+   "name": "Bumblet",
+   "role": "pollinator",
+   "habitat": "air",
+   "biomes": [
+    "meadow",
+    "forest"
+   ],
+   "size": [
+    5,
+    4
+   ],
+   "hp": 2,
+   "speed": 40,
+   "jump": 0,
+   "hunger_rate": 0.1,
+   "lifespan_days": 8,
+   "maturity_days": 0.5,
+   "repro_cooldown_days": 0.6,
+   "litter": [
+    1,
+    1
+   ],
+   "food_min": 55,
+   "patch_cap": 6,
+   "perception": 90,
+   "flee": [
+    "player"
+   ],
+   "diet": [
+    "flowers"
+   ],
+   "drops": [],
+   "color": [
+    250,
+    214,
+    70
+   ],
+   "accent": [
+    40,
+    36,
+    44
+   ],
+   "call": "terrace_bumblet"
+  },
+  {
+   "id": "crawler",
+   "name": "Pale Crawler",
+   "role": "cave",
+   "habitat": "cave",
+   "biomes": [
+    "cave"
+   ],
+   "size": [
+    12,
+    6
+   ],
+   "hp": 12,
+   "speed": 34,
+   "jump": 1,
+   "hunger_rate": 0.1,
+   "lifespan_days": 16,
+   "maturity_days": 1.0,
+   "repro_cooldown_days": 2.0,
+   "litter": [
+    1,
+    2
+   ],
+   "food_min": 60,
+   "patch_cap": 4,
+   "perception": 110,
+   "flee": [],
+   "diet": [
+    "fungus"
+   ],
+   "damage": 7,
+   "attack_rate": 0.0,
+   "light_averse": true,
+   "drops": [
+    {
+     "item": "coal",
+     "min": 0,
+     "max": 1,
+     "p": 0.5
+    }
+   ],
+   "color": [
+    196,
+    196,
+    210
+   ],
+   "accent": [
+    110,
+    230,
+    200
+   ],
+   "call": "terrace_crawler"
+  },
+  {
+   "id": "gleaner",
+   "name": "Gleaner",
+   "role": "scavenger",
+   "habitat": "air",
+   "biomes": [
+    "meadow",
+    "forest",
+    "salt",
+    "frozen"
+   ],
+   "size": [
+    9,
+    6
+   ],
+   "hp": 4,
+   "speed": 48,
+   "jump": 0,
+   "hunger_rate": 0.1,
+   "lifespan_days": 12,
+   "maturity_days": 1.0,
+   "repro_cooldown_days": 1.6,
+   "litter": [
+    1,
+    1
+   ],
+   "food_min": 60,
+   "patch_cap": 3,
+   "perception": 160,
+   "flee": [
+    "player"
+   ],
+   "diet": [
+    "carrion"
+   ],
+   "drops": [],
+   "color": [
+    60,
+    56,
+    76
+   ],
+   "accent": [
+    226,
+    190,
+    90
+   ],
+   "call": "terrace_gleaner"
+  },
+  {
+   "id": "gloam",
+   "name": "Gloam",
+   "role": "night",
+   "habitat": "surface",
+   "biomes": [
+    "meadow",
+    "forest",
+    "salt",
+    "frozen"
+   ],
+   "size": [
+    7,
+    14
+   ],
+   "hp": 22,
+   "speed": 36,
+   "jump": 2,
+   "hunger_rate": 0.0,
+   "lifespan_days": 99,
+   "maturity_days": 0.0,
+   "repro_cooldown_days": 99,
+   "litter": [
+    0,
+    0
+   ],
+   "food_min": 0,
+   "patch_cap": 0,
+   "perception": 130,
+   "flee": [],
+   "diet": [
+    "player"
+   ],
+   "damage": 8,
+   "attack_rate": 0.0,
+   "burns": true,
+   "drops": [
+    {
+     "item": "coal",
+     "min": 0,
+     "max": 2,
+     "p": 0.7
+    },
+    {
+     "item": "stick",
+     "min": 0,
+     "max": 1,
+     "p": 0.4
+    }
+   ],
+   "color": [
+    52,
+    46,
+    78
+   ],
+   "accent": [
+    190,
+    240,
+    255
+   ],
+   "call": "terrace_gloam"
+  }
+ ]
+}

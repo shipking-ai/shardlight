@@ -1,0 +1,348 @@
+{
+ "entries": [
+  {
+   "id": "battery",
+   "name": "Battery",
+   "kind": "consumable",
+   "stack": 3,
+   "color": [
+    150,
+    226,
+    200
+   ],
+   "icon": "battery",
+   "desc": "Fresh cells for the flashlight. Swapping makes a small click.",
+   "use": {
+    "battery": 100
+   },
+   "noise": 2.4,
+   "spawn_weight": 10
+  },
+  {
+   "id": "matches",
+   "name": "Matches",
+   "kind": "consumable",
+   "stack": 9,
+   "color": [
+    255,
+    200,
+    120
+   ],
+   "icon": "matches",
+   "desc": "Relights a dead lamp, lights candles, or gives a brief flare.",
+   "noise": 2.4,
+   "spawn_weight": 14
+  },
+  {
+   "id": "oil_flask",
+   "name": "Lamp Oil",
+   "kind": "consumable",
+   "stack": 2,
+   "color": [
+    230,
+    170,
+    70
+   ],
+   "icon": "oil",
+   "desc": "Refills the lamp. Also the price of a Lantern Ward.",
+   "use": {
+    "oil": 70
+   },
+   "noise": 3.0,
+   "spawn_weight": 8
+  },
+  {
+   "id": "bandage",
+   "name": "Bandage",
+   "kind": "consumable",
+   "stack": 3,
+   "color": [
+    226,
+    220,
+    200
+   ],
+   "icon": "bandage",
+   "desc": "Closes one wound. Takes a few quiet seconds.",
+   "use": {
+    "heal": 1
+   },
+   "noise": 2.4,
+   "spawn_weight": 7
+  },
+  {
+   "id": "cloth",
+   "name": "Clean Cloth",
+   "kind": "scrap",
+   "stack": 4,
+   "color": [
+    200,
+    196,
+    180
+   ],
+   "icon": "cloth",
+   "desc": "Two pieces make a bandage.",
+   "spawn_weight": 8
+  },
+  {
+   "id": "tin_can",
+   "name": "Tin Can",
+   "kind": "throwable",
+   "stack": 3,
+   "color": [
+    170,
+    178,
+    176
+   ],
+   "icon": "can",
+   "desc": "Throw it for a clatter. Add nails for something louder.",
+   "throw": {
+    "noise": 9,
+    "range": 8
+   },
+   "spawn_weight": 9
+  },
+  {
+   "id": "nails",
+   "name": "Loose Nails",
+   "kind": "scrap",
+   "stack": 4,
+   "color": [
+    150,
+    150,
+    156
+   ],
+   "icon": "nails",
+   "desc": "Rattles nicely inside a tin.",
+   "spawn_weight": 8
+  },
+  {
+   "id": "rattle",
+   "name": "Rattle Tin",
+   "kind": "throwable",
+   "stack": 3,
+   "color": [
+    196,
+    200,
+    190
+   ],
+   "icon": "rattle",
+   "desc": "A tin full of nails. Lands loud: lures anything that listens.",
+   "throw": {
+    "noise": 15,
+    "range": 10
+   }
+  },
+  {
+   "id": "bottle",
+   "name": "Glass Bottle",
+   "kind": "throwable",
+   "stack": 2,
+   "color": [
+    120,
+    190,
+    170
+   ],
+   "icon": "bottle",
+   "desc": "Shatters on landing. Very loud, very once.",
+   "throw": {
+    "noise": 17,
+    "range": 9,
+    "breaks": 1
+   },
+   "spawn_weight": 6
+  },
+  {
+   "id": "coin",
+   "name": "Coin",
+   "kind": "throwable",
+   "stack": 5,
+   "color": [
+    214,
+    190,
+    110
+   ],
+   "icon": "coin",
+   "desc": "A quiet little distraction for nearby ears.",
+   "throw": {
+    "noise": 5,
+    "range": 11
+   },
+   "spawn_weight": 7
+  },
+  {
+   "id": "lens_shard",
+   "name": "Lens Shard",
+   "kind": "scrap",
+   "stack": 2,
+   "color": [
+    150,
+    230,
+    255
+   ],
+   "icon": "shard",
+   "desc": "A sliver of the broken Lens. It still remembers being a lamp.",
+   "unlock": "umbra.item.lantern_ward",
+   "spawn_weight": 0
+  },
+  {
+   "id": "lantern_ward",
+   "name": "Lantern Ward",
+   "kind": "ward",
+   "stack": 2,
+   "color": [
+    255,
+    214,
+    140
+   ],
+   "icon": "ward",
+   "desc": "Placed light that holds the dark at bay for a short while. Its hum carries.",
+   "unlock": "umbra.item.lantern_ward",
+   "use": {
+    "ward_seconds": 40,
+    "ward_radius": 4.6
+   },
+   "noise": 2.5,
+   "spawn_weight": 0
+  },
+  {
+   "id": "brass_key",
+   "name": "Brass Key",
+   "kind": "key",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    226,
+    176,
+    80
+   ],
+   "icon": "key",
+   "desc": "Heavy brass. Warm from a pocket."
+  },
+  {
+   "id": "bone_key",
+   "name": "Bone Key",
+   "kind": "key",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    226,
+    220,
+    196
+   ],
+   "icon": "key",
+   "desc": "Carved, not cast."
+  },
+  {
+   "id": "iron_key",
+   "name": "Iron Key",
+   "kind": "key",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    140,
+    150,
+    160
+   ],
+   "icon": "key",
+   "desc": "Cold even in the lamp."
+  },
+  {
+   "id": "cellar_key",
+   "name": "Cellar Key",
+   "kind": "key",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    120,
+    200,
+    190
+   ],
+   "icon": "key",
+   "desc": "Teal with verdigris. It opens the way down."
+  },
+  {
+   "id": "fuse",
+   "name": "Fuse",
+   "kind": "objective",
+   "pocket": true,
+   "stack": 2,
+   "color": [
+    255,
+    226,
+    150
+   ],
+   "icon": "fuse",
+   "desc": "A ceramic fuse. The generator is hungry for two."
+  },
+  {
+   "id": "crank",
+   "name": "Gate Crank",
+   "kind": "objective",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    180,
+    170,
+    150
+   ],
+   "icon": "crank",
+   "desc": "The handle for the cellar gate winch."
+  },
+  {
+   "id": "gate_wheel",
+   "name": "Gate Wheel",
+   "kind": "objective",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    160,
+    160,
+    150
+   ],
+   "icon": "wheel",
+   "desc": "A heavy iron wheel. The winch is missing it."
+  },
+  {
+   "id": "stopped_clock",
+   "name": "The Stopped Clock",
+   "kind": "story",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    190,
+    200,
+    190
+   ],
+   "icon": "clock",
+   "desc": "It stopped when the last lamp went out. It would like to start again."
+  },
+  {
+   "id": "boiler_key",
+   "name": "Boiler Key",
+   "kind": "key",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    190,
+    150,
+    90
+   ],
+   "icon": "key",
+   "desc": "Cold even in the lamp."
+  },
+  {
+   "id": "crank_room_key",
+   "name": "Cellar Latch Key",
+   "kind": "key",
+   "pocket": true,
+   "stack": 1,
+   "color": [
+    170,
+    170,
+    180
+   ],
+   "icon": "key",
+   "desc": "Cold even in the lamp."
+  }
+ ]
+}

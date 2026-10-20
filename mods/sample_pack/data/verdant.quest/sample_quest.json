@@ -1,0 +1,8 @@
+{"entries": [
+  {"id": "sample_pack_errand", "title": "A Traveller's Errand", "track": "side", "giver": "sample_pack_traveller",
+   "offer": "Two wolves have been shadowing me since the north trail. Kill two and I will give you something that has kept me alive.",
+   "complete": "Good. The charm is yours; it has never failed me, which proves nothing.",
+   "stages": [{"id": "kill", "text": "Kill 2 wolves", "kind": "kill", "target": "wolf", "count": 2},
+              {"id": "report", "text": "Tell Ness the Traveller", "kind": "talk", "target": "sample_pack_traveller"}],
+   "reward": {"gold": 20, "items": {"sample_pack_charm": 1, "sample_pack_tea": 2}}}
+]}

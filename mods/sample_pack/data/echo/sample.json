@@ -1,0 +1,6 @@
+{"entries": [
+  {"id": "sample_pack_wave", "title": "A Courteous Wave", "on": "orrery.signal_decoded", "where": {"signal": "choir"},
+   "hint": "Some signals are answered by people you have never met.",
+   "description": "Decoding the Choir Signal also lit a small lamp somewhere kind.",
+   "effects": [{"lore": "sample_pack_wave"}, {"toast": "A lamp answers from the dark (Sample Pack)"}]}
+]}

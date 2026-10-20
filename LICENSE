@@ -1,0 +1,9 @@
+Copyright (c) 2026 shipking-ai. All rights reserved.
+
+This source code, data and generated assets are published for viewing and
+reference only. No licence is granted to copy, modify, redistribute, sublicense
+or use them in other works, in whole or in part, without prior written
+permission from the copyright holder.
+
+Third-party components (pygame-ce, NumPy, pytest) are not part of this
+repository and remain under their own licences.

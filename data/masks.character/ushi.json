@@ -1,0 +1,631 @@
+{
+ "entries": [
+  {
+   "id": "ushi",
+   "name": "Ushi",
+   "title": "Mask of Stubbornness",
+   "feeling": "Stubbornness",
+   "archetype": "grappler",
+   "desc": "Slow, wide and immovable. Ushi does not win exchanges - Ushi ends them.",
+   "color": [
+    140,
+    110,
+    80
+   ],
+   "accent": [
+    230,
+    190,
+    120
+   ],
+   "health": 1120,
+   "walk_f": 28,
+   "walk_b": 24,
+   "jump": {
+    "pre": 4,
+    "vy": 142,
+    "vx": 30,
+    "gravity": 8
+   },
+   "dash_f": {
+    "frames": 18,
+    "vx": 70,
+    "cancel": 12
+   },
+   "dash_b": {
+    "frames": 22,
+    "vx": 66,
+    "invuln": 3,
+    "recovery": 6
+   },
+   "push_half": 14,
+   "hurt": {
+    "stand": [
+     -13,
+     0,
+     26,
+     78
+    ],
+    "crouch": [
+     -13,
+     0,
+     26,
+     46
+    ],
+    "air": [
+     -13,
+     8,
+     26,
+     60
+    ]
+   },
+   "mech": "Grappler: biggest health and damage; slow walk; armoured shoulder; command grab.",
+   "moves": {
+    "5L": {
+     "name": "Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 3,
+     "recovery": 9,
+     "stance": "stand",
+     "hit": {
+      "damage": 31,
+      "hitstun": 14,
+      "blockstun": 12,
+      "hitstop": 7,
+      "push_hit": 7,
+      "push_block": 8,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        42,
+        29,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5M",
+        "2M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5M": {
+     "name": "Strike",
+     "kind": "normal",
+     "startup": 8,
+     "active": 4,
+     "recovery": 14,
+     "stance": "stand",
+     "hit": {
+      "damage": 56,
+      "hitstun": 20,
+      "blockstun": 16,
+      "hitstop": 9,
+      "push_hit": 9,
+      "push_block": 10,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "M",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        36,
+        43,
+        18
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5H": {
+     "name": "Heavy Strike",
+     "kind": "normal",
+     "startup": 13,
+     "active": 4,
+     "recovery": 22,
+     "stance": "stand",
+     "hit": {
+      "damage": 91,
+      "hitstun": 33,
+      "blockstun": 19,
+      "hitstop": 11,
+      "push_hit": 12,
+      "push_block": 12,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       26,
+       90
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "H",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        30,
+        52,
+        36
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2L": {
+     "name": "Low Jab",
+     "kind": "normal",
+     "startup": 4,
+     "active": 3,
+     "recovery": 8,
+     "stance": "crouch",
+     "hit": {
+      "damage": 26,
+      "hitstun": 13,
+      "blockstun": 10,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 7,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        6,
+        29,
+        14
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2M",
+        "5M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2M": {
+     "name": "Sweeping Low",
+     "kind": "normal",
+     "startup": 7,
+     "active": 3,
+     "recovery": 14,
+     "stance": "crouch",
+     "hit": {
+      "damage": 51,
+      "hitstun": 18,
+      "blockstun": 13,
+      "hitstop": 9,
+      "push_hit": 10,
+      "push_block": 10,
+      "height": "low",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2M",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        0,
+        50,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2H": {
+     "name": "Rising Strike",
+     "kind": "normal",
+     "startup": 9,
+     "active": 4,
+     "recovery": 21,
+     "stance": "crouch",
+     "hit": {
+      "damage": 82,
+      "hitstun": 30,
+      "blockstun": 15,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       10,
+       118
+      ],
+      "knockdown": true
+     },
+     "desc": "Anti-air launcher.",
+     "input": "2H",
+     "hitboxes": [
+      {
+       "rect": [
+        2,
+        28,
+        34,
+        62
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 4,
+       "kind": "strike"
+      }
+     ]
+    },
+    "j.L": {
+     "name": "Air Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 6,
+     "recovery": 6,
+     "stance": "air",
+     "hit": {
+      "damage": 33,
+      "hitstun": 17,
+      "blockstun": 15,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 6,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "j.L",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        24,
+        29,
+        20
+       ]
+      }
+     ],
+     "land_recovery": 4
+    },
+    "j.H": {
+     "name": "Air Heavy",
+     "kind": "normal",
+     "startup": 9,
+     "active": 6,
+     "recovery": 8,
+     "stance": "air",
+     "hit": {
+      "damage": 73,
+      "hitstun": 21,
+      "blockstun": 19,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 8,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1,
+      "launch": [
+       24,
+       78
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "j.H",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        6,
+        6,
+        41,
+        44
+       ]
+      }
+     ],
+     "land_recovery": 6
+    },
+    "throw": {
+     "name": "Throw",
+     "input": "L+M",
+     "kind": "throw",
+     "startup": 5,
+     "active": 2,
+     "recovery": 22,
+     "hit": {
+      "damage": 110,
+      "hitstun": 20,
+      "blockstun": 0,
+      "hitstop": 10,
+      "knockdown": true,
+      "launch": [
+       26,
+       95
+      ],
+      "starter": 80,
+      "meter_hit": 40,
+      "spark": "heavy",
+      "unblockable": true
+     },
+     "throw": {
+      "reach": 32,
+      "tech": true,
+      "grab_frames": 24
+     },
+     "desc": "Beats blocking. Tech by pressing L+M within 8 frames."
+    },
+    "maw": {
+     "name": "Maw Breaker",
+     "input": "63214L",
+     "kind": "special",
+     "startup": 6,
+     "active": 2,
+     "recovery": 26,
+     "hit": {
+      "damage": 150,
+      "hitstun": 20,
+      "blockstun": 0,
+      "hitstop": 12,
+      "knockdown": true,
+      "launch": [
+       30,
+       100
+      ],
+      "starter": 70,
+      "meter_hit": 50,
+      "spark": "heavy",
+      "unblockable": true
+     },
+     "throw": {
+      "reach": 30,
+      "tech": false,
+      "grab_frames": 30
+     },
+     "desc": "Command grab: cannot be teched, must be jumped or walked away from."
+    },
+    "shoulder": {
+     "name": "Boulder Shoulder",
+     "kind": "special",
+     "startup": 15,
+     "active": 4,
+     "recovery": 24,
+     "stance": "stand",
+     "hit": {
+      "damage": 78,
+      "hitstun": 25,
+      "blockstun": 19,
+      "hitstop": 11,
+      "push_hit": 14,
+      "push_block": 14,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 14,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       18,
+       86
+      ],
+      "knockdown": true
+     },
+     "desc": "One hit of armour while charging; very punishable if blocked.",
+     "input": "236M",
+     "hitboxes": [
+      {
+       "rect": [
+        4,
+        24,
+        44,
+        52
+       ]
+      }
+     ],
+     "armor": {
+      "from": 6,
+      "to": 14,
+      "hits": 1
+     },
+     "move": [
+      {
+       "from": 8,
+       "to": 18,
+       "vx": 56
+      }
+     ]
+    },
+    "hammer": {
+     "name": "Hammer Fist",
+     "kind": "special",
+     "startup": 20,
+     "active": 4,
+     "recovery": 24,
+     "stance": "stand",
+     "hit": {
+      "damage": 96,
+      "hitstun": 24,
+      "blockstun": 17,
+      "hitstop": 13,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       18,
+       100
+      ],
+      "knockdown": true
+     },
+     "desc": "Slow overhead: only a standing block stops it.",
+     "input": "214H",
+     "hitboxes": [
+      {
+       "rect": [
+        6,
+        50,
+        40,
+        36
+       ]
+      }
+     ]
+    },
+    "quake": {
+     "name": "Earthbreaker",
+     "kind": "super",
+     "startup": 7,
+     "active": 4,
+     "recovery": 38,
+     "stance": "stand",
+     "hit": {
+      "damage": 240,
+      "hitstun": 41,
+      "blockstun": 23,
+      "hitstop": 14,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 0,
+      "meter_block": 0,
+      "chip": 0,
+      "starter": 100,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       22,
+       110
+      ],
+      "knockdown": true
+     },
+     "desc": "Invulnerable super: slams the ground in front of Ushi.",
+     "input": "63214H",
+     "hitboxes": [
+      {
+       "rect": [
+        0,
+        0,
+        80,
+        20
+       ]
+      }
+     ],
+     "cost": 500,
+     "superflash": 32,
+     "invuln": [
+      {
+       "from": 1,
+       "to": 8,
+       "kind": "all"
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

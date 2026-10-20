@@ -1,0 +1,11 @@
+{"entries": [
+{"id":"general","name":"Pell & Daughter","markup":1.25,"buys":["material","trade","consumable","ammo"],"stock":[{"item":"bread","qty":12},{"item":"bandage","qty":8},{"item":"taper","qty":30},{"item":"arrow","qty":30},{"item":"leather_jerkin","qty":2},{"item":"hunting_bow","qty":1},{"item":"flax","qty":10},{"item":"rusty_sword","qty":2}],"caravan":["star_salt","beacon_lens"]},
+{"id":"healer","name":"The Poultice Door","markup":1.2,"buys":["material","consumable"],"stock":[{"item":"bandage","qty":14},{"item":"tonic","qty":4},{"item":"fever_draught","qty":2},{"item":"linen","qty":10}]},
+{"id":"smith","name":"Ansel's Smithy","markup":1.3,"buys":["weapon","armor","material"],"stock":[{"item":"iron_sword","qty":2},{"item":"ash_spear","qty":2},{"item":"studded_coat","qty":1},{"item":"iron_ingot","qty":10},{"item":"nails","qty":40}]},
+{"id":"chandler","name":"Gull & Rope","markup":1.25,"buys":["material","trade"],"stock":[{"item":"taper","qty":40},{"item":"lamp_oil","qty":6},{"item":"arrow","qty":40},{"item":"pearl","qty":2},{"item":"bread","qty":10},{"item":"stew","qty":4}],"caravan":["star_salt","beacon_lens"]},
+{"id":"carpenter","name":"Brisk's Yard","markup":1.2,"buys":["material"],"stock":[{"item":"plank","qty":30},{"item":"nails","qty":60},{"item":"ash_spear","qty":1},{"item":"longbow","qty":1}]},
+{"id":"smith2","name":"The Harrow Forge","markup":1.3,"buys":["weapon","armor","material"],"stock":[{"item":"steel_sword","qty":1},{"item":"harrow_mail","qty":1},{"item":"iron_ingot","qty":14},{"item":"iron_sword","qty":2}]},
+{"id":"marsh","name":"Reed & Cattail","markup":1.2,"buys":["material","trade","consumable"],"stock":[{"item":"reedmint","qty":12},{"item":"hedge_berries","qty":10},{"item":"bellcap","qty":10},{"item":"stew","qty":4},{"item":"pearl","qty":1}],"caravan":["star_salt"]},
+{"id":"healer2","name":"Hospice Stores","markup":1.15,"buys":["material","consumable"],"stock":[{"item":"bandage","qty":20},{"item":"fever_draught","qty":4},{"item":"tonic","qty":5}]},
+{"id":"oil","name":"Lamp-Oil Press","markup":1.2,"buys":["material"],"stock":[{"item":"lamp_oil","qty":14},{"item":"taper","qty":40}]}
+]}

@@ -1,0 +1,6 @@
+{"entries": [
+  {"id": "sample_pack_charm", "name": "Traveller's Charm", "kind": "trade", "value": 35, "stack": 5, "color": [120, 200, 170],
+   "desc": "A knot of green thread. It smells of somewhere else."},
+  {"id": "sample_pack_tea", "name": "Roadside Tea", "kind": "consumable", "heal": 18, "stamina": 40, "stack": 8, "value": 9, "color": [190, 150, 90],
+   "desc": "Brewed over a lamp-flame, which is the correct way."}
+]}

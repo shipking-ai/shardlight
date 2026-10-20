@@ -1,0 +1,20 @@
+{"entries": [
+  {"id": "orrery_last_lamp", "title": "The Last Lamp", "shard": "orrery",
+   "text": "At the end of the charted lanes a dying star sits inside five brass gears. Whoever built the Orrery left it unfinished on purpose: a machine that only runs when someone has listened to everything else first."},
+  {"id": "orrery_choir_decoded", "title": "The Choir Relay", "shard": "orrery",
+   "text": "The Choir is a relay repeating one hymn to nobody. Decoded, it is a list of coordinates dressed up as a verse. Every line ends on the same unresolved note, as if waiting for an answer."},
+  {"id": "orrery_undertow_decoded", "title": "The Undertow Pulsar", "shard": "orrery",
+   "text": "A pulsar that counts. Not seconds: arguments. The Undertow keeps the tally of every dispute between the five civilisations and releases it as a slow tide of noise."},
+  {"id": "orrery_tally_decoded", "title": "The Tally Buoy", "shard": "orrery",
+   "text": "A buoy that has been tallying freight for longer than the Tallow Combine has existed. It is accurate to the crate. It has never once been asked for its opinion."},
+  {"id": "orrery_psalm_decoded", "title": "The Psalm Relay", "shard": "orrery",
+   "text": "The Synod calls it a psalm; the engineers call it a handshake protocol. They are both right. It asks, in very old language, whether the listener intends to stay."},
+  {"id": "orrery_ember_decoded", "title": "The Ember Call", "shard": "orrery",
+   "text": "A wreck that still sends. Its last log entry is a recipe for hyper coils and a request not to light the Lamp early."},
+  {"id": "orrery_beacon_decoded", "title": "The Beacon Echo", "shard": "orrery",
+   "text": "An echo of a beacon that is not here. It charts neighbouring systems the way a stranger gives directions: confidently and slightly wrong."},
+  {"id": "orrery_beacon_old", "title": "Ancient Beacon", "shard": "orrery",
+   "text": "The beacon predates every lane. It charts the nearest stars for whoever is polite enough to scan it, and has done so for so long that its star-charts show constellations nobody alive has seen."},
+  {"id": "orrery_logbook", "title": "A Poem About Debt", "shard": "orrery",
+   "text": "The logbook's last page is a poem. 'I carried what I was owed and owed what I carried; the lanes forgave neither.'"}
+]}

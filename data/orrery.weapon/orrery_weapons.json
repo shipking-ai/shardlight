@@ -1,0 +1,12 @@
+{"entries": [
+  {"id": "pulse", "name": "Pulse Cannon", "kind": "pulse", "damage": 9, "speed": 540, "rate": 6.0, "energy": 3.5,
+   "heat": 2.2, "life": 1.1, "spread": 2.5, "shield_mul": 1.25, "hull_mul": 0.7,
+   "desc": "Fast bolts. Strips shields well, scratches hulls. Costs energy per shot."},
+  {"id": "missile", "name": "Seeker Missile", "kind": "missile", "damage": 58, "speed": 330, "rate": 1.1, "energy": 8,
+   "heat": 6, "life": 4.2, "turn": 150, "blast": 46, "lock_time": 1.2, "lock_cone": 28, "shield_mul": 0.8, "hull_mul": 1.35,
+   "desc": "Hold a target in the nose cone to lock. Hits hulls hard, can be fooled by decoys or shot down."},
+  {"id": "beam", "name": "Lance Beam", "kind": "beam", "damage": 38, "speed": 0, "rate": 0, "energy": 24, "heat": 22,
+   "range": 260, "life": 0, "overcharge_after": 1.6, "overcharge_mul": 2.0, "overcharge_heat": 1.7,
+   "shield_mul": 0.85, "hull_mul": 1.1,
+   "desc": "Continuous ray, damage per second. Hold past the overcharge mark for double damage and a lot of heat."}
+]}

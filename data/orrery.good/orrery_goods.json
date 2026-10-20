@@ -1,0 +1,21 @@
+{"entries": [
+  {"id": "ore", "name": "Ore", "short": "ORE", "base": 12, "tier": "raw", "color": [176, 132, 98],
+   "desc": "Crushed metal rock. Every foundry in the Orrery starts here."},
+  {"id": "water", "name": "Ice Water", "short": "H2O", "base": 10, "tier": "raw", "color": [150, 206, 236],
+   "desc": "Cometary ice, cut into blocks. Drunk, grown with, and turned into glass."},
+  {"id": "fuel", "name": "Gas Fuel", "short": "FUL", "base": 16, "tier": "raw", "color": [120, 226, 200],
+   "desc": "Hydrogen skimmed from giants. Burns in lamps, drives and furnaces."},
+  {"id": "food", "name": "Rations", "short": "FOD", "base": 14, "tier": "raw", "color": [150, 206, 98],
+   "desc": "Grain, kelp and pressed protein. A colony that runs out of it stops growing and starts leaving."},
+  {"id": "crystal", "name": "Prism Crystal", "short": "CRY", "base": 52, "tier": "raw", "color": [196, 150, 255],
+   "desc": "Lattice that holds light. Scarce, and the root of lenses and clocks."},
+  {"id": "alloy", "name": "Brass Alloy", "short": "ALY", "base": 36, "tier": "made", "color": [226, 182, 86],
+   "recipe": {"ore": 1.0, "fuel": 0.5},
+   "desc": "Smelted ore and fuel. Hulls, gears and warships are made of it."},
+  {"id": "gearwork", "name": "Gearwork", "short": "GER", "base": 88, "tier": "made", "color": [214, 214, 226],
+   "recipe": {"alloy": 0.6, "crystal": 0.4},
+   "desc": "Escapements, governors and drive coils. Research and shipyards eat it."},
+  {"id": "lumen", "name": "Lumen Glass", "short": "LUM", "base": 112, "tier": "made", "color": [255, 246, 200],
+   "recipe": {"crystal": 0.7, "water": 0.4},
+   "desc": "Glass that stores daylight. Every settled world wants some for its nights."}
+]}

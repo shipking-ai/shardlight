@@ -1,0 +1,62 @@
+{"entries": [
+  {"id": "harvest_blight", "title": "Blight in the Fields", "scope": "province", "terrain": ["plain", "marsh"], "weight": 1.0, "min_turn": 3,
+   "text": "A grey rot runs through the grain of {province}. The reeve asks what to do about the winter.",
+   "options": [
+     {"label": "Open the granaries", "hint": "-8 grain", "ai": 1.0, "effects": [{"res": "grain", "amt": -8}]},
+     {"label": "Let them tighten their belts", "hint": "+10 unrest, harvest suffers", "ai": 0.3, "effects": [{"unrest": 10}, {"devastate": 0.1}]}]},
+  {"id": "bandit_roads", "title": "Bandits on the Road", "scope": "province", "weight": 1.0, "min_turn": 4,
+   "text": "Armed bands are stopping carts outside {province}. Merchants talk of paying someone else to guard the road.",
+   "options": [
+     {"label": "Hire guards", "hint": "-6 coin", "ai": 1.0, "effects": [{"res": "coin", "amt": -6}]},
+     {"label": "Ignore it", "hint": "-3 coin, province damaged", "ai": 0.4, "effects": [{"res": "coin", "amt": -3}, {"devastate": 0.12}]}]},
+  {"id": "scholar_petition", "title": "A Scholar's Petition", "scope": "house", "weight": 1.1, "min_turn": 2,
+   "text": "A travelling annotator offers a trunk of marked-up treatises in exchange for a stipend. The marginalia are excellent.",
+   "options": [
+     {"label": "Fund the scribes", "hint": "-8 coin, +9 ink", "ai": 1.0, "effects": [{"res": "coin", "amt": -8}, {"res": "ink", "amt": 9}]},
+     {"label": "Send them away", "hint": "no effect", "ai": 0.2, "effects": []}]},
+  {"id": "salt_tide", "title": "A Generous Tide", "scope": "province", "terrain": ["marsh"], "weight": 0.9, "min_turn": 3,
+   "text": "The pans at {province} filled overnight, as if the sea had remembered something.",
+   "options": [
+     {"label": "Rake it quickly", "hint": "+6 salt", "ai": 1.0, "effects": [{"res": "salt", "amt": 6}]},
+     {"label": "Sell the surplus at once", "hint": "+12 coin", "ai": 0.8, "effects": [{"res": "coin", "amt": 12}]}]},
+  {"id": "deserters", "title": "Unpaid Arrears", "scope": "house", "needs": ["army"], "weight": 0.9, "min_turn": 5,
+   "text": "Your sergeants report grumbling in the ranks. Several companies have not seen their pay in a long while.",
+   "options": [
+     {"label": "Pay the arrears", "hint": "-8 coin", "ai": 1.0, "effects": [{"res": "coin", "amt": -8}]},
+     {"label": "Make an example", "hint": "lose a unit, +4 unrest at home", "ai": 0.2, "effects": [{"lose_unit": 1}, {"unrest": 4}]}]},
+  {"id": "border_dispute", "title": "A Border Argument", "scope": "house", "needs": ["neighbour"], "weight": 1.0, "min_turn": 4,
+   "text": "Surveyors of {other} have moved a boundary stone by a hand's breadth. Both sides have scribes who can prove they were right first.",
+   "options": [
+     {"label": "Apologise and pay for the stone", "hint": "-5 coin, opinion of {other} +8", "ai": 0.7, "effects": [{"res": "coin", "amt": -5}, {"opinion_other": 8}]},
+     {"label": "Stand firm", "hint": "opinion of {other} -8", "ai": 0.6, "effects": [{"opinion_other": -8}]}]},
+  {"id": "festival_of_hours", "title": "The Feast of Hours", "scope": "house", "weight": 0.9, "min_turn": 6,
+   "text": "Your calendar says today is a feast. Nobody else's does. The cooks are ready anyway.",
+   "options": [
+     {"label": "Fund the feast", "hint": "-6 coin, -8 unrest in every province", "ai": 0.8, "effects": [{"res": "coin", "amt": -6}, {"unrest_all": -8}]},
+     {"label": "Cancel it", "hint": "+3 unrest in every province", "ai": 0.3, "effects": [{"unrest_all": 3}]}]},
+  {"id": "plague", "title": "Fever in the Low Streets", "scope": "province", "terrain": ["marsh", "plain", "forest"], "weight": 0.7, "min_turn": 8,
+   "text": "A wet fever has taken hold in {province}. Physicians disagree on everything except that it is spreading.",
+   "options": [
+     {"label": "Quarantine the quarter", "hint": "-6 coin, +6 unrest", "ai": 1.0, "effects": [{"res": "coin", "amt": -6}, {"unrest": 6}]},
+     {"label": "Burn the infected houses", "hint": "province devastated, +10 unrest", "ai": 0.2, "effects": [{"devastate": 0.25}, {"unrest": 10}]}]},
+  {"id": "forgotten_cache", "title": "A Forgotten Cache", "scope": "province", "terrain": ["hill", "mountain", "forest"], "weight": 0.8, "min_turn": 5,
+   "text": "Diggers near {province} broke into a sealed room full of wrapped bars and boxed papers.",
+   "options": [
+     {"label": "Melt the bars down", "hint": "+9 ore", "ai": 1.0, "effects": [{"res": "ore", "amt": 9}]},
+     {"label": "Read the papers", "hint": "+7 ink", "ai": 0.9, "effects": [{"res": "ink", "amt": 7}]}]},
+  {"id": "river_flood", "title": "The River Rises", "scope": "province", "needs": ["river"], "weight": 0.9, "min_turn": 4,
+   "text": "Snowmelt has brought the river over its banks at {province}. The low fields are already under water.",
+   "options": [
+     {"label": "Raise a levee", "hint": "-4 timber", "ai": 1.0, "effects": [{"res": "timber", "amt": -4}]},
+     {"label": "Wait for it to fall", "hint": "province damaged", "ai": 0.3, "effects": [{"devastate": 0.15}]}]},
+  {"id": "wandering_company", "title": "A Wandering Company", "scope": "house", "weight": 0.7, "min_turn": 6,
+   "text": "A company of sellswords has set up a camp on your road and sent word that their price is reasonable.",
+   "options": [
+     {"label": "Hire them", "hint": "-10 coin, gain a Swordhand", "ai": 0.9, "effects": [{"res": "coin", "amt": -10}, {"gain_unit": "swordhand"}]},
+     {"label": "Decline politely", "hint": "no effect", "ai": 0.3, "effects": []}]},
+  {"id": "calendar_schism", "title": "The Calendar Schism", "scope": "house", "weight": 0.8, "min_turn": 7,
+   "text": "Another house has declared your year to be eleven days short. Your archivists have noticed and are livid.",
+   "options": [
+     {"label": "Commission a rebuttal", "hint": "-4 coin, +5 ink", "ai": 0.8, "effects": [{"res": "coin", "amt": -4}, {"res": "ink", "amt": 5}]},
+     {"label": "Concede the eleven days", "hint": "-3 unrest at home", "ai": 0.5, "effects": [{"unrest_all": -3}]}]}
+]}

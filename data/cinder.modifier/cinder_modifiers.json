@@ -1,0 +1,17 @@
+{"entries": [
+ {"id": "thick_hide", "name": "Thick Hide", "desc": "Enemies have 25% more health.", "heat": 1, "effects": {"enemy_hp": 1.25}},
+ {"id": "sharp_teeth", "name": "Sharp Teeth", "desc": "Enemies hit 25% harder.", "heat": 1, "effects": {"enemy_damage": 1.25}},
+ {"id": "quickened", "name": "Quickened", "desc": "Enemies move 15% faster.", "heat": 1, "effects": {"enemy_speed": 1.15}},
+ {"id": "elite_escort", "name": "Elite Escort", "desc": "Elites appear far more often.", "heat": 2, "effects": {"elite_chance": 0.25}, "unlock": {"cost": 40}},
+ {"id": "crowded", "name": "Crowded Halls", "desc": "Rooms hold more enemies.", "heat": 2, "effects": {"extra_budget": 4}},
+ {"id": "short_fuse", "name": "Short Fuse", "desc": "Enemies react 4 frames faster.", "heat": 2, "effects": {"reaction_cut": 4}, "unlock": {"cost": 60}},
+ {"id": "frail", "name": "Frail", "desc": "You have 25% less health.", "heat": 2, "effects": {"player_hp": 0.75}},
+ {"id": "barren", "name": "Barren", "desc": "Healing is halved.", "heat": 1, "effects": {"heal_mul": 0.5}},
+ {"id": "famine", "name": "Slag Famine", "desc": "Slag drops are reduced by 40%.", "heat": 1, "effects": {"slag_mul": 0.6}},
+ {"id": "tight_parry", "name": "Tight Parry", "desc": "The parry window is 2 frames shorter.", "heat": 1, "effects": {"parry_window": -2}},
+ {"id": "burning_floor", "name": "Burning Floor", "desc": "Ember vents erupt in every arena.", "heat": 2, "effects": {"fire_floor": 1}, "unlock": {"cost": 80}},
+ {"id": "volatile", "name": "Volatile", "desc": "Enemies burst into flame when they die.", "heat": 2, "effects": {"death_burst": 1}, "unlock": {"cost": 80}},
+ {"id": "dimmed", "name": "Dimmed Lamp", "desc": "The tower is darker; telegraphs glow but distance is hidden.", "heat": 1, "effects": {"dim_light": 0.4}},
+ {"id": "lean_rewards", "name": "Lean Rewards", "desc": "Fewer reward rooms.", "heat": 1, "effects": {"fewer_rewards": 1}},
+ {"id": "proud_bosses", "name": "Proud Bosses", "desc": "Bosses have 30% more health.", "heat": 2, "effects": {"boss_hp": 1.3}}
+]}

@@ -1,0 +1,1805 @@
+{
+ "entries": [
+  {
+   "id": "dirt",
+   "name": "Dirt",
+   "kind": "block",
+   "color": [
+    112,
+    78,
+    52
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "dirt"
+  },
+  {
+   "id": "grass",
+   "name": "Grass",
+   "kind": "block",
+   "color": [
+    112,
+    78,
+    52
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "grass",
+   "accent": [
+    111,
+    168,
+    74
+   ]
+  },
+  {
+   "id": "stone",
+   "name": "Stone",
+   "kind": "block",
+   "color": [
+    138,
+    133,
+    144
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "stone"
+  },
+  {
+   "id": "slate",
+   "name": "Slate",
+   "kind": "block",
+   "color": [
+    88,
+    86,
+    110
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "slate"
+  },
+  {
+   "id": "sand",
+   "name": "Sand",
+   "kind": "block",
+   "color": [
+    222,
+    200,
+    140
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "sand"
+  },
+  {
+   "id": "sandstone",
+   "name": "Sandstone",
+   "kind": "block",
+   "color": [
+    206,
+    172,
+    112
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "sandstone"
+  },
+  {
+   "id": "salt",
+   "name": "Salt",
+   "kind": "block",
+   "color": [
+    236,
+    232,
+    226
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "salt"
+  },
+  {
+   "id": "snow",
+   "name": "Snow",
+   "kind": "block",
+   "color": [
+    240,
+    246,
+    252
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "snow"
+  },
+  {
+   "id": "ice",
+   "name": "Ice",
+   "kind": "block",
+   "color": [
+    160,
+    214,
+    236
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "ice"
+  },
+  {
+   "id": "log",
+   "name": "Log",
+   "kind": "block",
+   "color": [
+    110,
+    76,
+    44
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "log"
+  },
+  {
+   "id": "leaves",
+   "name": "Leaves",
+   "kind": "block",
+   "color": [
+    70,
+    140,
+    64
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "leaves"
+  },
+  {
+   "id": "planks",
+   "name": "Planks",
+   "kind": "block",
+   "color": [
+    178,
+    128,
+    76
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "planks"
+  },
+  {
+   "id": "obsidian",
+   "name": "Obsidian",
+   "kind": "block",
+   "color": [
+    46,
+    30,
+    76
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "obsidian"
+  },
+  {
+   "id": "brick",
+   "name": "Stone Brick",
+   "kind": "block",
+   "color": [
+    150,
+    140,
+    134
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "brick"
+  },
+  {
+   "id": "glass",
+   "name": "Glass",
+   "kind": "block",
+   "color": [
+    190,
+    232,
+    242
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "glass"
+  },
+  {
+   "id": "torch",
+   "name": "Torch",
+   "kind": "block",
+   "color": [
+    255,
+    190,
+    90
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "torch"
+  },
+  {
+   "id": "workbench",
+   "name": "Workbench",
+   "kind": "block",
+   "color": [
+    170,
+    120,
+    70
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "workbench"
+  },
+  {
+   "id": "furnace",
+   "name": "Furnace",
+   "kind": "block",
+   "color": [
+    120,
+    116,
+    126
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "furnace"
+  },
+  {
+   "id": "forge",
+   "name": "Forge",
+   "kind": "block",
+   "color": [
+    96,
+    92,
+    108
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "forge"
+  },
+  {
+   "id": "loom",
+   "name": "Loom",
+   "kind": "block",
+   "color": [
+    196,
+    160,
+    110
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "loom"
+  },
+  {
+   "id": "chest",
+   "name": "Chest",
+   "kind": "block",
+   "color": [
+    166,
+    112,
+    62
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "chest"
+  },
+  {
+   "id": "prism",
+   "name": "Prism",
+   "kind": "block",
+   "color": [
+    150,
+    230,
+    255
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "prism"
+  },
+  {
+   "id": "iron_block",
+   "name": "Iron Block",
+   "kind": "block",
+   "color": [
+    186,
+    190,
+    204
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "iron_block"
+  },
+  {
+   "id": "gold_block",
+   "name": "Gold Block",
+   "kind": "block",
+   "color": [
+    246,
+    206,
+    80
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "gold_block"
+  },
+  {
+   "id": "copper_block",
+   "name": "Copper Block",
+   "kind": "block",
+   "color": [
+    214,
+    124,
+    72
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "copper_block"
+  },
+  {
+   "id": "lumina_block",
+   "name": "Lumina Block",
+   "kind": "block",
+   "color": [
+    110,
+    232,
+    224
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "lumina_block"
+  },
+  {
+   "id": "fence",
+   "name": "Fence",
+   "kind": "block",
+   "color": [
+    170,
+    124,
+    78
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "fence"
+  },
+  {
+   "id": "bed",
+   "name": "Bed",
+   "kind": "block",
+   "color": [
+    200,
+    80,
+    80
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "bed"
+  },
+  {
+   "id": "ladder",
+   "name": "Ladder",
+   "kind": "block",
+   "color": [
+    176,
+    128,
+    80
+   ],
+   "icon": "block",
+   "stack": 99,
+   "place": "ladder"
+  },
+  {
+   "id": "door",
+   "name": "Door",
+   "kind": "block",
+   "color": [
+    160,
+    110,
+    64
+   ],
+   "icon": "door",
+   "stack": 99,
+   "place": "door_closed"
+  },
+  {
+   "id": "cactus",
+   "name": "Cactus",
+   "kind": "block",
+   "color": [
+    84,
+    150,
+    84
+   ],
+   "icon": "cactus",
+   "stack": 99,
+   "place": "cactus"
+  },
+  {
+   "id": "seed_wheat",
+   "name": "Wheat Seeds",
+   "kind": "seed",
+   "color": [
+    200,
+    180,
+    90
+   ],
+   "icon": "seed",
+   "stack": 99,
+   "place": "wheat_0"
+  },
+  {
+   "id": "seed_tuber",
+   "name": "Tuber Cutting",
+   "kind": "seed",
+   "color": [
+    150,
+    90,
+    130
+   ],
+   "icon": "seed",
+   "stack": 99,
+   "place": "tuber_0"
+  },
+  {
+   "id": "sapling",
+   "name": "Sapling",
+   "kind": "seed",
+   "color": [
+    80,
+    150,
+    70
+   ],
+   "icon": "sapling",
+   "stack": 99,
+   "place": "sapling"
+  },
+  {
+   "id": "flower",
+   "name": "Flower",
+   "kind": "misc",
+   "color": [
+    236,
+    120,
+    150
+   ],
+   "icon": "flower",
+   "stack": 99,
+   "place": "flower"
+  },
+  {
+   "id": "glowcap",
+   "name": "Glowcap",
+   "kind": "food",
+   "color": [
+    120,
+    230,
+    190
+   ],
+   "icon": "mushroom",
+   "stack": 99,
+   "food": {
+    "hunger": 8,
+    "heal": 0
+   },
+   "place": "glowcap"
+  },
+  {
+   "id": "cactus_fruit",
+   "name": "Cactus Fruit",
+   "kind": "food",
+   "color": [
+    230,
+    90,
+    120
+   ],
+   "icon": "fruit",
+   "stack": 99,
+   "food": {
+    "hunger": 8,
+    "heal": 2
+   }
+  },
+  {
+   "id": "stick",
+   "name": "Stick",
+   "kind": "material",
+   "color": [
+    170,
+    120,
+    70
+   ],
+   "icon": "stick",
+   "stack": 99,
+   "fuel": 1.0
+  },
+  {
+   "id": "coal",
+   "name": "Coal",
+   "kind": "material",
+   "color": [
+    44,
+    42,
+    54
+   ],
+   "icon": "coal",
+   "stack": 99,
+   "fuel": 8.0
+  },
+  {
+   "id": "raw_copper",
+   "name": "Copper Chunk",
+   "kind": "material",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "chunk",
+   "stack": 64
+  },
+  {
+   "id": "raw_iron",
+   "name": "Iron Chunk",
+   "kind": "material",
+   "color": [
+    204,
+    170,
+    150
+   ],
+   "icon": "chunk",
+   "stack": 64
+  },
+  {
+   "id": "raw_gold",
+   "name": "Gold Chunk",
+   "kind": "material",
+   "color": [
+    252,
+    214,
+    84
+   ],
+   "icon": "chunk",
+   "stack": 64
+  },
+  {
+   "id": "raw_cinder",
+   "name": "Cinder Chunk",
+   "kind": "material",
+   "color": [
+    250,
+    96,
+    52
+   ],
+   "icon": "chunk",
+   "stack": 64,
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "copper_ingot",
+   "name": "Copper Ingot",
+   "kind": "material",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "ingot",
+   "stack": 64
+  },
+  {
+   "id": "iron_ingot",
+   "name": "Iron Ingot",
+   "kind": "material",
+   "color": [
+    196,
+    200,
+    214
+   ],
+   "icon": "ingot",
+   "stack": 64
+  },
+  {
+   "id": "gold_ingot",
+   "name": "Gold Ingot",
+   "kind": "material",
+   "color": [
+    252,
+    214,
+    84
+   ],
+   "icon": "ingot",
+   "stack": 64
+  },
+  {
+   "id": "cinder_iron",
+   "name": "Cinder Iron",
+   "kind": "material",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "ingot",
+   "stack": 64,
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "choir_alloy",
+   "name": "Choir Alloy",
+   "kind": "material",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "ingot",
+   "stack": 64,
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "lumina_shard",
+   "name": "Lumina Shard",
+   "kind": "material",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "shard",
+   "stack": 64
+  },
+  {
+   "id": "wool",
+   "name": "Wool",
+   "kind": "material",
+   "color": [
+    238,
+    232,
+    220
+   ],
+   "icon": "wool",
+   "stack": 64
+  },
+  {
+   "id": "cloth",
+   "name": "Cloth",
+   "kind": "material",
+   "color": [
+    214,
+    200,
+    230
+   ],
+   "icon": "cloth",
+   "stack": 64
+  },
+  {
+   "id": "wheat",
+   "name": "Wheat",
+   "kind": "material",
+   "color": [
+    222,
+    196,
+    90
+   ],
+   "icon": "wheat",
+   "stack": 64
+  },
+  {
+   "id": "tuber",
+   "name": "Tuber",
+   "kind": "food",
+   "color": [
+    170,
+    110,
+    150
+   ],
+   "icon": "tuber",
+   "stack": 64,
+   "food": {
+    "hunger": 6,
+    "heal": 0
+   }
+  },
+  {
+   "id": "meat_raw",
+   "name": "Raw Meat",
+   "kind": "food",
+   "color": [
+    220,
+    100,
+    100
+   ],
+   "icon": "meat",
+   "stack": 64,
+   "food": {
+    "hunger": 6,
+    "heal": -3
+   }
+  },
+  {
+   "id": "mutton_raw",
+   "name": "Raw Mutton",
+   "kind": "food",
+   "color": [
+    226,
+    120,
+    118
+   ],
+   "icon": "meat",
+   "stack": 64,
+   "food": {
+    "hunger": 8,
+    "heal": -3
+   }
+  },
+  {
+   "id": "meat_cooked",
+   "name": "Cooked Meat",
+   "kind": "food",
+   "color": [
+    170,
+    90,
+    60
+   ],
+   "icon": "cooked",
+   "stack": 64,
+   "food": {
+    "hunger": 28,
+    "heal": 8
+   }
+  },
+  {
+   "id": "mutton_cooked",
+   "name": "Cooked Mutton",
+   "kind": "food",
+   "color": [
+    176,
+    96,
+    64
+   ],
+   "icon": "cooked",
+   "stack": 64,
+   "food": {
+    "hunger": 34,
+    "heal": 10
+   }
+  },
+  {
+   "id": "baked_tuber",
+   "name": "Baked Tuber",
+   "kind": "food",
+   "color": [
+    206,
+    150,
+    100
+   ],
+   "icon": "tuber",
+   "stack": 64,
+   "food": {
+    "hunger": 22,
+    "heal": 4
+   }
+  },
+  {
+   "id": "bread",
+   "name": "Bread",
+   "kind": "food",
+   "color": [
+    212,
+    160,
+    90
+   ],
+   "icon": "bread",
+   "stack": 64,
+   "food": {
+    "hunger": 30,
+    "heal": 6
+   }
+  },
+  {
+   "id": "salt_jerky",
+   "name": "Salt Jerky",
+   "kind": "food",
+   "color": [
+    150,
+    80,
+    70
+   ],
+   "icon": "cooked",
+   "stack": 64,
+   "food": {
+    "hunger": 40,
+    "heal": 12
+   }
+  },
+  {
+   "id": "bucket",
+   "name": "Bucket",
+   "kind": "tool",
+   "color": [
+    196,
+    200,
+    214
+   ],
+   "icon": "bucket",
+   "stack": 1,
+   "liquid": "empty"
+  },
+  {
+   "id": "water_bucket",
+   "name": "Water Bucket",
+   "kind": "tool",
+   "color": [
+    110,
+    170,
+    240
+   ],
+   "icon": "water_bucket",
+   "stack": 1,
+   "liquid": "water"
+  },
+  {
+   "id": "shears",
+   "name": "Shears",
+   "kind": "tool",
+   "color": [
+    196,
+    200,
+    214
+   ],
+   "icon": "shears",
+   "stack": 1,
+   "tool": {
+    "type": "shears",
+    "tier": 1,
+    "power": 1.0
+   }
+  },
+  {
+   "id": "wood_pickaxe",
+   "name": "Wooden Pickaxe",
+   "kind": "tool",
+   "color": [
+    178,
+    128,
+    76
+   ],
+   "icon": "pick",
+   "stack": 1,
+   "tool": {
+    "type": "pick",
+    "tier": 1,
+    "power": 1.8,
+    "damage": 2.4
+   }
+  },
+  {
+   "id": "wood_axe",
+   "name": "Wooden Axe",
+   "kind": "tool",
+   "color": [
+    178,
+    128,
+    76
+   ],
+   "icon": "axe",
+   "stack": 1,
+   "tool": {
+    "type": "axe",
+    "tier": 1,
+    "power": 1.8,
+    "damage": 3.2
+   }
+  },
+  {
+   "id": "wood_shovel",
+   "name": "Wooden Shovel",
+   "kind": "tool",
+   "color": [
+    178,
+    128,
+    76
+   ],
+   "icon": "shovel",
+   "stack": 1,
+   "tool": {
+    "type": "shovel",
+    "tier": 1,
+    "power": 1.8,
+    "damage": 2.0
+   }
+  },
+  {
+   "id": "wood_hoe",
+   "name": "Wooden Hoe",
+   "kind": "tool",
+   "color": [
+    178,
+    128,
+    76
+   ],
+   "icon": "hoe",
+   "stack": 1,
+   "tool": {
+    "type": "hoe",
+    "tier": 1,
+    "power": 1.8,
+    "damage": 1.6
+   }
+  },
+  {
+   "id": "wood_sword",
+   "name": "Wooden Sword",
+   "kind": "weapon",
+   "color": [
+    178,
+    128,
+    76
+   ],
+   "icon": "sword",
+   "stack": 1,
+   "tool": {
+    "type": "sword",
+    "tier": 1,
+    "power": 1.0,
+    "damage": 4.0
+   }
+  },
+  {
+   "id": "stone_pickaxe",
+   "name": "Stone Pickaxe",
+   "kind": "tool",
+   "color": [
+    150,
+    146,
+    156
+   ],
+   "icon": "pick",
+   "stack": 1,
+   "tool": {
+    "type": "pick",
+    "tier": 2,
+    "power": 2.6,
+    "damage": 3.5999999999999996
+   }
+  },
+  {
+   "id": "stone_axe",
+   "name": "Stone Axe",
+   "kind": "tool",
+   "color": [
+    150,
+    146,
+    156
+   ],
+   "icon": "axe",
+   "stack": 1,
+   "tool": {
+    "type": "axe",
+    "tier": 2,
+    "power": 2.6,
+    "damage": 4.800000000000001
+   }
+  },
+  {
+   "id": "stone_shovel",
+   "name": "Stone Shovel",
+   "kind": "tool",
+   "color": [
+    150,
+    146,
+    156
+   ],
+   "icon": "shovel",
+   "stack": 1,
+   "tool": {
+    "type": "shovel",
+    "tier": 2,
+    "power": 2.6,
+    "damage": 3.0
+   }
+  },
+  {
+   "id": "stone_hoe",
+   "name": "Stone Hoe",
+   "kind": "tool",
+   "color": [
+    150,
+    146,
+    156
+   ],
+   "icon": "hoe",
+   "stack": 1,
+   "tool": {
+    "type": "hoe",
+    "tier": 2,
+    "power": 2.6,
+    "damage": 2.4000000000000004
+   }
+  },
+  {
+   "id": "stone_sword",
+   "name": "Stone Sword",
+   "kind": "weapon",
+   "color": [
+    150,
+    146,
+    156
+   ],
+   "icon": "sword",
+   "stack": 1,
+   "tool": {
+    "type": "sword",
+    "tier": 2,
+    "power": 1.0,
+    "damage": 6.0
+   }
+  },
+  {
+   "id": "copper_pickaxe",
+   "name": "Copper Pickaxe",
+   "kind": "tool",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "pick",
+   "stack": 1,
+   "tool": {
+    "type": "pick",
+    "tier": 3,
+    "power": 3.4,
+    "damage": 4.8
+   }
+  },
+  {
+   "id": "copper_axe",
+   "name": "Copper Axe",
+   "kind": "tool",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "axe",
+   "stack": 1,
+   "tool": {
+    "type": "axe",
+    "tier": 3,
+    "power": 3.4,
+    "damage": 6.4
+   }
+  },
+  {
+   "id": "copper_shovel",
+   "name": "Copper Shovel",
+   "kind": "tool",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "shovel",
+   "stack": 1,
+   "tool": {
+    "type": "shovel",
+    "tier": 3,
+    "power": 3.4,
+    "damage": 4.0
+   }
+  },
+  {
+   "id": "copper_hoe",
+   "name": "Copper Hoe",
+   "kind": "tool",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "hoe",
+   "stack": 1,
+   "tool": {
+    "type": "hoe",
+    "tier": 3,
+    "power": 3.4,
+    "damage": 3.2
+   }
+  },
+  {
+   "id": "copper_sword",
+   "name": "Copper Sword",
+   "kind": "weapon",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "sword",
+   "stack": 1,
+   "tool": {
+    "type": "sword",
+    "tier": 3,
+    "power": 1.0,
+    "damage": 8.0
+   }
+  },
+  {
+   "id": "copper_head",
+   "name": "Copper Helm",
+   "kind": "armor",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "helmet",
+   "stack": 1,
+   "armor": {
+    "slot": "head",
+    "defense": 2,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "copper_chest",
+   "name": "Copper Cuirass",
+   "kind": "armor",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "chest",
+   "stack": 1,
+   "armor": {
+    "slot": "chest",
+    "defense": 3,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "copper_legs",
+   "name": "Copper Greaves",
+   "kind": "armor",
+   "color": [
+    226,
+    128,
+    66
+   ],
+   "icon": "legs",
+   "stack": 1,
+   "armor": {
+    "slot": "legs",
+    "defense": 2,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "iron_pickaxe",
+   "name": "Iron Pickaxe",
+   "kind": "tool",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "pick",
+   "stack": 1,
+   "tool": {
+    "type": "pick",
+    "tier": 4,
+    "power": 4.8,
+    "damage": 6.6
+   }
+  },
+  {
+   "id": "iron_axe",
+   "name": "Iron Axe",
+   "kind": "tool",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "axe",
+   "stack": 1,
+   "tool": {
+    "type": "axe",
+    "tier": 4,
+    "power": 4.8,
+    "damage": 8.8
+   }
+  },
+  {
+   "id": "iron_shovel",
+   "name": "Iron Shovel",
+   "kind": "tool",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "shovel",
+   "stack": 1,
+   "tool": {
+    "type": "shovel",
+    "tier": 4,
+    "power": 4.8,
+    "damage": 5.5
+   }
+  },
+  {
+   "id": "iron_hoe",
+   "name": "Iron Hoe",
+   "kind": "tool",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "hoe",
+   "stack": 1,
+   "tool": {
+    "type": "hoe",
+    "tier": 4,
+    "power": 4.8,
+    "damage": 4.4
+   }
+  },
+  {
+   "id": "iron_sword",
+   "name": "Iron Sword",
+   "kind": "weapon",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "sword",
+   "stack": 1,
+   "tool": {
+    "type": "sword",
+    "tier": 4,
+    "power": 1.0,
+    "damage": 11.0
+   }
+  },
+  {
+   "id": "iron_head",
+   "name": "Iron Helm",
+   "kind": "armor",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "helmet",
+   "stack": 1,
+   "armor": {
+    "slot": "head",
+    "defense": 3,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "iron_chest",
+   "name": "Iron Cuirass",
+   "kind": "armor",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "chest",
+   "stack": 1,
+   "armor": {
+    "slot": "chest",
+    "defense": 5,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "iron_legs",
+   "name": "Iron Greaves",
+   "kind": "armor",
+   "color": [
+    200,
+    204,
+    218
+   ],
+   "icon": "legs",
+   "stack": 1,
+   "armor": {
+    "slot": "legs",
+    "defense": 3,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "lumina_pickaxe",
+   "name": "Lumina Pickaxe",
+   "kind": "tool",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "pick",
+   "stack": 1,
+   "tool": {
+    "type": "pick",
+    "tier": 5,
+    "power": 6.2,
+    "damage": 9.0
+   }
+  },
+  {
+   "id": "lumina_axe",
+   "name": "Lumina Axe",
+   "kind": "tool",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "axe",
+   "stack": 1,
+   "tool": {
+    "type": "axe",
+    "tier": 5,
+    "power": 6.2,
+    "damage": 12.0
+   }
+  },
+  {
+   "id": "lumina_shovel",
+   "name": "Lumina Shovel",
+   "kind": "tool",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "shovel",
+   "stack": 1,
+   "tool": {
+    "type": "shovel",
+    "tier": 5,
+    "power": 6.2,
+    "damage": 7.5
+   }
+  },
+  {
+   "id": "lumina_hoe",
+   "name": "Lumina Hoe",
+   "kind": "tool",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "hoe",
+   "stack": 1,
+   "tool": {
+    "type": "hoe",
+    "tier": 5,
+    "power": 6.2,
+    "damage": 6.0
+   }
+  },
+  {
+   "id": "lumina_sword",
+   "name": "Lumina Sword",
+   "kind": "weapon",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "sword",
+   "stack": 1,
+   "tool": {
+    "type": "sword",
+    "tier": 5,
+    "power": 1.0,
+    "damage": 15.0
+   }
+  },
+  {
+   "id": "lumina_head",
+   "name": "Lumina Helm",
+   "kind": "armor",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "helmet",
+   "stack": 1,
+   "armor": {
+    "slot": "head",
+    "defense": 4,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "lumina_chest",
+   "name": "Lumina Cuirass",
+   "kind": "armor",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "chest",
+   "stack": 1,
+   "armor": {
+    "slot": "chest",
+    "defense": 6,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "lumina_legs",
+   "name": "Lumina Greaves",
+   "kind": "armor",
+   "color": [
+    118,
+    244,
+    232
+   ],
+   "icon": "legs",
+   "stack": 1,
+   "armor": {
+    "slot": "legs",
+    "defense": 4,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "cinder_pickaxe",
+   "name": "Cinder Pickaxe",
+   "kind": "tool",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "pick",
+   "stack": 1,
+   "tool": {
+    "type": "pick",
+    "tier": 5,
+    "power": 7.2,
+    "damage": 10.2
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_axe",
+   "name": "Cinder Axe",
+   "kind": "tool",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "axe",
+   "stack": 1,
+   "tool": {
+    "type": "axe",
+    "tier": 5,
+    "power": 7.2,
+    "damage": 13.600000000000001
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_shovel",
+   "name": "Cinder Shovel",
+   "kind": "tool",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "shovel",
+   "stack": 1,
+   "tool": {
+    "type": "shovel",
+    "tier": 5,
+    "power": 7.2,
+    "damage": 8.5
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_hoe",
+   "name": "Cinder Hoe",
+   "kind": "tool",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "hoe",
+   "stack": 1,
+   "tool": {
+    "type": "hoe",
+    "tier": 5,
+    "power": 7.2,
+    "damage": 6.800000000000001
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_sword",
+   "name": "Cinder Sword",
+   "kind": "weapon",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "sword",
+   "stack": 1,
+   "tool": {
+    "type": "sword",
+    "tier": 5,
+    "power": 1.0,
+    "damage": 17.0
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_head",
+   "name": "Cinder Helm",
+   "kind": "armor",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "helmet",
+   "stack": 1,
+   "armor": {
+    "slot": "head",
+    "defense": 5,
+    "lava": 0.7
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_chest",
+   "name": "Cinder Cuirass",
+   "kind": "armor",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "chest",
+   "stack": 1,
+   "armor": {
+    "slot": "chest",
+    "defense": 7,
+    "lava": 0.7
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "cinder_legs",
+   "name": "Cinder Greaves",
+   "kind": "armor",
+   "color": [
+    255,
+    110,
+    60
+   ],
+   "icon": "legs",
+   "stack": 1,
+   "armor": {
+    "slot": "legs",
+    "defense": 5,
+    "lava": 0.7
+   },
+   "unlock": "terrace.material.cinder_iron"
+  },
+  {
+   "id": "choir_pickaxe",
+   "name": "Choir Pickaxe",
+   "kind": "tool",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "pick",
+   "stack": 1,
+   "tool": {
+    "type": "pick",
+    "tier": 6,
+    "power": 9.0,
+    "damage": 12.6
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_axe",
+   "name": "Choir Axe",
+   "kind": "tool",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "axe",
+   "stack": 1,
+   "tool": {
+    "type": "axe",
+    "tier": 6,
+    "power": 9.0,
+    "damage": 16.8
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_shovel",
+   "name": "Choir Shovel",
+   "kind": "tool",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "shovel",
+   "stack": 1,
+   "tool": {
+    "type": "shovel",
+    "tier": 6,
+    "power": 9.0,
+    "damage": 10.5
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_hoe",
+   "name": "Choir Hoe",
+   "kind": "tool",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "hoe",
+   "stack": 1,
+   "tool": {
+    "type": "hoe",
+    "tier": 6,
+    "power": 9.0,
+    "damage": 8.4
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_sword",
+   "name": "Choir Sword",
+   "kind": "weapon",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "sword",
+   "stack": 1,
+   "tool": {
+    "type": "sword",
+    "tier": 6,
+    "power": 1.0,
+    "damage": 21.0
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_head",
+   "name": "Choir Helm",
+   "kind": "armor",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "helmet",
+   "stack": 1,
+   "armor": {
+    "slot": "head",
+    "defense": 6,
+    "lava": 0.0
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_chest",
+   "name": "Choir Cuirass",
+   "kind": "armor",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "chest",
+   "stack": 1,
+   "armor": {
+    "slot": "chest",
+    "defense": 8,
+    "lava": 0.0
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "choir_legs",
+   "name": "Choir Greaves",
+   "kind": "armor",
+   "color": [
+    190,
+    160,
+    255
+   ],
+   "icon": "legs",
+   "stack": 1,
+   "armor": {
+    "slot": "legs",
+    "defense": 6,
+    "lava": 0.0
+   },
+   "unlock": "terrace.recipe.choir_alloy"
+  },
+  {
+   "id": "cloth_head",
+   "name": "Cloth Hood",
+   "kind": "armor",
+   "color": [
+    214,
+    200,
+    230
+   ],
+   "icon": "helmet",
+   "stack": 1,
+   "armor": {
+    "slot": "head",
+    "defense": 1,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "cloth_chest",
+   "name": "Cloth Tunic",
+   "kind": "armor",
+   "color": [
+    214,
+    200,
+    230
+   ],
+   "icon": "chest",
+   "stack": 1,
+   "armor": {
+    "slot": "chest",
+    "defense": 2,
+    "lava": 0.0
+   }
+  },
+  {
+   "id": "cloth_legs",
+   "name": "Cloth Leggings",
+   "kind": "armor",
+   "color": [
+    214,
+    200,
+    230
+   ],
+   "icon": "legs",
+   "stack": 1,
+   "armor": {
+    "slot": "legs",
+    "defense": 1,
+    "lava": 0.0
+   }
+  }
+ ]
+}

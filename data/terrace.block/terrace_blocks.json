@@ -1,0 +1,1562 @@
+{
+ "entries": [
+  {
+   "id": "air",
+   "n": 0,
+   "name": "Air",
+   "style": "air",
+   "color": [
+    0,
+    0,
+    0
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0,
+   "drops": [],
+   "replaceable": true
+  },
+  {
+   "id": "dirt",
+   "n": 1,
+   "name": "Dirt",
+   "style": "dirt",
+   "color": [
+    112,
+    78,
+    52
+   ],
+   "hardness": 0.5,
+   "tool": "shovel",
+   "sound": "dirt",
+   "drops": [
+    {
+     "item": "dirt",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "grass",
+   "n": 2,
+   "name": "Grass",
+   "style": "grass",
+   "color": [
+    112,
+    78,
+    52
+   ],
+   "accent": [
+    111,
+    168,
+    74
+   ],
+   "hardness": 0.6,
+   "tool": "shovel",
+   "sound": "dirt",
+   "drops": [
+    {
+     "item": "dirt",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "stone",
+   "n": 3,
+   "name": "Stone",
+   "style": "stone",
+   "color": [
+    138,
+    133,
+    144
+   ],
+   "hardness": 2.4,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "stone",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "slate",
+   "n": 4,
+   "name": "Slate",
+   "style": "slate",
+   "color": [
+    88,
+    86,
+    110
+   ],
+   "hardness": 3.6,
+   "tool": "pick",
+   "tier": 2,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "slate",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "sand",
+   "n": 5,
+   "name": "Sand",
+   "style": "sand",
+   "color": [
+    222,
+    200,
+    140
+   ],
+   "hardness": 0.5,
+   "tool": "shovel",
+   "sound": "dirt",
+   "drops": [
+    {
+     "item": "sand",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "sandstone",
+   "n": 6,
+   "name": "Sandstone",
+   "style": "sandstone",
+   "color": [
+    206,
+    172,
+    112
+   ],
+   "hardness": 1.8,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "sandstone",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "salt",
+   "n": 7,
+   "name": "Salt",
+   "style": "salt",
+   "color": [
+    236,
+    232,
+    226
+   ],
+   "hardness": 1.2,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "salt",
+     "min": 1,
+     "max": 2
+    }
+   ]
+  },
+  {
+   "id": "snow",
+   "n": 8,
+   "name": "Snow",
+   "style": "snow",
+   "color": [
+    240,
+    246,
+    252
+   ],
+   "hardness": 0.4,
+   "tool": "shovel",
+   "sound": "dirt",
+   "drops": [
+    {
+     "item": "snow",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "ice",
+   "n": 9,
+   "name": "Ice",
+   "style": "ice",
+   "color": [
+    160,
+    214,
+    236
+   ],
+   "hardness": 1.0,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "glass",
+   "opaque": false,
+   "drops": [
+    {
+     "item": "ice",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 0.5
+  },
+  {
+   "id": "log",
+   "n": 10,
+   "name": "Log",
+   "style": "log",
+   "color": [
+    110,
+    76,
+    44
+   ],
+   "hardness": 2.0,
+   "tool": "axe",
+   "sound": "wood",
+   "opaque": true,
+   "drops": [
+    {
+     "item": "log",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "solid": false,
+   "climb": true
+  },
+  {
+   "id": "leaves",
+   "n": 11,
+   "name": "Leaves",
+   "style": "leaves",
+   "color": [
+    70,
+    140,
+    64
+   ],
+   "hardness": 0.25,
+   "tool": "axe",
+   "sound": "plant",
+   "opaque": false,
+   "drops": [
+    {
+     "item": "sapling",
+     "min": 1,
+     "max": 1,
+     "p": 0.12
+    },
+    {
+     "item": "stick",
+     "min": 1,
+     "max": 2,
+     "p": 0.2
+    }
+   ],
+   "solid": false
+  },
+  {
+   "id": "planks",
+   "n": 12,
+   "name": "Planks",
+   "style": "planks",
+   "color": [
+    178,
+    128,
+    76
+   ],
+   "hardness": 1.4,
+   "tool": "axe",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "planks",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "coal_ore",
+   "n": 13,
+   "name": "Coal Seam",
+   "style": "ore",
+   "color": [
+    138,
+    133,
+    144
+   ],
+   "accent": [
+    40,
+    38,
+    50
+   ],
+   "hardness": 3.0,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "coal",
+     "min": 1,
+     "max": 3
+    }
+   ]
+  },
+  {
+   "id": "copper_ore",
+   "n": 14,
+   "name": "Copper Ore",
+   "style": "ore",
+   "color": [
+    138,
+    133,
+    144
+   ],
+   "accent": [
+    226,
+    128,
+    66
+   ],
+   "hardness": 3.4,
+   "tool": "pick",
+   "tier": 2,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "raw_copper",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "light": 1
+  },
+  {
+   "id": "iron_ore",
+   "n": 15,
+   "name": "Iron Ore",
+   "style": "ore",
+   "color": [
+    138,
+    133,
+    144
+   ],
+   "accent": [
+    204,
+    170,
+    150
+   ],
+   "hardness": 4.6,
+   "tool": "pick",
+   "tier": 3,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "raw_iron",
+     "min": 1,
+     "max": 2
+    }
+   ]
+  },
+  {
+   "id": "gold_ore",
+   "n": 16,
+   "name": "Gold Ore",
+   "style": "ore",
+   "color": [
+    110,
+    106,
+    120
+   ],
+   "accent": [
+    252,
+    214,
+    84
+   ],
+   "hardness": 5.5,
+   "tool": "pick",
+   "tier": 4,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "raw_gold",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "light": 2
+  },
+  {
+   "id": "lumina_ore",
+   "n": 17,
+   "name": "Lumina Crystal",
+   "style": "crystal",
+   "color": [
+    88,
+    86,
+    110
+   ],
+   "accent": [
+    118,
+    244,
+    232
+   ],
+   "hardness": 6.5,
+   "tool": "pick",
+   "tier": 4,
+   "sound": "glass",
+   "drops": [
+    {
+     "item": "lumina_shard",
+     "min": 1,
+     "max": 3
+    }
+   ],
+   "light": 6
+  },
+  {
+   "id": "cinder_ore",
+   "n": 18,
+   "name": "Cinder Iron Ore",
+   "style": "ore",
+   "color": [
+    70,
+    62,
+    74
+   ],
+   "accent": [
+    250,
+    96,
+    52
+   ],
+   "hardness": 8.0,
+   "tool": "pick",
+   "tier": 4,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "raw_cinder",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "light": 4
+  },
+  {
+   "id": "bedrock",
+   "n": 19,
+   "name": "Bedrock",
+   "style": "bedrock",
+   "color": [
+    40,
+    38,
+    54
+   ],
+   "hardness": -1,
+   "tool": "pick",
+   "tier": 99,
+   "sound": "stone",
+   "drops": []
+  },
+  {
+   "id": "obsidian",
+   "n": 20,
+   "name": "Obsidian",
+   "style": "obsidian",
+   "color": [
+    46,
+    30,
+    76
+   ],
+   "hardness": 14.0,
+   "tool": "pick",
+   "tier": 5,
+   "sound": "glass",
+   "drops": [
+    {
+     "item": "obsidian",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "brick",
+   "n": 21,
+   "name": "Stone Brick",
+   "style": "brick",
+   "color": [
+    150,
+    140,
+    134
+   ],
+   "hardness": 3.0,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "brick",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 0.75
+  },
+  {
+   "id": "glass",
+   "n": 22,
+   "name": "Glass",
+   "style": "glass",
+   "color": [
+    190,
+    232,
+    242
+   ],
+   "hardness": 0.5,
+   "tool": "pick",
+   "sound": "glass",
+   "opaque": false,
+   "drops": [
+    {
+     "item": "glass",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 0.5
+  },
+  {
+   "id": "torch",
+   "n": 23,
+   "name": "Torch",
+   "style": "torch",
+   "color": [
+    255,
+    190,
+    90
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "light": 13,
+   "support": "adjacent",
+   "fragile": true,
+   "plant": false,
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "torch",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0
+  },
+  {
+   "id": "workbench",
+   "n": 24,
+   "name": "Workbench",
+   "style": "workbench",
+   "color": [
+    170,
+    120,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 1.5,
+   "tool": "axe",
+   "support": "below",
+   "station": "workbench",
+   "interact": "station",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "workbench",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "furnace",
+   "n": 25,
+   "name": "Furnace",
+   "style": "furnace",
+   "color": [
+    120,
+    116,
+    126
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 2.0,
+   "tool": "pick",
+   "support": "below",
+   "station": "furnace",
+   "interact": "station",
+   "light": 7,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "furnace",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "forge",
+   "n": 26,
+   "name": "Forge",
+   "style": "forge",
+   "color": [
+    96,
+    92,
+    108
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 2.5,
+   "tool": "pick",
+   "support": "below",
+   "station": "forge",
+   "interact": "station",
+   "light": 9,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "forge",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "loom",
+   "n": 27,
+   "name": "Loom",
+   "style": "loom",
+   "color": [
+    196,
+    160,
+    110
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 1.5,
+   "tool": "axe",
+   "support": "below",
+   "station": "loom",
+   "interact": "station",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "loom",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "chest",
+   "n": 28,
+   "name": "Chest",
+   "style": "chest",
+   "color": [
+    166,
+    112,
+    62
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 1.5,
+   "tool": "axe",
+   "support": "below",
+   "interact": "chest",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "chest",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "door_closed",
+   "n": 29,
+   "name": "Door",
+   "style": "door",
+   "color": [
+    160,
+    110,
+    64
+   ],
+   "solid": true,
+   "opaque": true,
+   "hardness": 1.2,
+   "tool": "axe",
+   "support": "below",
+   "interact": "door",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "door",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "door_open",
+   "n": 30,
+   "name": "Open Door",
+   "style": "door_open",
+   "color": [
+    160,
+    110,
+    64
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 1.2,
+   "tool": "axe",
+   "support": "below",
+   "interact": "door",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "door",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "farmland",
+   "n": 31,
+   "name": "Tilled Soil",
+   "style": "farmland",
+   "color": [
+    98,
+    66,
+    44
+   ],
+   "hardness": 0.5,
+   "tool": "shovel",
+   "sound": "dirt",
+   "drops": [
+    {
+     "item": "dirt",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "wheat_0",
+   "n": 32,
+   "name": "Wheat (stage 1)",
+   "style": "crop",
+   "color": [
+    200,
+    180,
+    80
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "seed_wheat",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "crop": {
+    "kind": "wheat",
+    "stage": 0,
+    "stages": 4
+   }
+  },
+  {
+   "id": "wheat_1",
+   "n": 33,
+   "name": "Wheat (stage 2)",
+   "style": "crop",
+   "color": [
+    200,
+    180,
+    80
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "seed_wheat",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "crop": {
+    "kind": "wheat",
+    "stage": 1,
+    "stages": 4
+   }
+  },
+  {
+   "id": "wheat_2",
+   "n": 34,
+   "name": "Wheat (stage 3)",
+   "style": "crop",
+   "color": [
+    200,
+    180,
+    80
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "seed_wheat",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "crop": {
+    "kind": "wheat",
+    "stage": 2,
+    "stages": 4
+   }
+  },
+  {
+   "id": "wheat_3",
+   "n": 35,
+   "name": "Wheat (ripe)",
+   "style": "crop",
+   "color": [
+    200,
+    180,
+    80
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "wheat",
+     "min": 1,
+     "max": 2
+    },
+    {
+     "item": "seed_wheat",
+     "min": 1,
+     "max": 2
+    }
+   ],
+   "crop": {
+    "kind": "wheat",
+    "stage": 3,
+    "stages": 4
+   }
+  },
+  {
+   "id": "tuber_0",
+   "n": 36,
+   "name": "Tuber (stage 1)",
+   "style": "crop",
+   "color": [
+    150,
+    90,
+    130
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "seed_tuber",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "crop": {
+    "kind": "tuber",
+    "stage": 0,
+    "stages": 4
+   }
+  },
+  {
+   "id": "tuber_1",
+   "n": 37,
+   "name": "Tuber (stage 2)",
+   "style": "crop",
+   "color": [
+    150,
+    90,
+    130
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "seed_tuber",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "crop": {
+    "kind": "tuber",
+    "stage": 1,
+    "stages": 4
+   }
+  },
+  {
+   "id": "tuber_2",
+   "n": 38,
+   "name": "Tuber (stage 3)",
+   "style": "crop",
+   "color": [
+    150,
+    90,
+    130
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "seed_tuber",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "crop": {
+    "kind": "tuber",
+    "stage": 2,
+    "stages": 4
+   }
+  },
+  {
+   "id": "tuber_3",
+   "n": 39,
+   "name": "Tuber (ripe)",
+   "style": "crop",
+   "color": [
+    150,
+    90,
+    130
+   ],
+   "accent": [
+    110,
+    170,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "tuber",
+     "min": 1,
+     "max": 3
+    },
+    {
+     "item": "seed_tuber",
+     "min": 0,
+     "max": 1,
+     "p": 0.5
+    }
+   ],
+   "crop": {
+    "kind": "tuber",
+    "stage": 3,
+    "stages": 4
+   }
+  },
+  {
+   "id": "tallgrass",
+   "n": 40,
+   "name": "Tall Grass",
+   "style": "tallgrass",
+   "color": [
+    96,
+    160,
+    66
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "replaceable": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "seed_wheat",
+     "min": 1,
+     "max": 1,
+     "p": 0.14
+    }
+   ]
+  },
+  {
+   "id": "flower",
+   "n": 41,
+   "name": "Flower",
+   "style": "flower",
+   "color": [
+    236,
+    120,
+    150
+   ],
+   "accent": [
+    250,
+    220,
+    90
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "replaceable": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "flower",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "glowcap",
+   "n": 42,
+   "name": "Glowcap",
+   "style": "glowcap",
+   "color": [
+    120,
+    230,
+    190
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "below",
+   "fragile": true,
+   "light": 5,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "glowcap",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "cactus",
+   "n": 43,
+   "name": "Cactus",
+   "style": "cactus",
+   "color": [
+    84,
+    150,
+    84
+   ],
+   "solid": true,
+   "opaque": false,
+   "hardness": 0.8,
+   "tool": "axe",
+   "sound": "plant",
+   "support": "below",
+   "damage": 6.0,
+   "drops": [
+    {
+     "item": "cactus_fruit",
+     "min": 1,
+     "max": 2
+    }
+   ]
+  },
+  {
+   "id": "sapling",
+   "n": 44,
+   "name": "Sapling",
+   "style": "sapling",
+   "color": [
+    80,
+    150,
+    70
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.0,
+   "plant": true,
+   "support": "soil",
+   "fragile": true,
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "sapling",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "prism",
+   "n": 45,
+   "name": "Prism",
+   "style": "prism",
+   "color": [
+    150,
+    230,
+    255
+   ],
+   "solid": true,
+   "opaque": false,
+   "hardness": 4.0,
+   "tool": "pick",
+   "tier": 3,
+   "light": 15,
+   "sound": "glass",
+   "drops": [
+    {
+     "item": "prism",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0
+  },
+  {
+   "id": "iron_block",
+   "n": 46,
+   "name": "Iron Block",
+   "style": "metal",
+   "color": [
+    186,
+    190,
+    204
+   ],
+   "hardness": 6.0,
+   "tool": "pick",
+   "tier": 3,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "iron_block",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0
+  },
+  {
+   "id": "gold_block",
+   "n": 47,
+   "name": "Gold Block",
+   "style": "metal",
+   "color": [
+    246,
+    206,
+    80
+   ],
+   "hardness": 6.0,
+   "tool": "pick",
+   "tier": 4,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "gold_block",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0,
+   "light": 3
+  },
+  {
+   "id": "copper_block",
+   "n": 48,
+   "name": "Copper Block",
+   "style": "metal",
+   "color": [
+    214,
+    124,
+    72
+   ],
+   "hardness": 6.0,
+   "tool": "pick",
+   "tier": 2,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "copper_block",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0
+  },
+  {
+   "id": "lumina_block",
+   "n": 49,
+   "name": "Lumina Block",
+   "style": "metal",
+   "color": [
+    110,
+    232,
+    224
+   ],
+   "hardness": 7.0,
+   "tool": "pick",
+   "tier": 4,
+   "sound": "glass",
+   "drops": [
+    {
+     "item": "lumina_block",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0,
+   "light": 8
+  },
+  {
+   "id": "pine_leaves",
+   "n": 50,
+   "name": "Pine Needles",
+   "style": "leaves",
+   "color": [
+    46,
+    100,
+    84
+   ],
+   "hardness": 0.25,
+   "tool": "axe",
+   "sound": "plant",
+   "opaque": false,
+   "drops": [
+    {
+     "item": "sapling",
+     "min": 1,
+     "max": 1,
+     "p": 0.1
+    },
+    {
+     "item": "stick",
+     "min": 1,
+     "max": 2,
+     "p": 0.2
+    }
+   ],
+   "solid": false
+  },
+  {
+   "id": "fence",
+   "n": 51,
+   "name": "Fence",
+   "style": "fence",
+   "color": [
+    170,
+    124,
+    78
+   ],
+   "solid": true,
+   "opaque": false,
+   "hardness": 1.0,
+   "tool": "axe",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "fence",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0
+  },
+  {
+   "id": "shrine",
+   "n": 52,
+   "name": "Making Shrine",
+   "style": "shrine",
+   "color": [
+    182,
+    176,
+    188
+   ],
+   "accent": [
+    255,
+    214,
+    120
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": -1,
+   "interact": "shrine",
+   "light": 8,
+   "sound": "stone",
+   "drops": []
+  },
+  {
+   "id": "vault_seal",
+   "n": 53,
+   "name": "Cracked Seal",
+   "style": "seal",
+   "color": [
+    126,
+    118,
+    116
+   ],
+   "hardness": 2.0,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "stone",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "plinth",
+   "n": 54,
+   "name": "Keystone Plinth",
+   "style": "plinth",
+   "color": [
+    176,
+    170,
+    184
+   ],
+   "accent": [
+    255,
+    214,
+    120
+   ],
+   "hardness": -1,
+   "tool": "pick",
+   "tier": 99,
+   "sound": "stone",
+   "drops": []
+  },
+  {
+   "id": "bed",
+   "n": 55,
+   "name": "Bed",
+   "style": "bed",
+   "color": [
+    200,
+    80,
+    80
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 1.0,
+   "tool": "axe",
+   "support": "below",
+   "interact": "bed",
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "bed",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "ruin_brick",
+   "n": 56,
+   "name": "Weathered Brick",
+   "style": "ruin_brick",
+   "color": [
+    128,
+    118,
+    112
+   ],
+   "hardness": 2.4,
+   "tool": "pick",
+   "tier": 1,
+   "sound": "stone",
+   "drops": [
+    {
+     "item": "brick",
+     "min": 1,
+     "max": 1,
+     "p": 0.6
+    }
+   ]
+  },
+  {
+   "id": "ladder",
+   "n": 57,
+   "name": "Ladder",
+   "style": "ladder",
+   "color": [
+    176,
+    128,
+    80
+   ],
+   "solid": false,
+   "opaque": false,
+   "hardness": 0.5,
+   "tool": "axe",
+   "support": "adjacent",
+   "climb": true,
+   "sound": "wood",
+   "drops": [
+    {
+     "item": "ladder",
+     "min": 1,
+     "max": 1
+    }
+   ],
+   "refund": 1.0
+  },
+  {
+   "id": "farmland_wet",
+   "n": 58,
+   "name": "Wet Soil",
+   "style": "farmland_wet",
+   "color": [
+    72,
+    48,
+    36
+   ],
+   "hardness": 0.5,
+   "tool": "shovel",
+   "sound": "dirt",
+   "drops": [
+    {
+     "item": "dirt",
+     "min": 1,
+     "max": 1
+    }
+   ]
+  },
+  {
+   "id": "mushroom_shelf",
+   "n": 59,
+   "name": "Cave Moss",
+   "style": "moss",
+   "color": [
+    60,
+    110,
+    90
+   ],
+   "accent": [
+    120,
+    230,
+    190
+   ],
+   "hardness": 0.4,
+   "tool": "pick",
+   "sound": "plant",
+   "drops": [
+    {
+     "item": "stone",
+     "min": 1,
+     "max": 1,
+     "p": 0.5
+    }
+   ]
+  }
+ ]
+}

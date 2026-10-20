@@ -1,0 +1,6 @@
+{"entries": [
+ {"id": "salt_cup", "name": "The Salt Cup", "blurb": "Four races across the white. Points for the first six; the cup goes to the best total.",
+  "tracks": [{"seed": 12, "laps": 3, "name": "Hairpin Flats"}, {"seed": 24, "laps": 3, "name": "Mirror Run"},
+             {"seed": 28, "laps": 3, "name": "Short Fuse"}, {"seed": 46, "laps": 3, "name": "The Long Glare"}],
+  "points": [10, 6, 4, 3, 2, 1], "rival_skill": 0.9, "prize": 400}
+]}

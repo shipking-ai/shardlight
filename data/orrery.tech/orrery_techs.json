@@ -1,0 +1,22 @@
+{"entries": [
+  {"id": "deep_furnaces", "name": "Deep Furnaces", "branch": "industry", "cost": 120, "requires": [],
+   "effects": {"prod_ore": 0.25, "prod_alloy": 0.2}, "text": "Hotter smelting: more ore dug, more alloy poured."},
+  {"id": "hydro_gardens", "name": "Hydro Gardens", "branch": "agri", "cost": 110, "requires": [],
+   "effects": {"prod_food": 0.3, "prod_water": 0.1}, "text": "Stacked gardens on every deck."},
+  {"id": "ledger_engines", "name": "Ledger Engines", "branch": "trade", "cost": 130, "requires": [],
+   "effects": {"convoy": 0.35}, "text": "Clockwork bookkeeping; convoys carry more per hull."},
+  {"id": "prism_cutters", "name": "Prism Cutters", "branch": "science", "cost": 150, "requires": [],
+   "effects": {"prod_crystal": 0.25, "prod_lumen": 0.2, "research": 0.15}, "text": "Cleaner cuts, brighter glass."},
+  {"id": "armour_lattice", "name": "Armour Lattice", "branch": "fleet", "cost": 160, "requires": ["deep_furnaces"],
+   "effects": {"fleet": 0.3, "defense": 0.2}, "text": "Lattice plating for warships and shield towers."},
+  {"id": "deep_hulls", "name": "Deep Hulls", "branch": "trade", "cost": 170, "requires": ["ledger_engines"],
+   "effects": {"convoy": 0.25, "growth": 0.1}, "text": "Bigger holds and safer lanes."},
+  {"id": "drive_coils", "name": "Drive Coils", "branch": "drive", "cost": 190, "requires": ["ledger_engines"],
+   "effects": {"expansion_range": 1, "research": 0.1}, "unlocks_module": "hyper_coil",
+   "text": "Longer hyperlane reach for fleets and settlers."},
+  {"id": "shield_lattice", "name": "Shield Lattice", "branch": "fleet", "cost": 190, "requires": ["prism_cutters"],
+   "effects": {"fleet": 0.2, "defense": 0.3}, "unlocks_module": "shield_booster",
+   "text": "Field projectors tuned like bells."},
+  {"id": "fleet_doctrine", "name": "Fleet Doctrine", "branch": "fleet", "cost": 210, "requires": ["armour_lattice"],
+   "effects": {"fleet": 0.4}, "unlocks_module": "missile_rack", "text": "Written drills for ships that must act together."}
+]}

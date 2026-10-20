@@ -1,0 +1,7 @@
+{"entries": [
+  {"id": "sample_pack_traveller", "name": "Ness the Traveller", "role": "Wanderer", "color": [120, 170, 140], "hair": [230, 200, 120],
+   "schedule": [{"from": 0, "to": 24, "at": "at:wickering.front"}],
+   "lines": {"day": ["Every road has the same three rumours. Tell me yours.", "I carry other people's lamps. Never my own."],
+             "evening": ["Dusk is when the roads get honest."], "night": ["I do not sleep on roads. I sleep on arguments."]},
+   "topics": [{"label": "Where from?", "text": "Everywhere the roads stop being lit. It is a longer list than you would like."}]}
+]}

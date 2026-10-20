@@ -1,0 +1,660 @@
+{
+ "entries": [
+  {
+   "id": "silence",
+   "name": "Silence",
+   "title": "Mask of Silence",
+   "feeling": "Silence",
+   "archetype": "boss",
+   "desc": "The last mask has no face. It is only the pause after everything has been said.",
+   "color": [
+    60,
+    56,
+    78
+   ],
+   "accent": [
+    240,
+    232,
+    214
+   ],
+   "health": 1250,
+   "walk_f": 36,
+   "walk_b": 30,
+   "jump": {
+    "pre": 4,
+    "vy": 150,
+    "vx": 36,
+    "gravity": 8
+   },
+   "dash_f": {
+    "frames": 14,
+    "vx": 96,
+    "cancel": 9
+   },
+   "dash_b": {
+    "frames": 18,
+    "vx": 84,
+    "invuln": 6,
+    "recovery": 4
+   },
+   "push_half": 12,
+   "hurt": {
+    "stand": [
+     -13,
+     0,
+     26,
+     78
+    ],
+    "crouch": [
+     -13,
+     0,
+     26,
+     46
+    ],
+    "air": [
+     -13,
+     8,
+     26,
+     60
+    ]
+   },
+   "mech": "Boss: armoured heavies, a long-range wave and an invulnerable reversal.",
+   "moves": {
+    "5L": {
+     "name": "Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 3,
+     "recovery": 8,
+     "stance": "stand",
+     "hit": {
+      "damage": 28,
+      "hitstun": 13,
+      "blockstun": 11,
+      "hitstop": 7,
+      "push_hit": 7,
+      "push_block": 8,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        42,
+        28,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5M",
+        "2M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5M": {
+     "name": "Strike",
+     "kind": "normal",
+     "startup": 7,
+     "active": 3,
+     "recovery": 12,
+     "stance": "stand",
+     "hit": {
+      "damage": 50,
+      "hitstun": 17,
+      "blockstun": 13,
+      "hitstop": 9,
+      "push_hit": 9,
+      "push_block": 10,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "M",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        36,
+        41,
+        18
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "5H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "5H": {
+     "name": "Heavy Strike",
+     "kind": "normal",
+     "startup": 11,
+     "active": 4,
+     "recovery": 18,
+     "stance": "stand",
+     "hit": {
+      "damage": 82,
+      "hitstun": 29,
+      "blockstun": 15,
+      "hitstop": 11,
+      "push_hit": 12,
+      "push_block": 12,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       26,
+       90
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "H",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        30,
+        50,
+        36
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ],
+     "armor": {
+      "from": 8,
+      "to": 12,
+      "hits": 1
+     }
+    },
+    "2L": {
+     "name": "Low Jab",
+     "kind": "normal",
+     "startup": 4,
+     "active": 3,
+     "recovery": 8,
+     "stance": "crouch",
+     "hit": {
+      "damage": 24,
+      "hitstun": 13,
+      "blockstun": 10,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 7,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2L",
+     "hitboxes": [
+      {
+       "rect": [
+        10,
+        6,
+        28,
+        14
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2M",
+        "5M",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2M": {
+     "name": "Sweeping Low",
+     "kind": "normal",
+     "startup": 7,
+     "active": 3,
+     "recovery": 14,
+     "stance": "crouch",
+     "hit": {
+      "damage": 46,
+      "hitstun": 18,
+      "blockstun": 13,
+      "hitstop": 9,
+      "push_hit": 10,
+      "push_block": 10,
+      "height": "low",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "2M",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        0,
+        48,
+        12
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "contact",
+       "into": [
+        "2H",
+        "special",
+        "super"
+       ]
+      }
+     ]
+    },
+    "2H": {
+     "name": "Rising Strike",
+     "kind": "normal",
+     "startup": 9,
+     "active": 4,
+     "recovery": 21,
+     "stance": "crouch",
+     "hit": {
+      "damage": 74,
+      "hitstun": 30,
+      "blockstun": 15,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 90,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       10,
+       118
+      ],
+      "knockdown": true
+     },
+     "desc": "Anti-air launcher.",
+     "input": "2H",
+     "hitboxes": [
+      {
+       "rect": [
+        2,
+        28,
+        33,
+        62
+       ]
+      }
+     ],
+     "cancels": [
+      {
+       "on": "hit",
+       "into": [
+        "special",
+        "super"
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 4,
+       "kind": "strike"
+      }
+     ]
+    },
+    "j.L": {
+     "name": "Air Jab",
+     "kind": "normal",
+     "startup": 5,
+     "active": 6,
+     "recovery": 6,
+     "stance": "air",
+     "hit": {
+      "damage": 30,
+      "hitstun": 17,
+      "blockstun": 15,
+      "hitstop": 7,
+      "push_hit": 6,
+      "push_block": 6,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "j.L",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        24,
+        28,
+        20
+       ]
+      }
+     ],
+     "land_recovery": 4
+    },
+    "j.H": {
+     "name": "Air Heavy",
+     "kind": "normal",
+     "startup": 9,
+     "active": 6,
+     "recovery": 8,
+     "stance": "air",
+     "hit": {
+      "damage": 66,
+      "hitstun": 21,
+      "blockstun": 19,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 8,
+      "height": "high",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1,
+      "launch": [
+       24,
+       78
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "j.H",
+     "air": true,
+     "hitboxes": [
+      {
+       "rect": [
+        6,
+        6,
+        39,
+        44
+       ]
+      }
+     ],
+     "land_recovery": 6
+    },
+    "throw": {
+     "name": "Throw",
+     "input": "L+M",
+     "kind": "throw",
+     "startup": 5,
+     "active": 2,
+     "recovery": 22,
+     "hit": {
+      "damage": 90,
+      "hitstun": 20,
+      "blockstun": 0,
+      "hitstop": 10,
+      "knockdown": true,
+      "launch": [
+       26,
+       95
+      ],
+      "starter": 80,
+      "meter_hit": 40,
+      "spark": "heavy",
+      "unblockable": true
+     },
+     "throw": {
+      "reach": 26,
+      "tech": true,
+      "grab_frames": 24
+     },
+     "desc": "Beats blocking. Tech by pressing L+M within 8 frames."
+    },
+    "wave": {
+     "name": "Hush",
+     "kind": "special",
+     "startup": 16,
+     "active": 2,
+     "recovery": 28,
+     "stance": "stand",
+     "hit": {
+      "damage": 0,
+      "hitstun": 29,
+      "blockstun": 29,
+      "hitstop": 7,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 100,
+      "spark": "light",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "236M",
+     "projectile": {
+      "frame": 16,
+      "rect": [
+       -10,
+       -30,
+       20,
+       60
+      ],
+      "offset": [
+       24,
+       24
+      ],
+      "vx": 62,
+      "life": 120,
+      "limit": 1,
+      "hits": 1,
+      "hit": {
+       "damage": 62,
+       "hitstun": 22,
+       "blockstun": 15,
+       "hitstop": 9,
+       "chip": 10,
+       "push_hit": 10,
+       "push_block": 10,
+       "spark": "med",
+       "meter_hit": 24,
+       "meter_block": 8
+      }
+     }
+    },
+    "reversal": {
+     "name": "Last Word",
+     "kind": "special",
+     "startup": 4,
+     "active": 5,
+     "recovery": 34,
+     "stance": "stand",
+     "hit": {
+      "damage": 88,
+      "hitstun": 38,
+      "blockstun": 12,
+      "hitstop": 11,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 0,
+      "starter": 85,
+      "spark": "heavy",
+      "juggle": 2,
+      "launch": [
+       14,
+       128
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "623H",
+     "hitboxes": [
+      {
+       "rect": [
+        0,
+        10,
+        36,
+        78
+       ]
+      }
+     ],
+     "invuln": [
+      {
+       "from": 1,
+       "to": 8,
+       "kind": "all"
+      }
+     ]
+    },
+    "dash": {
+     "name": "Pause",
+     "kind": "special",
+     "startup": 11,
+     "active": 4,
+     "recovery": 18,
+     "stance": "stand",
+     "hit": {
+      "damage": 60,
+      "hitstun": 23,
+      "blockstun": 18,
+      "hitstop": 9,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 18,
+      "meter_block": 8,
+      "chip": 10,
+      "starter": 100,
+      "spark": "med",
+      "juggle": 1
+     },
+     "desc": "",
+     "input": "236L",
+     "hitboxes": [
+      {
+       "rect": [
+        8,
+        34,
+        42,
+        28
+       ]
+      }
+     ],
+     "move": [
+      {
+       "from": 7,
+       "to": 14,
+       "vx": 100
+      }
+     ]
+    },
+    "end": {
+     "name": "Final Silence",
+     "kind": "super",
+     "startup": 9,
+     "active": 8,
+     "recovery": 42,
+     "stance": "stand",
+     "hit": {
+      "damage": 220,
+      "hitstun": 49,
+      "blockstun": 29,
+      "hitstop": 14,
+      "push_hit": 8,
+      "push_block": 9,
+      "height": "mid",
+      "meter_hit": 0,
+      "meter_block": 0,
+      "chip": 0,
+      "starter": 100,
+      "spark": "heavy",
+      "juggle": 1,
+      "launch": [
+       26,
+       112
+      ],
+      "knockdown": true
+     },
+     "desc": "",
+     "input": "236236H",
+     "hitboxes": [
+      {
+       "rect": [
+        4,
+        12,
+        80,
+        74
+       ]
+      }
+     ],
+     "cost": 500,
+     "superflash": 34,
+     "invuln": [
+      {
+       "from": 1,
+       "to": 9,
+       "kind": "all"
+      }
+     ]
+    }
+   },
+   "boss": true,
+   "selectable": false
+  }
+ ]
+}

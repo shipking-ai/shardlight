@@ -1,0 +1,5 @@
+{"entries": [
+  {"id": "rattle_tin", "a": "tin_can", "b": "nails", "out": "rattle", "count": 1, "hint": "Tin + nails: a loud lure"},
+  {"id": "field_bandage", "a": "cloth", "b": "cloth", "out": "bandage", "count": 1, "hint": "Two clean cloths: a bandage"},
+  {"id": "ward_craft", "a": "lens_shard", "b": "oil_flask", "out": "lantern_ward", "count": 1, "hint": "Shard + oil: a Lantern Ward"}
+]}

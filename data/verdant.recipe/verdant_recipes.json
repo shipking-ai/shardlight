@@ -1,0 +1,16 @@
+{"entries": [
+{"id":"stew","station":"hearth","inputs":{"bellcap":2,"hedge_berries":2},"out":"stew","count":2},
+{"id":"bread","station":"hearth","inputs":{"flax":2,"hedge_berries":1},"out":"bread","count":3},
+{"id":"smelt","station":"forge","inputs":{"iron_ore":2},"out":"iron_ingot","count":1},
+{"id":"iron_sword","station":"forge","inputs":{"iron_ingot":3,"plank":1},"out":"iron_sword","count":1,"skill":1},
+{"id":"steel_sword","station":"forge","inputs":{"iron_ingot":6,"heather_sprig":2,"plank":1},"out":"steel_sword","count":1,"skill":4},
+{"id":"harrow_mail","station":"forge","inputs":{"iron_ingot":10,"linen":3},"out":"harrow_mail","count":1,"skill":6},
+{"id":"studded_coat","station":"forge","inputs":{"iron_ingot":3,"hide":2,"linen":1},"out":"studded_coat","count":1,"skill":2},
+{"id":"arrows","station":"bench","inputs":{"plank":1,"iron_ingot":1,"bone":2},"out":"arrow","count":12},
+{"id":"linen","station":"bench","inputs":{"flax":3},"out":"linen","count":1},
+{"id":"bandage","station":"bench","inputs":{"linen":1},"out":"bandage","count":2},
+{"id":"tonic","station":"bench","inputs":{"heather_sprig":2,"reedmint":1},"out":"tonic","count":1},
+{"id":"fever","station":"bench","inputs":{"reedmint":3,"hedge_berries":1},"out":"fever_draught","count":1,"skill":2},
+{"id":"oil","station":"bench","inputs":{"reedmint":2,"bone":1},"out":"lamp_oil","count":1},
+{"id":"taper","station":"bench","inputs":{"linen":1,"bone":1},"out":"taper","count":4}
+]}

@@ -1,0 +1,11 @@
+{"entries": [
+{"id":"camp_chest","rolls":3,"gold":[25,60],"entries":[{"item":"iron_sword","chance":0.3},{"item":"studded_coat","chance":0.25},{"item":"arrow","chance":0.7,"min":6,"max":14},{"item":"tonic","chance":0.5},{"item":"silver_ring","chance":0.4}]},
+{"id":"ruin_chest","rolls":3,"gold":[15,45],"entries":[{"item":"old_coin","chance":0.8,"min":2,"max":5},{"item":"bandage","chance":0.5,"min":1,"max":3},{"item":"tonic","chance":0.3},{"item":"ash_spear","chance":0.12},{"item":"silver_ring","chance":0.25}]},
+{"id":"crypt_chest","rolls":3,"gold":[30,80],"entries":[{"item":"old_coin","chance":0.9,"min":3,"max":7},{"item":"tonic","chance":0.5,"min":1,"max":2},{"item":"steel_sword","chance":0.08},{"item":"harrow_mail","chance":0.06},{"item":"pearl","chance":0.3}]},
+{"id":"farm_chest","rolls":2,"gold":[8,20],"entries":[{"item":"bread","chance":0.9,"min":2,"max":4},{"item":"linen","chance":0.5,"min":1,"max":3},{"item":"hedge_berries","chance":0.5,"min":2,"max":4}]},
+{"id":"den_cache","rolls":2,"gold":[5,25],"entries":[{"item":"bone","chance":0.9,"min":2,"max":5},{"item":"hide","chance":0.6,"min":1,"max":2},{"item":"leather_jerkin","chance":0.2}]},
+{"id":"cache_woods","rolls":2,"gold":[10,30],"entries":[{"item":"bellcap","chance":0.8,"min":2,"max":4},{"item":"hunting_bow","chance":0.12},{"item":"arrow","chance":0.7,"min":6,"max":12},{"item":"stew","chance":0.4}]},
+{"id":"cache_hidden","rolls":3,"gold":[40,90],"entries":[{"item":"steel_sword","chance":0.2},{"item":"longbow","chance":0.15},{"item":"pearl","chance":0.5},{"item":"tonic","chance":0.6,"min":1,"max":2},{"item":"silver_ring","chance":0.5}]},
+{"id":"cache_moor","rolls":2,"gold":[10,35],"entries":[{"item":"iron_ore","chance":0.7,"min":2,"max":5},{"item":"heather_sprig","chance":0.6,"min":2,"max":4},{"item":"old_coin","chance":0.5,"min":1,"max":3}]},
+{"id":"cache_marsh","rolls":2,"gold":[10,35],"entries":[{"item":"reedmint","chance":0.8,"min":2,"max":5},{"item":"pearl","chance":0.3},{"item":"fever_draught","chance":0.3}]}
+]}
