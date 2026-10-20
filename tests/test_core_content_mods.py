@@ -93,7 +93,7 @@ def test_dependency_cycle_is_reported(tmp_path):
 
 def test_sample_mod_in_repo_loads():
     """The shipped sample mod must stay valid against the real game content kinds."""
-    from shardlight.core.paths import MODS_DIR
+    from shardlight.core.paths import EXAMPLES_DIR as MODS_DIR
     from shardlight.core.world import ECHO_SCHEMA
     db = ContentDB()
     db.register_kind("echo", ECHO_SCHEMA)

@@ -58,7 +58,7 @@ Events emitted by the base game are listed in `docs/MODE_CONTRACT.md` (section 4
 
 ## Sample
 
-`mods/sample_pack` is a complete working example: an echo and lore entry, a Verdant traveller with a kill quest, two items and a hearth recipe, and an Umbra note. It is loaded by the tests against every registered content kind, so it stays valid. Copy it, rename the id, and edit.
+`examples/sample_pack` is a complete working example: an echo and lore entry, a Verdant traveller with a kill quest, two items and a hearth recipe, and an Umbra note. It is shipped disabled so the base game stays untouched; copy the folder into `mods/` (or set `SHARDLIGHT_MODS`) to enable it. It is loaded by the tests against every registered content kind, so it stays valid. Copy it, rename the id, and edit.
 
 ## Security model and limits
 

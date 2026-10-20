@@ -38,7 +38,6 @@ Open issues: https://github.com/shipking-ai/shardlight/issues
 
 | issue | what | start here |
 |---|---|---|
-| [#16](https://github.com/shipking-ai/shardlight/issues/16) | Make the sample mod opt-in instead of enabled by default | `shardlight/core/mods.py` |
 | [#17](https://github.com/shipking-ai/shardlight/issues/17) | Speed up the test suite (about 5 minutes) | `tests/test_modes_smoke.py` |
 | [#18](https://github.com/shipking-ai/shardlight/issues/18) | CI: update GitHub Actions versions and add dependency caching for audio | `.github/workflows/ci.yml` |
 

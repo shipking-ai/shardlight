@@ -9,6 +9,7 @@ PROJECT_DIR = PACKAGE_DIR.parent
 ASSETS_DIR = Path(os.environ.get("SHARDLIGHT_ASSETS", PROJECT_DIR / "assets"))
 DATA_DIR = Path(os.environ.get("SHARDLIGHT_DATA", PROJECT_DIR / "data"))
 MODS_DIR = Path(os.environ.get("SHARDLIGHT_MODS", PROJECT_DIR / "mods"))
+EXAMPLES_DIR = Path(os.environ.get("SHARDLIGHT_EXAMPLES", PROJECT_DIR / "examples"))
 
 
 def user_dir() -> Path:
