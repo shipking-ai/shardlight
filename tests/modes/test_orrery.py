@@ -299,6 +299,42 @@ def freeze(e):
     e.brain["frozen"] = True
 
 
+def bolt_angle(fs):
+    b = fs.bolts[0]
+    return math.atan2(b.vy, b.vx)                      # player stands still: angle = velocity direction
+
+
+def test_pulse_aim_assist_leans_at_nose_cone_foes(defs):
+    g, fs = sim_for(defs)
+    e = place_target(fs, "raider", 200.0)
+    e.vy = 100.0                                       # drifting across the nose: bolts must predict, not spray
+    freeze(e)
+    fs.update(FlightControls(pulse=True))
+    assert fs.bolts and fs.assist_target is e
+    a = math.degrees(bolt_angle(fs))
+    assert 4.0 <= a <= 11.0                            # leant off the nose, capped inside the assist cone
+
+
+def test_pulse_aim_assist_off_aims_down_the_nose(defs):
+    g, fs = sim_for(defs)
+    e = place_target(fs, "raider", 200.0)
+    e.vy = 100.0
+    freeze(e)
+    fs.update(FlightControls(pulse=True, aim_assist=False))
+    assert fs.assist_target is None and fs.bolts
+    assert abs(math.degrees(bolt_angle(fs))) <= 3.0    # only the 2.5-degree roll jitter separates shot and nose
+
+
+def test_pulse_aim_assist_ignores_out_of_window_foes(defs):
+    g, fs = sim_for(defs)
+    wide = place_target(fs, "raider", 200.0, math.radians(14.0))
+    far = place_target(fs, "raider", 600.0, 0.0)
+    freeze(wide)
+    freeze(far)
+    fs.update(FlightControls(pulse=True))
+    assert fs.assist_target is None                    # outside the cone, and outside assist range
+
+
 def test_pulse_damages_shields_then_hull(defs):
     g, fs = sim_for(defs)
     e = place_target(fs, "raider", 160)

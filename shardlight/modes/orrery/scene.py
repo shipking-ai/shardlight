@@ -488,7 +488,7 @@ class FlightScreen(Scene):
         if not seen.get("intro"):
             seen["intro"] = True
             self.app.scenes.push(Dialogue(self.app, [
-                ("Navigator", "Up thrusts, left and right turn. A fires pulses; hold B to lock a missile; hold X for the beam."),
+                ("Navigator", "Up thrusts, left and right turn. A fires pulses, leant at nearby foes; hold B to lock a missile; hold X for the beam."),
                 ("Navigator", "Hold R near stations, wrecks and anomalies. SELECT opens the star chart. The drive needs clear space at the system's edge."),
             ], color=art.CYAN))
         g = self.g
@@ -514,6 +514,7 @@ class FlightScreen(Scene):
         c.interact = "R" in p.down
         c.ability = "R" in p.pressed and self.fs.nearest_interactive() is None
         c.dampers = self.dampers
+        c.aim_assist = bool(self.app.settings.get("access.aim_assist"))
         return c
 
     def update(self, dt: float) -> None:
@@ -702,6 +703,12 @@ class FlightScreen(Scene):
                     for ang in (0, 1.57, 3.14, 4.71):
                         pygame.draw.line(surf, col, (x + math.cos(ang + t * 2) * r, y + math.sin(ang + t * 2) * r),
                                          (x + math.cos(ang + t * 2) * (r + 5), y + math.sin(ang + t * 2) * (r + 5)), 2)
+                elif fs.assist_target is e:                       # pulse aim-assist bracket: quiet, steady
+                    r = int(e.radius) + 8
+                    for ang in (0.785, 2.356, 3.927, 5.498):
+                        dx_, dy_ = math.cos(ang), math.sin(ang)
+                        pygame.draw.line(surf, (255, 214, 120), (x + dx_ * (r - 5), y + dy_ * (r - 5)),
+                                         (x + dx_ * r, y + dy_ * r), 1)
         pl = fs.player
         if pl.alive:
             x, y = S(pl.x, pl.y)

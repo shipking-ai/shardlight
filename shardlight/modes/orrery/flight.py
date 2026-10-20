@@ -42,6 +42,11 @@ class FlightControls:
     ability: bool = False
     interact: bool = False
     dampers: bool = True
+    aim_assist: bool = True
+
+
+ASSIST_CONE = 8.0                                # half-window of pulse aim assist, degrees
+ASSIST_RAD = math.radians(ASSIST_CONE)
 
 
 class Ship:
@@ -185,6 +190,7 @@ class FlightSim:
         self.trap_triggered: set[str] = set()
         self.lamp_hold = 0.0
         self.lamp_gear = -1
+        self.assist_target: Ship | None = None
         self._update_bodies()
         if spawn:
             self._spawn_for_system()
@@ -377,13 +383,16 @@ class FlightSim:
         p.beam_on = False
         if p.overheated:
             p.lock_t = 0.0
+            self.assist_target = None
             return
+        # pulse aim assist: nearest living foe inside a narrow nose window (HUD shows the bracket too)
+        self.assist_target = self._best_lock(p, ASSIST_CONE) if ctl.aim_assist else None
         if ctl.pulse and p.cool["pulse"] <= 0 and p.energy >= w["pulse"]["energy"]:
             d = w["pulse"]
             p.cool["pulse"] = 1.0 / d["rate"]
             p.energy -= d["energy"]
             p.heat += d["heat"]
-            a = p.heading + math.radians(self.rng.uniform(-d["spread"], d["spread"]))
+            a = self._assisted_angle(p, d)
             self.bolts.append(Bolt(p.x + math.cos(a) * 11, p.y + math.sin(a) * 11, p.vx + math.cos(a) * d["speed"], p.vy + math.sin(a) * d["speed"],
                                    d["life"], d["damage"], 0, p.id, d["shield_mul"], d["hull_mul"]))
             self.weapon_model.record("w_pulse", self.time, 0.5)
@@ -433,6 +442,16 @@ class FlightSim:
 
     def _fire_dumb_ok(self, p: Ship) -> bool:
         return False                                   # missiles require a lock: no wasted dumb-fire by accident
+
+    def _assisted_angle(self, p: Ship, d: dict) -> float:
+        """Pulse firing angle: the nose, or the lead intercept of the assist target, cone-capped, then jittered."""
+        a = p.heading
+        if self.assist_target is not None:
+            e = self.assist_target
+            t = dist(p.x, p.y, e.x, e.y) / d["speed"]
+            lead = math.atan2(e.y + e.vy * t - p.y, e.x + e.vx * t - p.x)
+            a += min(ASSIST_RAD, max(-ASSIST_RAD, wrap(lead - p.heading)))
+        return a + math.radians(self.rng.uniform(-d["spread"], d["spread"]))
 
     def _best_lock(self, p: Ship, cone_deg: float) -> Ship | None:
         best, bd = None, 520.0
