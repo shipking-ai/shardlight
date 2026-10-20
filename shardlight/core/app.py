@@ -98,6 +98,7 @@ class App:
         pygame.display.set_caption("SHARDLIGHT")
         if self.headless:
             return pygame.display.set_mode(RENDER_SIZE)
+        # TODO(#4): only ever opened a real window on Windows 11; check Linux/macOS and high-DPI / multi-monitor with SCALED.
         flags = pygame.SCALED | pygame.RESIZABLE
         if self.settings.get("video.fullscreen"):
             flags |= pygame.FULLSCREEN

@@ -55,6 +55,9 @@ Cross-shard hooks it uses: emits `verdant.quest_completed{quest}`, `verdant.site
 * NumPy 2: no 2-D `np.cross`.
 * `shots/` is scratch (debug scripts, screenshots, logs). Safe to delete.
 
+## Open work
+Every open item is a GitHub issue with a `TODO(#n)` marker in the code: see `TODO.md`, `python tools/todos.py`, and https://github.com/shipking-ai/shardlight/issues. (`tests/test_todos.py` enforces the marker convention.)
+
 ## Suggested next steps (in value order)
 1. **A human playtest of every shard and a listening pass** - the largest unknown. Tune `data/<kind>/*.json` first (damage, prices, speeds); most balance lives in data.
 2. Try a real gamepad (dead zones, prompts, hot-plug).

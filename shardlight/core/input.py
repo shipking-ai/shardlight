@@ -93,6 +93,7 @@ class Device:
         self.stick_l = Vector2()
         self.stick_r = Vector2()
         self.analog: dict[str, float] = {}
+        # TODO(#3): dead zone and stick feel are untested on real hardware; verify on physical pads.
         self.deadzone = 0.25
         self.trigger_threshold = 0.5
 

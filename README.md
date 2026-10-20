@@ -120,6 +120,7 @@ The audio tests skip themselves if you have not rendered the audio yet.
 | [docs/MODDING.md](docs/MODDING.md) | writing data-only mods |
 | [docs/AUDIO.md](docs/AUDIO.md), [docs/AUDIO_REPORT.md](docs/AUDIO_REPORT.md), [docs/ASSETS.md](docs/ASSETS.md) | audio design and provenance |
 | [docs/ART_BIBLE.md](docs/ART_BIBLE.md), [docs/RESEARCH.md](docs/RESEARCH.md) | visual identity; dependency research and rejected alternatives |
+| [TODO.md](TODO.md) | the open work items, each a GitHub issue with a matching `TODO(#n)` marker in the code |
 | [docs/DEVLOG.md](docs/DEVLOG.md), [HANDOFF.md](HANDOFF.md) | chronology and bugs found; orientation for the next developer |
 
 ## Provenance and licence

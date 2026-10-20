@@ -62,6 +62,7 @@ class ModManager:
         self.loaded: list[str] = []
 
     # -- discovery ------------------------------------------------------------------------
+    # TODO(#16): mods/sample_pack is loaded by default and alters the base game; make examples opt-in.
     def discover(self) -> None:
         self.mods.clear()
         self.report.clear()

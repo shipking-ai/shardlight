@@ -9,6 +9,7 @@ def _available():
     return [m for m in modes_pkg.MODE_IDS if modes_pkg.load(m) is not None]
 
 
+# TODO(#17): the Cinder smoke run takes ~37 s; shorten or mark slow.
 @pytest.mark.parametrize("mode_id", modes_pkg.MODE_IDS)
 def test_mode_enters_runs_and_leaves(app, mode_id):
     if mode_id not in _available():

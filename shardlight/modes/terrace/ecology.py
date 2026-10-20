@@ -279,6 +279,7 @@ class Ecology:
             c.hunger = min(100.0, c.hunger + d["hunger_rate"] * dt * 1.1)
 
     # -- reproduction ---------------------------------------------------------------------------
+    # TODO(#14): herds cluster and over-graze near the player; add spacing/territory (and irrigation for farms).
     def _breed(self, c: Creature, d: dict) -> None:
         if d["litter"][1] <= 0 or c.age < d["maturity_days"] or c.repro_cd > 0 or c.hunger < d["food_min"]:
             return

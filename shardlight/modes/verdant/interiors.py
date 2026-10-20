@@ -50,6 +50,7 @@ def _finish(wm: WorldMap) -> WorldMap:
     return wm
 
 
+# TODO(#8): interiors are generated per building kind (all inns alike); add authored per-building layouts.
 def build_interior(enter: str, seed: int | str = 0, label: str = "") -> WorldMap:
     kind = KIND_OF.get(enter, "cottage")
     w, h = SIZE_OF[kind]

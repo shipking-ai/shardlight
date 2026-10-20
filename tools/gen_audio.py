@@ -34,6 +34,7 @@ from shardlight.core import synth  # noqa: E402
 OUT = ROOT / "assets" / "audio"
 MANIFEST = OUT / "MANIFEST.json"
 REPORT = ROOT / "docs" / "AUDIO_REPORT.md"
+# TODO(#2): the rendered audio has been measured but never listened to; do a listening pass and fix the worst tracks/effects.
 VERSION = 1
 
 

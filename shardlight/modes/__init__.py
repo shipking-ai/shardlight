@@ -15,6 +15,7 @@ from ..core import log
 
 LOG = log.get("modes")
 
+# TODO(#1): None of these shards has been played by hand yet; expect to retune data/<kind>/*.json after a playtest pass.
 MODE_IDS = ["cinder", "verdant", "umbra", "slipstream", "concord", "terrace", "masks", "orrery"]
 
 

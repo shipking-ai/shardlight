@@ -1,6 +1,7 @@
 """Content kinds for Slipstream: vehicles and championship cups (moddable JSON)."""
 from __future__ import annotations
 
+# TODO(#15): only one championship cup ships; more cups/vehicles are mostly data.
 from ...core import log
 from .vehicle import FALLBACK_VEHICLE, UPGRADE_SLOTS, VehicleSpec, spec_from_dict
 

@@ -111,6 +111,7 @@ def _speed_here(game, e: Enemy) -> float:
     return game.wm.speed_at(int(e.x), int(e.y)) or 1.0
 
 
+# TODO(#9): no separation between enemies (or NPCs): add a cheap separation term so they do not stack.
 def _steer(game, e: Enemy, tx: float, ty: float, sp: float, dt: float) -> None:
     """Move toward a point; fall back to a cached A* path when the straight line is blocked."""
     wm = game.wm

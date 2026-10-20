@@ -516,6 +516,7 @@ class Game(ActionsMixin):
             return 0
         return max(1, int(d["value"] * 0.5))
 
+    # TODO(#6): reputation is stored but unused: apply faction standing to prices (and to sell prices).
     def buy_price(self, item: str, shop: dict) -> int:
         d = self.cat.item(item)
         return max(1, int(round(d.get("value", 1) * shop.get("markup", 1.2))))
@@ -928,6 +929,7 @@ class Game(ActionsMixin):
     @classmethod
     def from_dict(cls, cat: Catalog, raw: dict, unlocks=None, adapt_strength: float = 1.0) -> "Game | None":
         try:
+            # TODO(#12): v1 is the only version and anything else is rejected; add a migration chain and a frozen-fixture test.
             if raw.get("v") != SAVE_VERSION:
                 return None
             g = cls(cat, int(raw["seed"]), raw.get("diff", "standard"), adapt_strength)

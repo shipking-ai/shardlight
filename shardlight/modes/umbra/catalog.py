@@ -184,6 +184,7 @@ class Catalog:
             raise KeyError("umbra.night content missing")
         return d
 
+    # TODO(#15): three nights only; more nights/building styles are mostly data.
     def night_count(self) -> int:
         return len([i for i in self.db.ids("umbra.night") if i.startswith("night_")])
 

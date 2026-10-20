@@ -355,6 +355,7 @@ class GameScreen(Scene):
             pass
 
     # ------------------------------------------------------------------ drawing
+    # TODO(#11): first draw of a chunk costs up to ~38 ms; pre-build neighbouring chunks a few per frame.
     def chunk(self, cx: int, cy: int) -> pygame.Surface:
         g = self.g
         key = (g.area, cx, cy)

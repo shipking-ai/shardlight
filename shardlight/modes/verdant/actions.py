@@ -377,6 +377,7 @@ class ActionsMixin:
             return self.has_unlock("verdant.site." + need[7:])
         return bool(self.flags.get(need))
 
+    # TODO(#7): dialogue is a flat menu; replace with data-driven branching nodes (conditions + effects).
     def npc_dialogue(self, npc_id: str) -> dict:
         """Everything the conversation screen needs for one NPC right now."""
         st = self.npcs[npc_id]

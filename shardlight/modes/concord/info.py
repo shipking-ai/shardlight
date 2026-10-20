@@ -3,6 +3,7 @@ from ...core.scene import ModeInfo
 
 SEED_CHOICES = ["random", 1, 7, 12, 42, 77, 101, 314, 2024, 31337]
 SIZE_CHOICES = ["small", "medium", "large"]
+# TODO(#13): balance the four houses for a human and exercise the large map more.
 HOUSE_CHOICES = ["ostrel", "karrow", "saline", "wick"]
 
 INFO = ModeInfo(

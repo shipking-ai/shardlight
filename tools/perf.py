@@ -59,6 +59,7 @@ def start_gameplay(app, mode_id: str) -> str:
         return f"menu ({exc!r})"
 
 
+# TODO(#5): measures under the dummy video driver; add a windowed mode (vsync + presentation) and record low-end numbers.
 def measure(mode_id: str, ticks: int) -> dict:
     app = App(headless=True, seed=5, audio=False)
     app.new_game(0, "Perf")

@@ -49,6 +49,7 @@ class ObjDef:
 
 OBJ_LIST: list[ObjDef] = [
     ObjDef("none"),
+    # TODO(#10): trees are scenery only: add felling (logs/planks), and consider weather and more shrines for fast travel.
     ObjDef("oak", True, 2), ObjDef("pine", True, 2), ObjDef("dead", True, 2), ObjDef("willow", True, 2),
     ObjDef("bush", True), ObjDef("berry", True, 1, gather={"item": "hedge_berries", "skill": "forage", "time": 0.7, "regrow": 3, "xp": 3},
                                  interact="Pick berries"),

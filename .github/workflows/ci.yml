@@ -6,6 +6,7 @@ on:
   pull_request:
 
 jobs:
+  # TODO(#18): bump actions/checkout and actions/setup-python (Node 20 deprecation) and cache the rendered audio.
   windows:
     name: Windows, Python 3.12 (the platform this was developed and tested on)
     runs-on: windows-latest
