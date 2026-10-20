@@ -385,7 +385,7 @@ class ShardCard(Scene):
                                       get=lambda k=key: self.opts[k], set=lambda v, k=key: self.opts.__setitem__(k, v)))
             items.append(MenuItem("Enter shard", self._launch))
         items.append(MenuItem("Back", app.scenes.pop))
-        self.menu = Menu(app, items, 196)
+        self.menu = Menu(app, items, 196, row_h=12)
 
     def _launch(self) -> None:
         n = int(self.opts.get("players", 1))
@@ -409,32 +409,53 @@ class ShardCard(Scene):
         info = self.info
         col = info.color if info else (110, 108, 124)
         k = ease_out_cubic(self.age / 0.18)
-        rect = pygame.Rect(40, 22 + int((1 - k) * 12), W - 80, H - 54)
+        rect = pygame.Rect(32, 14 + int((1 - k) * 12), W - 64, H - 40)
         draw_panel(surf, rect, border=col, title=(info.title.upper() if info else self.mode_id.upper()), font=f)
         if not info:
             f.draw_wrapped(surf, "This shard is dormant in this build. Its lens has not been repaired yet, so there is "
                            "nothing to enter.", pygame.Rect(rect.x + 14, rect.y + 24, rect.w - 28, 60), PARCHMENT, None)
             self.menu.draw(surf, (rect.x + 14, rect.bottom - 40))
             return
-        art.draw_prism(surf, (rect.right - 44, rect.y + 46), 18, col, self.age * 2, True, True)
-        f.draw(surf, info.genre, (rect.x + 14, rect.y + 16), col, None)
-        f.draw(surf, info.tagline, (rect.x + 14, rect.y + 28), (255, 244, 205), None)
-        y = f.draw_wrapped(surf, info.blurb, pygame.Rect(rect.x + 14, rect.y + 44, rect.w - 110, 60), PARCHMENT, None)
-        yy = y + 6
+        art.draw_prism(surf, (rect.right - 26, rect.y + 26), 14, col, self.age * 2, True, True)
+        f.draw(surf, info.genre, (rect.x + 14, rect.y + 14), col, None)
+        f.draw(surf, info.tagline, (rect.x + 14, rect.y + 26), (255, 244, 205), None)
+        y = f.draw_wrapped(surf, info.blurb, pygame.Rect(rect.x + 14, rect.y + 40, rect.w - 28, 60), PARCHMENT, None)
+        yy = y + 4
         f.draw(surf, "CONTROLS", (rect.x + 14, yy), DIM, None)
         yy += 11
         p = self.inp.player(0)
-        for btn, text in info.controls[:7]:
-            lab = p.prompt(btn) if btn in ("UP", "A", "B", "X", "Y", "L", "R", "PAUSE", "SELECT") else btn
-            f.draw(surf, f"{lab}", (rect.x + 18, yy), BRASS, None)
-            f.draw(surf, text, (rect.x + 70, yy), PARCHMENT, None)
-            yy += 10
+        # two-column masonry: short rows share columns, wide rows span the full card.
+        # the label gutter is GLOBAL so text starts at the same x in both columns.
+        col_w = (rect.w - 28) // 2
+        labs = [p.prompt(btn) if btn in ("UP", "A", "B", "X", "Y", "L", "R", "PAUSE", "SELECT") else btn
+                for btn, _ in info.controls]
+        lab_w = max((f.width(lab) for lab in labs), default=0)
+        h1 = h2 = 0
+        placed = []
+        for (btn, text), lab in zip(info.controls, labs):
+            if lab_w + 8 + f.width(text) > col_w - 8:
+                row = max(h1, h2)
+                h1 = h2 = row + 1
+                placed.append((None, row, lab, text))
+            else:
+                if h1 <= h2:
+                    placed.append((0, h1, lab, text))
+                    h1 += 1
+                else:
+                    placed.append((1, h2, lab, text))
+                    h2 += 1
+        for c2, row, lab, text in placed:
+            x = rect.x + 14 if c2 is None else rect.x + 14 + c2 * col_w
+            f.draw(surf, lab, (x, yy + row * 10), BRASS, None)
+            f.draw(surf, text, (x + lab_w + 8, yy + row * 10), PARCHMENT, None)
+        ctrl_bottom = yy + max(h1, h2) * 10
+        menu_top = rect.bottom - 12 - self.menu.height() - 6
         prog = self.app.world.mode_data(self.mode_id).get("summary")
-        if prog:
-            f.draw(surf, str(prog), (rect.x + 14, rect.bottom - 62 - 14 * len(self.menu.items) // 2), GOOD, None)
+        if prog and menu_top - ctrl_bottom >= 22:
+            f.draw(surf, str(prog), (rect.x + 14, menu_top - 12), GOOD, None)
         if self.mode_id in self.app.world.profile["facets"]:
             f.draw(surf, "FACET REPAIRED", (rect.right - 14, rect.bottom - 18), GOOD, None, anchor="bottomright")
-        self.menu.draw(surf, (rect.x + 14, rect.bottom - 14 - self.menu.height() - 8))
+        self.menu.draw(surf, (rect.x + 14, menu_top))
         draw_prompts(surf, self.app, [("CONFIRM", "Select"), ("BACK", "Close")])
 
 
@@ -523,7 +544,7 @@ class ArchiveScene(Scene):
                      for m in mm.mods.values()]
             lines += [(r, False) for r in mm.report]
             if not lines:
-                lines = [("No mods installed. Drop a folder with mod.json into /mods.", False)]
+                lines = [("No mods installed. Drop a folder with mod.json into /mods (see /examples).", False)]
             self._list(surf, area, lines[:12])
             probs = self.app.content.problems
             f.draw(surf, f"{len(probs)} content notice(s)", (detail.x, detail.y), DIM, None)
