@@ -118,3 +118,30 @@ def test_every_scene_draws_within_frame_budget(app):
     run_ticks(app, 120)
     per_frame = (time.perf_counter() - t0) / 120 * 1000
     assert per_frame < 12.0, per_frame
+
+
+def test_slot_scene_shows_lamp_restored_when_tour_done(app):
+    app.world.profile["tour"]["done"] = True
+    app.save_now()
+    from shardlight.hub.title import SlotScene
+    scene = SlotScene(app)
+    calls = []
+    orig = app.font.draw
+    def spy(surf, text, *a, **k):
+        calls.append(text)
+        return orig(surf, text, *a, **k)
+    app.font.draw = spy
+    scene.draw(app.frame)
+    assert any("LAMP RESTORED" in t for t in calls)
+
+    # not shown when tour not done
+    app.world.profile["tour"]["done"] = False
+    app.save_now()
+    scene2 = SlotScene(app)
+    calls2 = []
+    def spy2(surf, text, *a, **k):
+        calls2.append(text)
+        return orig(surf, text, *a, **k)
+    app.font.draw = spy2
+    scene2.draw(app.frame)
+    assert not any("LAMP RESTORED" in t for t in calls2)

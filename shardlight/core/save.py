@@ -179,7 +179,8 @@ class SaveManager:
             try:
                 p = self.read(s)
                 out.append({"name": p["name"], "playtime": p["playtime"], "facets": len(p["facets"]),
-                            "glint": p["currency"].get("glint", 0)})
+                            "glint": p["currency"].get("glint", 0),
+                            "tour": p.get("tour", {})})
             except SaveError:
                 out.append({"name": "(unrecoverable)", "playtime": 0, "facets": 0, "glint": 0, "broken": True})
         return out

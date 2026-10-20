@@ -174,8 +174,11 @@ class SlotScene(Scene):
             else:
                 f.draw(surf, s["name"], (r.x + 70, r.y + 8), PARCHMENT, None)
                 mins = int(s["playtime"] // 60)
-                f.draw(surf, f"{mins // 60}h {mins % 60:02d}m   Lens {s['facets']}/8   Glint {s['glint']}",
-                       (r.x + 10, r.y + 26), LENS, None)
+                base = f"{mins // 60}h {mins % 60:02d}m   Lens {s['facets']}/8   Glint {s['glint']}"
+                f.draw(surf, base, (r.x + 10, r.y + 26), LENS, None)
+                tag = "LAMP RESTORED" if (s.get("tour", {}).get("done")) else ""
+                if tag:
+                    f.draw(surf, tag, (r.x + 10 + f.width(base) + 6, r.y + 26), BRASS, None)
         draw_prompts(surf, self.app, [("CONFIRM", "Play / New"), ("X", "Delete"), ("BACK", "Back")])
 
 
