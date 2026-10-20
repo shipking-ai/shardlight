@@ -666,6 +666,53 @@ def test_kill_quests_count_only_after_acceptance(game):
     assert ok and game.count("iron_sword") == 1 and "the_rooks" in game.quests.offerable(game, "captain_vey")
 
 
+def test_quest_target_pos_resolves_every_stage(game):
+    """Each quest stage maps to a world point the guidance chevron can point at."""
+    q = game.quests
+    seen = 0
+    for quest in game.cat.db.all("verdant.quest"):
+        for si, st in enumerate(quest["stages"]):
+            game.quests.state[quest["id"]] = {"stage": si, "progress": 0, "done": False}
+            pos = q.target_pos(game, quest["id"])
+            assert pos is not None, f"{quest['id']}#{si} {st['kind']} {st.get('target')} unresolvable"
+            area, x, y = pos
+            if area == "overworld":
+                wm = game.over
+            else:
+                wm = game.area_map(area)
+            assert 0 <= x < wm.W and 0 <= y < wm.H, (quest["id"], si, pos)
+            seen += 1
+    assert seen >= 20
+
+
+def test_quest_target_crosses_areas(game):
+    q = game.quests
+    game.quests.state["kindle_the_hollow"] = {"stage": 2, "progress": 0, "done": False}       # use greatlamp
+    b = next(b for b in game.over.buildings if b.id.startswith("hollow_hall"))
+    pos = q.target_pos(game, "kindle_the_hollow")
+    assert pos[0] == "overworld" and abs(pos[1] - (b.front[0] + 0.5)) < 0.01 and abs(pos[2] - (b.front[1] + 0.5)) < 0.01
+    game.enter_area("b:hollow_hall.hall")                                                     # inside: snaps onto the lamp
+    gx, gy = game.wm.spots["greatlamp"]
+    pos = q.target_pos(game, "kindle_the_hollow")
+    assert pos[0] == "b:hollow_hall.hall"
+    assert abs(pos[1] - (gx + 0.5)) < 0.01 and abs(pos[2] - gy) <= 1.5
+    game.enter_area("overworld", (b.front[0] + 0.5, b.front[1] + 1.5))                        # and back out again
+    pos = q.target_pos(game, "kindle_the_hollow")
+    assert pos[0] == "overworld"
+
+
+def test_quest_target_snaps_onto_woken_foes(game):
+    clear_around(game)
+    god(game)
+    game.quests.state["the_rooks"] = {"stage": 0, "progress": 0, "done": False}               # flag killed.rook_captain
+    pos = game.quests.target_pos(game, "the_rooks")
+    e = spawn(game, "rook_captain", 2.5, 1.0)
+    pos2 = game.quests.target_pos(game, "the_rooks")
+    assert pos2[0] == "overworld"
+    assert abs(pos2[1] - e.x) < 0.01 and abs(pos2[2] - e.y) < 0.01
+    assert pos is None or pos != pos2
+
+
 def test_echo_gated_quest_and_topics(game):
     assert "choir_stones" not in game.quests.offerable(game, "edda_cairnkeeper")
     d = game.npc_dialogue("edda_cairnkeeper")
@@ -892,7 +939,7 @@ def test_menu_and_all_screens_render_at_large_text_scale(app):
 def test_a_data_only_mod_adds_an_npc_quest_item_and_recipe(cat, world7):
     """The shipped sample mod extends Verdant without code: a new NPC offers a quest that uses base-game enemies."""
     from shardlight.core.mods import ModManager
-    from shardlight.core.paths import MODS_DIR
+    from shardlight.core.paths import EXAMPLES_DIR as MODS_DIR
     db = ContentDB()
     register_content(db)
     db.load_dir(DATA_DIR, "base")

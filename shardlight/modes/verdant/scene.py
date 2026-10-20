@@ -501,7 +501,7 @@ class GameScreen(Scene):
         for tx in g.texts:
             a = tx["age"]
             f.draw(surf, tx["t"], (int(tx["x"] * TS - camx), int(tx["y"] * TS - camy - a * 18)), tx["c"], (10, 8, 16), anchor="midtop")
-        self._hud(surf)
+        self._hud(surf, camx, camy)
         if self.fade > 0:
             ov = pygame.Surface((W, H))
             ov.set_alpha(int(255 * self.fade))
@@ -637,7 +637,7 @@ class GameScreen(Scene):
         pygame.draw.rect(surf, col, (x, y, int(w * clamp(frac)), h))
         pygame.draw.line(surf, mix(col, (255, 255, 255), 0.4), (x, y), (x + int(w * clamp(frac)) - 1, y))
 
-    def _hud(self, surf: pygame.Surface) -> None:
+    def _hud(self, surf: pygame.Surface, camx: int, camy: int) -> None:
         g = self.g
         P = g.p
         f = self.app.font
@@ -660,6 +660,8 @@ class GameScreen(Scene):
         # minimap (overworld)
         if g.area == "overworld":
             self._minimap(surf)
+        # quest target marker
+        self._quest_marker(surf, camx, camy)
         # quest tracker
         qs = g.quests.active_ids()
         y = 42
@@ -732,7 +734,72 @@ class GameScreen(Scene):
             fx, fy = st.front
             if x0 <= fx < x0 + 2 * R and y0 <= fy < y0 + 2 * R:
                 pygame.draw.rect(surf, (255, 255, 255) if st.kind == "settlement" else (255, 140, 100), (r.x + (fx - x0) * 2 - 1, r.y + (fy - y0) * 2 - 1, 3, 3))
+        qs = g.quests.active_ids()
+        tgt = g.quests.target_pos(g, qs[0]) if qs else None
+        if tgt and tgt[0] == g.area and tgt is not None:
+            tx, ty = int(tgt[1]), int(tgt[2])
+            if x0 <= tx < x0 + 2 * R and y0 <= ty < y0 + 2 * R:
+                pygame.draw.rect(surf, (10, 8, 16), (r.x + (tx - x0) * 2 - 2, r.y + (ty - y0) * 2 - 2, 5, 5))
+                pygame.draw.rect(surf, BRASS, (r.x + (tx - x0) * 2 - 1, r.y + (ty - y0) * 2 - 1, 3, 3))
+            else:
+                mx, my = clamp(tx, x0, x0 + 2 * R), clamp(ty, y0, y0 + 2 * R)
+                pygame.draw.circle(surf, BRASS, (r.x + (mx - x0) * 2, r.y + (my - y0) * 2), 2, 1)
         pygame.draw.rect(surf, (255, 240, 120), (r.x + (px - x0) * 2 - 1, r.y + (py - y0) * 2 - 1, 3, 3))
+
+    @staticmethod
+    def _hud_avoid(sx: float, sy: float) -> tuple[float, float]:
+        """Keep an edge chevron clear of HUD furniture (tracker, minimap, boss bar, bottom strip)."""
+        rects = [pygame.Rect(0, 40, 172, 56),                     # quest tracker
+                 pygame.Rect(W - 106, 34, 108, 102),              # minimap inset
+                 pygame.Rect(W // 2 - 112, 6, 224, 24),           # boss bar
+                 pygame.Rect(0, H - 26, W, 26)]                   # equipment strip
+        for r in rects:
+            if r.collidepoint(sx, sy):
+                pen = [sx - r.left, r.right - sx, sy - r.top, r.bottom - sy]
+                m = min(range(4), key=lambda i: pen[i])
+                if m == 0:
+                    sx = r.left - 6
+                elif m == 1:
+                    sx = min(r.right + 6, W - 12)
+                    if r.collidepoint(sx, sy):        # pushed past the screen: slide inside instead
+                        sx = r.left - 6
+                elif m == 2:
+                    sy = r.top - 6
+                else:
+                    sy = min(r.bottom + 6, H - 32)
+                    if r.collidepoint(sx, sy):
+                        sy = r.top - 6
+        return clamp(sx, 12, W - 12), clamp(sy, 20, H - 32)
+
+    def _quest_marker(self, surf: pygame.Surface, camx: int, camy: int) -> None:
+        """A bobbing chevron over the active quest's target, or an edge chevron pointing at it."""
+        g = self.g
+        qs = g.quests.active_ids()
+        tgt = g.quests.target_pos(g, qs[0]) if qs else None
+        if tgt is None or tgt[0] != g.area:
+            return
+        sx, sy = tgt[1] * TS - camx, tgt[2] * TS - camy
+        px, py = g.p.x * TS - camx, g.p.y * TS - camy
+        dirx, diry = sx - px, sy - py
+        n = math.hypot(dirx, diry)
+        if n < 1:
+            return
+        dirx, diry = dirx / n, diry / n
+        bob = math.sin(self.t * 5.0) * 1.5
+        if 8 <= sx < W - 8 and 26 <= sy < H - 28:
+            sx, sy = self._hud_avoid(sx, sy)     # never under the tracker / minimap / boss bar
+            cy = sy + bob                    # chevron hovers over the spot
+        else:
+            s = min((W / 2 - 10) / max(1e-9, abs(sx - W / 2)), (H / 2 - 16) / max(1e-9, abs(sy - H / 2)), 1.0)
+            sx, sy = W / 2 + (sx - W / 2) * s, H / 2 + (sy - H / 2) * s
+            sx, sy = self._hud_avoid(sx, sy)
+            cy = sy
+        side = 3.6
+        bx, by = -diry * side, dirx * side
+        tail = (sx - dirx * 5, cy - diry * 5)
+        tri = [(sx, cy), (tail[0] + bx, tail[1] + by), (tail[0] - bx, tail[1] - by)]
+        pygame.draw.polygon(surf, (14, 10, 22), tri)
+        pygame.draw.polygon(surf, BRASS, tri, 1)
 
 
 # screens are defined in screens.py; imported lazily to keep this module readable
