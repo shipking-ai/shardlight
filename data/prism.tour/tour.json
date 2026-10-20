@@ -1,0 +1,13 @@
+{"id": "grand_tour", "title": "The Grand Tour",
+ "legs": [
+   {"id": "spire",   "shard": "cinder",     "kind": "SpireLeg",     "seed": 41,  "config": {"height": 12}},
+   {"id": "wisp",    "shard": "verdant",    "kind": "WispLeg",      "seed": 52,  "config": {"clearing": [0,0,6,4]}},
+   {"id": "crossing","shard": "umbra",      "kind": "ShadowLeg",    "seed": 63,  "config": {"beats": 3}},
+   {"id": "lap",     "shard": "slipstream", "kind": "LapLeg",       "seed": 74,  "config": {"checkpoints": 6}},
+   {"id": "duel",    "shard": "masks",      "kind": "DuelLeg",      "seed": 85,  "config": {"rounds": 1}},
+   {"id": "bloom",   "shard": "terrace",    "kind": "BloomLeg",     "seed": 96,  "config": {"clock_mul": 8}},
+   {"id": "market",  "shard": "concord",    "kind": "MarketLeg",    "seed": 107, "config": {"start": 100, "goal": 140, "turns": 6}},
+   {"id": "swarm",   "shard": "orrery",     "kind": "SwarmLeg",     "seed": 118, "config": {"wave": 1}}
+ ],
+ "finale": {"kind": "HallFinale", "seed": 129, "config": {"debris": 40}}
+}
