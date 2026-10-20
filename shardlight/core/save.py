@@ -41,6 +41,7 @@ def new_profile(name: str = "Lampwright") -> dict[str, Any]:
         "echoes_fired": [],     # echo ids already resolved (one-shot echoes)
         "modes": {},            # mode id -> private JSON dict
         "tutorial": {},         # tutorial id -> seen
+        "tour": {"leg": 0, "done_legs": [], "done": False},  # Grand Tour progress (prism mode)
     }
 
 
