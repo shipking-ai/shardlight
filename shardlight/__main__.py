@@ -44,6 +44,7 @@ def main(argv: list[str] | None = None) -> int:
                 return 2
         else:
             app.scenes.reset_to(TitleScene(app), fade=False)
+            app.scenes.process(0)
         app.run(max_frames=args.frames)
     except KeyboardInterrupt:
         pass

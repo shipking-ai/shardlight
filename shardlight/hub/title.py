@@ -197,7 +197,9 @@ class NameEntry(Scene):
                 self.name += ch
         if any(e.key == pygame.K_BACKSPACE for e in inp.raw_key_events):
             self.name = self.name[:-1]
+        inp.text_input.clear()
         if self.age < 0.2:
+            inp.raw_key_events.clear()
             return
         if any(e.key in (pygame.K_RETURN, pygame.K_KP_ENTER) for e in inp.raw_key_events) or \
                 "A" in inp.player(0).pressed and inp.player(0).last_kind == "gamepad":
@@ -207,6 +209,7 @@ class NameEntry(Scene):
         elif any(e.key == pygame.K_ESCAPE for e in inp.raw_key_events) or "B" in inp.player(0).pressed and \
                 inp.player(0).last_kind == "gamepad":
             self.app.scenes.pop()
+        inp.raw_key_events.clear()
 
     def draw(self, surf: pygame.Surface) -> None:
         f = self.app.font
