@@ -21,6 +21,41 @@ def _wrap(app, surf, text, rect, color=PARCHMENT, max_lines=None):
     return app.font.draw_wrapped(surf, text, rect, color, None, max_lines=max_lines)
 
 
+class _MouseRows:
+    """Clickable list rows, rebuilt at draw time. Hover follows the pointer; click activates.
+
+    Mirrors the mouse handling of core Menu: hover only steals the selection once the
+    pointer actually moves, so keyboard navigation is never interrupted mid-frame.
+    """
+
+    def __init__(self, app):
+        self.app = app
+        self.rects: list[tuple[pygame.Rect, int]] = []
+
+    def reset(self) -> None:
+        self.rects.clear()
+
+    def add(self, rect: pygame.Rect, idx: int) -> None:
+        self.rects.append((rect, idx))
+
+    def poll(self, cur: Callable[[], int], set_sel: Callable[[int], None], activate: Callable[[int], None],
+             alt: Callable[[int], None] | None = None) -> None:
+        inp = self.app.input
+        mx, my = inp.mouse_pos
+        hover = [idx for r, idx in self.rects if r.collidepoint(mx, my)]
+        if not hover:
+            return
+        idx = hover[0]
+        moved = pygame.mouse.get_rel() != (0, 0)
+        if moved and cur() != idx:
+            set_sel(idx)
+            self.app.audio.play("ui_move", 0.5)
+        if 1 in inp.mouse_pressed:
+            activate(idx)
+        elif alt is not None and 3 in inp.mouse_pressed:
+            alt(idx)
+
+
 # ====================================================================================== text
 class TextOverlay(Scene):
     opaque = False
@@ -33,7 +68,7 @@ class TextOverlay(Scene):
     def update(self, dt: float) -> None:
         self.age += dt
         p = self.inp.player(0)
-        if self.age > 0.15 and p.any_pressed(("CONFIRM", "BACK", "B", "A")):
+        if self.age > 0.15 and (p.any_pressed(("CONFIRM", "BACK", "B", "A")) or 1 in self.inp.mouse_pressed):
             self.app.scenes.pop()
 
     def draw(self, surf: pygame.Surface) -> None:
@@ -163,6 +198,8 @@ class ShopScreen(Scene):
         self.msg = ""
         self.age = 0.0
         self.rep = 0.0
+        self._mrows = _MouseRows(self.app)
+        self._mtab: list[tuple[pygame.Rect, int]] = []
 
     def rows(self) -> list[tuple[str, int, int]]:
         g = self.g
@@ -194,10 +231,30 @@ class ShopScreen(Scene):
         if dy and rows:
             self.sel = (self.sel + dy) % len(rows)
             self.app.audio.play("ui_move", 0.5)
-        if "CONFIRM" in p.pressed and rows:
-            it = rows[min(self.sel, len(rows) - 1)][0]
-            self.msg = self.g.buy(self.shop_id, it) if self.tab == 0 else self.g.sell(self.shop_id, it)
-            self.sel = min(self.sel, max(0, len(self.rows()) - 1))
+        # mouse: hover selects, click buys/sells, right click leaves, wheel scrolls
+        if 3 in self.inp.mouse_pressed:
+            self.app.scenes.pop()
+            return
+        if self.inp.wheel and rows:
+            self.sel = clamp(self.sel - self.inp.wheel, 0, len(rows) - 1)
+        for rt, t2 in self._mtab:
+            if rt.collidepoint(*self.inp.mouse_pos) and 1 in self.inp.mouse_pressed and self.tab != t2:
+                self.tab = t2
+                self.sel = 0
+                self.app.audio.play("ui_move", 0.5)
+        self._mrows.poll(
+            lambda: min(self.sel, max(0, len(self.rows()) - 1)),
+            lambda i: setattr(self, "sel", min(i, max(0, len(self.rows()) - 1))),
+            lambda i: self._trade_row(i),
+        )
+
+    def _trade_row(self, i: int) -> None:
+        rows = self.rows()
+        if not rows or i >= len(rows):
+            return
+        it = rows[i][0]
+        self.msg = self.g.buy(self.shop_id, it) if self.tab == 0 else self.g.sell(self.shop_id, it)
+        self.sel = min(i, max(0, len(self.rows()) - 1))
 
     def draw(self, surf: pygame.Surface) -> None:
         f = self.app.font
@@ -205,17 +262,23 @@ class ShopScreen(Scene):
         r = pygame.Rect(30, 18, W - 60, H - 36)
         surf.fill((10, 10, 16))
         draw_panel(surf, r, title=self.shop["name"], font=f, alpha=255)
-        f.draw(surf, "BUY" if self.tab == 0 else "SELL", (r.x + 14, r.y + 14), BRASS, None)
-        f.draw(surf, "[L/R] switch", (r.x + 60, r.y + 14), DIM, None)
+        bw = f.width("BUY") + 6
+        f.draw(surf, "BUY", (r.x + 14, r.y + 14), BRASS if self.tab == 0 else DIM, None)
+        f.draw(surf, "SELL", (r.x + 14 + bw, r.y + 14), DIM if self.tab == 0 else BRASS, None)
+        self._mtab = [(pygame.Rect(r.x + 12, r.y + 11, bw, 13), 0),
+                      (pygame.Rect(r.x + 12 + bw, r.y + 11, f.width("SELL") + 4, 13), 1)]
+        f.draw(surf, "[L/R] switch", (r.x + 14 + bw + f.width("SELL") + 10, r.y + 14), DIM, None)
         f.draw(surf, f"Gold: {g.p.gold}", (r.right - 14, r.y + 14), (255, 220, 100), None, anchor="topright")
         rows = self.rows()
         y0 = r.y + 30
         vis = 12
         top = max(0, min(self.sel - vis // 2, max(0, len(rows) - vis)))
+        self._mrows.reset()
         for i, (it, q, price) in enumerate(rows[top:top + vis]):
             idx = top + i
             d = g.cat.item(it)
             rr = pygame.Rect(r.x + 10, y0 + i * 13, 230, 12)
+            self._mrows.add(rr, idx)
             if idx == self.sel:
                 pygame.draw.rect(surf, INK_2, rr)
                 pygame.draw.rect(surf, BRASS, (rr.x, rr.y, 2, rr.h))
@@ -257,6 +320,7 @@ class CraftScreen(Scene):
         self.sel = 0
         self.msg = ""
         self.age = 0.0
+        self._mrows = _MouseRows(self.app)
 
     def recipes(self):
         return self.g.cat.recipes(self.station)
@@ -274,8 +338,23 @@ class CraftScreen(Scene):
         if dy and rs:
             self.sel = (self.sel + dy) % len(rs)
             self.app.audio.play("ui_move", 0.5)
-        if "CONFIRM" in p.pressed and rs:
-            self.msg = self.g.craft(rs[self.sel]["id"])
+        # mouse: hover selects, click crafts, right click closes, wheel scrolls
+        if 3 in self.inp.mouse_pressed:
+            self.app.scenes.pop()
+            return
+        if self.inp.wheel and rs:
+            self.sel = clamp(self.sel - self.inp.wheel, 0, len(rs) - 1)
+        self._mrows.poll(
+            lambda: min(self.sel, max(0, len(self.recipes()) - 1)),
+            lambda i: setattr(self, "sel", min(i, max(0, len(self.recipes()) - 1))),
+            lambda i: self._craft_row(i),
+        )
+
+    def _craft_row(self, i: int) -> None:
+        rs = self.recipes()
+        if rs and i < len(rs):
+            self.sel = i
+            self.msg = self.g.craft(rs[i]["id"])
 
     def draw(self, surf: pygame.Surface) -> None:
         f = self.app.font
@@ -286,9 +365,11 @@ class CraftScreen(Scene):
         rs = self.recipes()
         vis = 12
         top = max(0, min(self.sel - vis // 2, max(0, len(rs) - vis)))
+        self._mrows.reset()
         for i, rc in enumerate(rs[top:top + vis]):
             idx = top + i
             rr = pygame.Rect(r.x + 10, r.y + 16 + i * 13, 190, 12)
+            self._mrows.add(rr, idx)
             if idx == self.sel:
                 pygame.draw.rect(surf, INK_2, rr)
                 pygame.draw.rect(surf, BRASS, (rr.x, rr.y, 2, rr.h))
@@ -400,6 +481,8 @@ class JournalScreen(Scene):
         self.age = 0.0
         self.map_img: pygame.Surface | None = None
         self.map_key = None
+        self._mrows = _MouseRows(self.app)
+        self._mtab: list[tuple[pygame.Rect, int]] = []
 
     # ---- data
     def pack_rows(self) -> list[tuple[str, int]]:
@@ -428,6 +511,35 @@ class JournalScreen(Scene):
         if "R" in p.pressed:
             self.tab = (self.tab + 1) % len(self.TABS)
             self.msg = ""
+        # mouse
+        if self.age > 0.15:
+            if 3 in self.inp.mouse_pressed:
+                self.app.scenes.pop()
+                return
+            for rt, t2 in self._mtab:
+                if rt.collidepoint(*self.inp.mouse_pos) and 1 in self.inp.mouse_pressed and self.tab != t2:
+                    self.tab = t2
+                    self.msg = ""
+                    self.app.audio.play("ui_move", 0.5)
+        wheel = self.inp.wheel
+        if wheel and self.age > 0.15:
+            n_rows = {"Pack": len(self.pack_rows()), "Quests": len(self.quest_rows()), "Beasts": len(self.beast_rows())}.get(
+                self.TABS[self.tab], 0)
+            if n_rows:
+                self.sel[self.tab] = clamp(self.sel[self.tab] - wheel, 0, n_rows - 1)
+        if self.age > 0.15 and self._mrows.rects:
+            if self.tab == 0:
+                rpm = len(self.pack_rows())
+                self._mrows.poll(lambda: min(self.sel[0], rpm - 1) if rpm else 0,
+                                 lambda i: self._tab_sel(0, i, rpm), self._use_row, self._unequip_row)
+            elif self.tab == 1:
+                rq = len(self.quest_rows())
+                self._mrows.poll(lambda: min(self.sel[1], rq - 1) if rq else 0,
+                                 lambda i: self._tab_sel(1, i, rq), lambda i: None)
+            elif self.tab == 4:
+                rb = len(self.beast_rows())
+                self._mrows.poll(lambda: min(self.sel[4], rb - 1) if rb else 0,
+                                 lambda i: self._tab_sel(4, i, rb), lambda i: None)
         dx, dy = p.menu_dir()
         if self.tab == 0:
             rows = self.pack_rows()
@@ -451,6 +563,24 @@ class JournalScreen(Scene):
                 self.sel[4] = (self.sel[4] + dy) % len(rows)
         self.g.toasts.clear() if False else None
 
+    def _tab_sel(self, col: int, i: int, n: int) -> None:
+        if n:
+            self.sel[col] = min(i, n - 1)
+
+    def _use_row(self, i: int) -> None:
+        rows = self.pack_rows()
+        if rows and i < len(rows):
+            self.sel[0] = i
+            self.msg = self.g.use_item(rows[i][0])
+
+    def _unequip_row(self, i: int) -> None:
+        rows = self.pack_rows()
+        if rows and i < len(rows):
+            d = self.g.cat.item(rows[i][0])
+            if d.get("slot") and self.g.p.equip.get(d["slot"]) == d["id"]:
+                self.g.unequip(d["slot"])
+                self.msg = f"Unequipped {d['name']}."
+
     # ---- drawing
     def draw(self, surf: pygame.Surface) -> None:
         f = self.app.font
@@ -459,12 +589,15 @@ class JournalScreen(Scene):
         r = pygame.Rect(8, 8, W - 16, H - 16)
         draw_panel(surf, r, fill=INK, alpha=255)
         x = r.x + 12
+        self._mtab = []
+        self._mrows.reset()
         for i, name in enumerate(self.TABS):
             col = BRASS if i == self.tab else DIM
             tw = f.width(name)
             if i == self.tab:
                 pygame.draw.rect(surf, INK_2, (x - 4, r.y + 6, tw + 8, 13))
                 pygame.draw.rect(surf, BRASS, (x - 4, r.y + 18, tw + 8, 1))
+            self._mtab.append((pygame.Rect(x - 4, r.y + 6, tw + 8, 13), i))
             f.draw(surf, name, (x, r.y + 9), col, None)
             x += tw + 18
         f.draw(surf, f"{g.p.gold}g   {g.time_text()}", (r.right - 12, r.y + 9), (255, 220, 100), None, anchor="topright")
@@ -494,6 +627,7 @@ class JournalScreen(Scene):
             idx = top + i
             d = g.cat.item(it)
             rr = pygame.Rect(body.x, y0 + i * 13, 240, 12)
+            self._mrows.add(rr, idx)
             if idx == sel:
                 pygame.draw.rect(surf, INK_2, rr)
                 pygame.draw.rect(surf, BRASS, (rr.x, rr.y, 2, rr.h))
@@ -525,6 +659,7 @@ class JournalScreen(Scene):
             q = g.cat.quest(qid)
             done = g.quests.is_done(qid)
             rr = pygame.Rect(body.x, y0 + i * 13, 190, 12)
+            self._mrows.add(rr, i)
             if i == sel:
                 pygame.draw.rect(surf, INK_2, rr)
                 pygame.draw.rect(surf, BRASS, (rr.x, rr.y, 2, rr.h))
@@ -632,6 +767,7 @@ class JournalScreen(Scene):
         for i, k in enumerate(rows[:14]):
             e = g.cat.enemy(k)
             rr = pygame.Rect(body.x, body.y + i * 13, 190, 12)
+            self._mrows.add(rr, i)
             if i == sel:
                 pygame.draw.rect(surf, INK_2, rr)
                 pygame.draw.rect(surf, BRASS, (rr.x, rr.y, 2, rr.h))
