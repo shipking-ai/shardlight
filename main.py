@@ -1,3 +1,7 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["numpy"]
+# ///
 """Shared entry point for the browser build (pygbag) and desktop bundles (PyInstaller).
 
 Exactly equivalent to ``python -m shardlight``; every CLI argument is forwarded.
@@ -6,19 +10,16 @@ The async ``main`` is re-exported here because pygbag boots the archive by await
 
     python main.py
 
-The PEP 723 block below is what the browser build reads to learn which packages it
-must install before the game starts: pygbag only scans this file, so without it
-numpy and pygame would be missing at import time.
+The ``import pygame`` below is not decoration: the browser build installs its
+packages by scanning this file for imports, so pygame has to appear here or the
+wasm runtime has no pygame at all.
 """
 from __future__ import annotations
 
-# /// script
-# requires-python = ">=3.12"
-# dependencies = ["numpy"]
-# ///
-
 import asyncio
 import sys
+
+import pygame  # noqa: F401  (imported so the browser build installs pygame)
 
 from shardlight.__main__ import main
 
