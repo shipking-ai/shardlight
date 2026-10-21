@@ -12,7 +12,7 @@ import random
 import pygame
 
 W, H = 480, 270
-SHARDS = ("cinder", "verdant", "umbra", "slipstream", "masks", "terrace", "concord", "prism")
+SHARDS = ("cinder", "verdant", "umbra", "slipstream", "masks", "terrace", "concord", "orrery", "prism")
 PALETTES: dict[str, dict] = {
     "cinder": {"sky": (23, 20, 28), "far": (49, 29, 31), "mid": (83, 42, 32), "ground": (48, 31, 32), "accent": (255, 122, 60), "light": (255, 188, 102)},
     "verdant": {"sky": (18, 30, 20), "far": (42, 67, 48), "mid": (65, 94, 58), "ground": (38, 58, 37), "accent": (106, 163, 74), "light": (211, 224, 157)},
@@ -21,6 +21,7 @@ PALETTES: dict[str, dict] = {
     "masks": {"sky": (24, 15, 27), "far": (57, 25, 34), "mid": (103, 37, 42), "ground": (55, 27, 35), "accent": (214, 58, 44), "light": (255, 178, 107)},
     "terrace": {"sky": (34, 31, 30), "far": (75, 67, 49), "mid": (89, 103, 57), "ground": (83, 57, 39), "accent": (111, 168, 74), "light": (255, 196, 116)},
     "concord": {"sky": (23, 24, 34), "far": (55, 50, 61), "mid": (99, 82, 66), "ground": (83, 73, 67), "accent": (212, 171, 92), "light": (255, 225, 155)},
+    "orrery": {"sky": (8, 10, 22), "far": (17, 24, 46), "mid": (28, 38, 70), "ground": (11, 13, 26), "accent": (96, 196, 232), "light": (206, 240, 255)},
     "prism": {"sky": (12, 17, 36), "far": (31, 39, 72), "mid": (50, 54, 93), "ground": (29, 34, 56), "accent": (141, 133, 255), "light": (184, 224, 255)},
 }
 
@@ -55,6 +56,14 @@ class ShardWorld:
             pygame.draw.circle(surf, self.p["far"], (390, 52), 22)
         elif self.shard == "prism":
             pygame.draw.polygon(surf, (72, 78, 130), [(370, 12), (427, 54), (386, 103), (350, 65)])
+            pygame.draw.polygon(surf, (32, 52, 96), [(370, 12), (386, 103), (350, 65)])
+        elif self.shard == "orrery":
+            # a planet limb underfoot and a hard little sun far away
+            pygame.draw.circle(surf, self.p["mid"], (250, 420), 210)
+            pygame.draw.circle(surf, self.p["far"], (250, 430), 196)
+            pygame.draw.circle(surf, (232, 238, 255), (78, 44), 9)
+            for k in range(3):
+                pygame.draw.circle(surf, self.p["far"], (78, 44), 14 + k * 5, 1)
             pygame.draw.polygon(surf, (32, 52, 96), [(370, 12), (386, 103), (350, 65)])
         if self.shard == "slipstream":
             for i in range(9):
@@ -99,6 +108,11 @@ class ShardWorld:
             for x, y, _ in self.hills[::2]:
                 pygame.draw.rect(surf, (103, 76, 48), (x+8, y+48, 34, 48))
                 pygame.draw.polygon(surf, (132, 95, 59), [(x, y+48), (x+25, y+32), (x+50, y+48)])
+        elif self.shard == "orrery":
+            # the orrery itself: rings around a cold star
+            for rx, ry in ((150, 44), (108, 30), (196, 58)):
+                pygame.draw.ellipse(surf, self.p["mid"], (250 - rx, 74 - ry, rx * 2, ry * 2), 1)
+            pygame.draw.circle(surf, (226, 240, 255), (250, 74), 5)
 
     def ground(self, surf: pygame.Surface, t: float) -> None:
         pygame.draw.rect(surf, self.p["ground"], (0, 184, W, 86))
@@ -111,6 +125,13 @@ class ShardWorld:
             for i in range(7):
                 y = 195 + i * 12
                 pygame.draw.line(surf, (225, 215, 196), (0, y), (480, y+5), 1)
+        elif self.shard == "orrery":
+            # a dark hull deck with a cold rim light
+            pygame.draw.rect(surf, self.p["ground"], (0, 184, W, 86))
+            pygame.draw.line(surf, self.p["accent"], (0, 186), (480, 186), 1)
+            for i in range(24):
+                x = (i * 21) % W
+                pygame.draw.circle(surf, self.p["far"], (x, 214), 2)
         else:
             for i in range(28):
                 x = (i * 67 + int(t * (8 if self.shard == "cinder" else 2))) % W

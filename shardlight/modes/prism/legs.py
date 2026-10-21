@@ -20,6 +20,7 @@ import random
 import pygame
 
 from ...core.scene import Scene
+from .world import ShardWorld
 
 INK = (14, 12, 30)
 PAPER = (238, 232, 210)
@@ -28,6 +29,9 @@ DIM = (150, 146, 176)
 LAMP = (255, 226, 168)
 DANGER = (214, 96, 84)
 W, H = 480, 270
+PATH_Y = 214          # the line the lamp-bearer walks
+PATH_X0 = 44
+PATH_X1 = W - 44
 
 
 class Leg(Scene):
@@ -55,6 +59,7 @@ class Leg(Scene):
         self.progress = 0.0
         self.holding = False
         self.flash = 0.0
+        self.world = ShardWorld(self.shard, self.seed)
 
     # ------------------------------------------------------------------ input
     def _player(self):
@@ -91,6 +96,27 @@ class Leg(Scene):
         self.state = "won"
 
     # ------------------------------------------------------------------ look
+    def _path_x(self) -> float:
+        """Where the lamp-bearer walks: the progress of the leg along the path."""
+        return PATH_X0 + (PATH_X1 - PATH_X0) * max(0.0, min(1.0, self.progress))
+
+    def _scene(self, surf) -> None:
+        """Paint the shard this leg belongs to."""
+        w = self.world
+        w.backdrop(surf, self.t)
+        w.midground(surf, self.t)
+        w.ground(surf, self.t)
+
+    def _bearer(self, surf) -> None:
+        """The lamp-bearer and the pool of light the lamp throws."""
+        x = self._path_x()
+        self.world.lamp_light(surf, x, PATH_Y, 74.0)
+        self.world.traveller(surf, x, PATH_Y, self.t, self.holding)
+
+    def _finish_frame(self, surf) -> None:
+        self.world.particles(surf, self.t)
+        self.world.grade(surf)
+
     def _backdrop(self, surf) -> None:
         surf.fill(INK)
         # a slow drift of stars so the scene is never static
@@ -110,7 +136,7 @@ class Leg(Scene):
         pygame.draw.circle(surf, (255, 250, 230), (int(x), int(y)), max(2, int(r * 0.45)))
 
     def _bar(self, surf, y: int, value: float, color=GOLD) -> None:
-        x0, x1 = 40, W - 40
+        x0, x1 = PATH_X0, PATH_X1
         pygame.draw.rect(surf, (44, 40, 62), (x0, y, x1 - x0, 8))
         pygame.draw.rect(surf, color, (x0, y, int((x1 - x0) * max(0.0, min(1.0, value))), 8))
         pygame.draw.rect(surf, (70, 64, 96), (x0, y, x1 - x0, 8), 1)
@@ -152,11 +178,12 @@ class SpireLeg(Leg):
         self.embers = [(x, y - 40 * s * dt, s) for (x, y, s) in self.embers]
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
+        self._scene(surf)
         for (x, y, s) in self.embers:
             pygame.draw.circle(surf, (250, 150 + int(80 * s), 70), (int(x), int(y)), max(1, int(2 * s)))
-        self._bar(surf, H - 40, self.progress)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 58)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._bearer(surf)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -182,12 +209,13 @@ class WispLeg(Leg):
         self.progress = max(0.0, self.progress)
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
+        self._scene(surf)
         for i in range(14):
             x = (i * 61 + self.t * 140 * (0.4 + self.gust)) % (W + 40) - 20
-            pygame.draw.line(surf, (70, 90, 70), (int(x), 40 + i * 6), (int(x + 26), 40 + i * 6), 1)
-        self._bar(surf, H - 40, self.progress)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 58)
+            pygame.draw.line(surf, (120, 150, 120), (int(x), 40 + i * 6), (int(x + 26), 40 + i * 6), 1)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._bearer(surf)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -220,14 +248,19 @@ class ShadowLeg(Leg):
             self.state = "lost"
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
-        surf.fill((6, 7, 12))
+        self._scene(surf)
+        veil = pygame.Surface((W, H), pygame.SRCALPHA)
+        veil.fill((4, 6, 12, 205))
+        surf.blit(veil, (0, 0))
         for i in range(30):
             x = (i * 71 + self.t * 20) % (W + 20) - 10
-            pygame.draw.circle(surf, (30, 34, 44), (int(x), (i * 37) % H), 2)
-        self._bar(surf, H - 40, self.progress)
-        self._bar(surf, H - 52, self.heat, DANGER)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 64, 5.0 + 3.0 * self.heat)
+            pygame.draw.circle(surf, (40, 46, 58), (int(x), (i * 37) % H), 2)
+        self._bar(surf, PATH_Y + 10, self.progress)
+        self._bar(surf, PATH_Y + 24, self.heat, DANGER)
+        x = self._path_x()
+        self.world.lamp_light(surf, x, PATH_Y, 58.0 + 26.0 * self.heat)
+        self.world.traveller(surf, x, PATH_Y, self.t, self.holding)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -251,13 +284,14 @@ class LapLeg(Leg):
         self.progress += self.rate * self.speed * dt
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
+        self._scene(surf)
         for i in range(9):
             y = 60 + i * 20
             off = int((self.t * 240 * self.speed) % 60)
-            pygame.draw.line(surf, (90, 90, 120), (0, y + off), (W, y + off - 40), 1)
-        self._bar(surf, H - 40, self.progress)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 58)
+            pygame.draw.line(surf, (150, 150, 190), (0, y + off), (W, y + off - 40), 1)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._bearer(surf)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -300,17 +334,18 @@ class DuelLeg(Leg):
         self.progress = max(0.0, self.progress - 0.0)
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
+        self._scene(surf)
         lo, hi = self.BAND
         x0, x1 = 60, W - 60
         pygame.draw.rect(surf, (60, 56, 84), (x0, 120, x1 - x0, 22))
-        pygame.draw.rect(surf, (150, 140, 90), (x0 + (x1 - x0) * lo, 118, (x1 - x0) * (hi - lo), 26), 2)
+        pygame.draw.rect(surf, (180, 165, 105), (x0 + (x1 - x0) * lo, 118, (x1 - x0) * (hi - lo), 26), 2)
         mx = x0 + (x1 - x0) * self.mark
         pygame.draw.rect(surf, LAMP if self.hit_flash <= 0 else (255, 255, 255), (mx - 3, 112, 6, 38))
         f = self.app.font
         f.draw(surf, f"parries {self.hits}/{self.needed}", (10, 96), PAPER, (0, 0, 0))
-        self._bar(surf, H - 40, self.progress)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 58)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._bearer(surf)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -352,17 +387,18 @@ class BloomLeg(Leg):
                 self.meter = 0.5
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
+        self._scene(surf)
         lo, hi = self.WINDOW
         x0, x1 = 60, W - 60
         pygame.draw.rect(surf, (46, 60, 44), (x0, 120, x1 - x0, 22))
-        pygame.draw.rect(surf, (120, 200, 120), (x0 + (x1 - x0) * lo, 118, (x1 - x0) * (hi - lo), 26), 2)
+        pygame.draw.rect(surf, (140, 215, 140), (x0 + (x1 - x0) * lo, 118, (x1 - x0) * (hi - lo), 26), 2)
         mx = x0 + (x1 - x0) * self.meter
         pygame.draw.rect(surf, (255, 240, 200), (mx - 3, 112, 6, 38))
         f = self.app.font
         f.draw(surf, f"blooms {self.blooms}/{self.needed}", (10, 96), PAPER, (0, 0, 0))
-        self._bar(surf, H - 40, self.progress)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 58)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._bearer(surf)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -399,12 +435,13 @@ class MarketLeg(Leg):
         self.progress = max(0.0, (self.ledger - self.start) / max(1, self.goal - self.start))
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
+        self._scene(surf)
         f = self.app.font
         f.draw(surf, f"ledger {self.ledger} / {self.goal}", (10, 96), PAPER, (0, 0, 0))
         f.draw(surf, f"turns {self.turn}/{self.turns}", (10, 108), DIM, (0, 0, 0))
-        self._bar(surf, H - 40, self.progress)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 58)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._bearer(surf)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -455,13 +492,14 @@ class SwarmLeg(Leg):
             self.state = "won"
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
+        self._scene(surf)
         for (x, y) in self.lights:
             pygame.draw.circle(surf, DANGER, (int(x), int(y)), 5)
         pygame.draw.circle(surf, LAMP, (int(self.ship_x), int(H / 2)), 8)
         f = self.app.font
         f.draw(surf, f"survived {int(self.t)}s", (10, 96), PAPER, (0, 0, 0))
-        self._bar(surf, H - 40, self.progress)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._finish_frame(surf)
         self._hud(surf)
 
 
@@ -480,7 +518,8 @@ class HallFinale(Leg):
         self.id = "hall"
 
     def draw(self, surf) -> None:
-        self._backdrop(surf)
-        self._bar(surf, H - 40, self.progress)
-        self._lamp(surf, 40 + (W - 80) * self.progress, H - 58)
+        self._scene(surf)
+        self._bar(surf, PATH_Y + 18, self.progress)
+        self._bearer(surf)
+        self._finish_frame(surf)
         self._hud(surf)

@@ -8,6 +8,9 @@ import pygame
 
 from . import tri
 from .legs import Leg
+from .world import PALETTES
+
+SHARD_ORDER = ("cinder", "verdant", "umbra", "slipstream", "masks", "terrace", "concord", "orrery")
 
 
 class HallFinale(Leg):
@@ -96,6 +99,7 @@ class HallFinale(Leg):
         else:
             render_cam = self.cam
         tri.render(surf, self.mesh, render_cam, post=True)
+        self._shard_streaks(surf)
 
         # 2D chrome
         w, h = surf.get_size()
@@ -105,7 +109,7 @@ class HallFinale(Leg):
         f = self.app.font
         if self.hud_t > 0:
             f.draw(surf, "Fly the seam", (8, 8), (240, 235, 210), (0, 0, 0))
-        f.draw(surf, "Hall", (8, h - 18), (230, 200, 120), (0, 0, 0))
+        f.draw(surf, "The Hall of the Lens", (8, h - 18), (230, 200, 120), (0, 0, 0))
 
         if self.state == "whiteout":
             alpha = min(1.0, self.whiteout_t / 2.0)
@@ -115,6 +119,23 @@ class HallFinale(Leg):
             surf.blit(overlay, (0, 0))
         elif self.state == "done":
             surf.fill((255, 255, 255))
+
+    def _shard_streaks(self, surf) -> None:
+        """The eight shard colours stream past the hull on the way to the Lens."""
+        if self.state != "glide":
+            return
+        w, h = surf.get_size()
+        for i, shard in enumerate(SHARD_ORDER):
+            pal = PALETTES[shard]
+            phase = (self.t * 0.35 + i * 0.12) % 1.0
+            x = int((1.0 - phase) * (w + 60) - 30)
+            y = int(h * 0.5 + math.sin(self.t * 1.3 + i) * h * 0.28)
+            fade = int(90 * (1.0 - phase))
+            if fade <= 2:
+                continue
+            streak = pygame.Surface((26, 3), pygame.SRCALPHA)
+            streak.fill((*pal["accent"], fade))
+            surf.blit(streak, (x, y))
 
     def debug_force_win(self):
         if self._replaced:

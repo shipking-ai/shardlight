@@ -4,6 +4,7 @@ from __future__ import annotations
 from ...core.scene import ModeScene
 from ...core import log
 from . import tourspec
+from .route import LEG_SHARDS, LEG_TITLES, RouteScene, draw_title_card
 
 LOG = log.get("prism.tourroot")
 
@@ -31,8 +32,10 @@ class TourRoot(ModeScene):
         self.prof = prof
         self.leg_index = int(prof.get("leg", 0))
         self.leg_index = max(0, min(self.leg_index, len(self.legs_spec)))
-        self.state = "run"          # run | retry | done
+        self.state = "run"          # run | retry | route | done
         self.overlay_t = 0.0
+        self.route: RouteScene | None = None
+        self.card_t = 0.0
         self._start_leg()
 
     def _start_leg(self) -> None:
@@ -47,9 +50,16 @@ class TourRoot(ModeScene):
         self.leg.leg_number = self.leg_index + 1
         self.leg.legs_total = len(self.legs_spec)
         self.state = "run"
+        self.card_t = 0.0
 
     def update(self, dt: float) -> None:
         if getattr(self, "_broken", False):
+            return
+        if self.state == "route":
+            if self.route is not None:
+                self.route.update(dt)
+                if self.route.continue_requested:
+                    self._leave_route()
             return
         if self.state == "retry":
             self.overlay_t += dt
@@ -61,6 +71,7 @@ class TourRoot(ModeScene):
             return
         if self.state == "done":
             return
+        self.card_t += dt
         p = self.inp.player(0)
         if "B" in p.pressed or "BACK" in p.pressed or "PAUSE" in p.pressed:
             # the tour must never trap the player
@@ -81,6 +92,21 @@ class TourRoot(ModeScene):
         self.prof["leg"] = self.leg_index + 1
         self.app.save_now()
         self.leg_index += 1
+        self._show_route()
+
+    def _show_route(self) -> None:
+        """Between legs: the journey screen, so the tour reads as a road, not a queue."""
+        if self.leg_index >= len(self.legs_spec):
+            self._start_finale()
+            return
+        spec = self.legs_spec[self.leg_index]
+        self.route = RouteScene(self.app, self.legs_spec, self.prof["done_legs"], self.leg_index,
+                                LEG_TITLES.get(spec["id"], spec["id"]),
+                                LEG_SHARDS.get(spec["id"], spec["shard"]))
+        self.state = "route"
+
+    def _leave_route(self) -> None:
+        self.route = None
         if self.leg_index >= len(self.legs_spec):
             self._start_finale()
         else:
@@ -107,12 +133,19 @@ class TourRoot(ModeScene):
     def draw(self, surf) -> None:
         if getattr(self, "_broken", False):
             return
+        if self.state == "route" and self.route is not None:
+            self.route.draw(surf)
+            return
         if self.state == "retry":
             self.leg.draw(surf)
             self._draw_retry_overlay(surf)
             return
         if self.leg is not None:
             self.leg.draw(surf)
+            if self.state == "run" and self.card_t < 3.0:
+                title = LEG_TITLES.get(self.leg.id, self.leg.title)
+                shard = LEG_SHARDS.get(self.leg.id, self.leg.shard)
+                draw_title_card(surf, self.app.font, title, shard, self.card_t)
 
     def _draw_retry_overlay(self, surf) -> None:
         import pygame
