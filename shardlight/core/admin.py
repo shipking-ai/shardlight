@@ -1,5 +1,19 @@
-"""Admin-only cheat tools. Gated behind ``app.admin`` (debug flag or SHARDLIGHT_ADMIN env)."""
+"""Admin-only cheat tools. Gated behind a verified admin token (see verify_token)."""
 from __future__ import annotations
+
+import hashlib
+import os
+
+# SHA-256 of the admin token. The plaintext token is never stored in the repo;
+# it is handed to administrators out of band.
+_ADMIN_TOKEN_HASH = "4c3786edb370a355fdb24367cacb413117891753d6da264ac095f2e85b194145"
+
+
+def verify_token(token: str | None) -> bool:
+    if not token:
+        return False
+    return hashlib.sha256(token.encode("utf-8")).hexdigest() == _ADMIN_TOKEN_HASH
+
 
 from .ui import MenuScene, MenuItem
 

@@ -51,6 +51,11 @@ class App:
         self.headless = headless
         self.admin = False
         self.admin_god = False
+        try:
+            from .admin import verify_token
+            self.admin = verify_token(__import__("os").environ.get("SHARDLIGHT_ADMIN_TOKEN"))
+        except Exception:
+            self.admin = False
         self.running = False
         pygame.init()
         self.settings = Settings()
