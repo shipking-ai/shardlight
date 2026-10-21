@@ -44,6 +44,8 @@ class TourRoot(ModeScene):
         self.leg = cls(self.app, spec["seed"], spec["config"])
         self.leg.id = spec["id"]
         self.leg.shard = spec["shard"]
+        self.leg.leg_number = self.leg_index + 1
+        self.leg.legs_total = len(self.legs_spec)
         self.state = "run"
 
     def update(self, dt: float) -> None:
@@ -51,13 +53,18 @@ class TourRoot(ModeScene):
             return
         if self.state == "retry":
             self.overlay_t += dt
-            p = self.app.inp.player(0)
+            p = self.inp.player(0)
             if "CONFIRM" in p.pressed or "A" in p.pressed:
                 self._retry()
             elif "B" in p.pressed:
                 self._abort_to_hub()
             return
         if self.state == "done":
+            return
+        p = self.inp.player(0)
+        if "B" in p.pressed or "BACK" in p.pressed or "PAUSE" in p.pressed:
+            # the tour must never trap the player
+            self._abort_to_hub()
             return
         self.leg.update(dt)
         if self.leg.state == "won":

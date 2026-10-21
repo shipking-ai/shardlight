@@ -4,16 +4,22 @@ Nothing here is needed at game run time.  All functions take mono float arrays a
 """
 from __future__ import annotations
 
-import wave
 from pathlib import Path
 
 import numpy as np
 
 from .synth import SR
 
+try:  # the browser build (pygbag) has no wave module; these helpers are tools-only
+    import wave
+except ImportError:  # pragma: no cover - platform dependent
+    wave = None  # type: ignore[assignment]
+
 
 def load_wav(path: str | Path) -> np.ndarray:
     """16-bit mono WAV -> float32 in [-1, 1)."""
+    if wave is None:
+        raise RuntimeError("the wave module is unavailable in this build")
     with wave.open(str(path), "rb") as w:
         assert w.getsampwidth() == 2 and w.getnchannels() == 1, "expected 16-bit mono"
         data = np.frombuffer(w.readframes(w.getnframes()), dtype="<i2")
@@ -21,6 +27,8 @@ def load_wav(path: str | Path) -> np.ndarray:
 
 
 def wav_info(path: str | Path) -> dict:
+    if wave is None:
+        raise RuntimeError("the wave module is unavailable in this build")
     with wave.open(str(path), "rb") as w:
         return {"channels": w.getnchannels(), "width": w.getsampwidth(), "rate": w.getframerate(), "frames": w.getnframes()}
 

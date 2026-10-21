@@ -6,10 +6,14 @@ is missing).  Keep every function deterministic: noise takes an explicit seed.
 """
 from __future__ import annotations
 
-import wave
 from pathlib import Path
 
 import numpy as np
+
+try:  # the browser build (pygbag) has no wave module: nothing there writes WAVs
+    import wave
+except ImportError:  # pragma: no cover - platform dependent
+    wave = None  # type: ignore[assignment]
 
 SR = 22050
 
@@ -189,6 +193,8 @@ def make_loop(x: np.ndarray, loop_len: int) -> np.ndarray:
 
 
 def write_wav(path: str | Path, x: np.ndarray) -> None:
+    if wave is None:
+        raise RuntimeError("the wave module is unavailable in this build")
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     pcm = (np.clip(x, -1, 1) * 32767).astype(np.int16)
     with wave.open(str(path), "wb") as w:
