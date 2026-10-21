@@ -13,6 +13,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--seed", type=int, default=None, help="deterministic seed for procedural content")
     ap.add_argument("--no-audio", action="store_true", help="run without sound")
     ap.add_argument("--headless", action="store_true", help="no window (smoke test); use with --frames")
+    ap.add_argument("--frames", type=int, default=None, help="exit after N rendered frames")
     ap.add_argument("--admin-token", default=None, help=argparse.SUPPRESS)
     ap.add_argument("--screenshot", help="save a screenshot to this path when exiting")
     ap.add_argument("--debug", action="store_true", help="verbose logging and FPS overlay")
