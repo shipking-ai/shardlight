@@ -98,7 +98,8 @@ class AudioManager:
         folder = self.root / "music" / name
         files: dict[str, Path] = {}
         # WAV is what we render locally; OGG is what the browser build ships (far smaller).
-        for p in list(folder.glob("*.wav")) + list(folder.glob("*.ogg")):
+        # WAV wins when both exist, so a stale OGG never shadows a fresh local render.
+        for p in list(folder.glob("*.ogg")) + list(folder.glob("*.wav")):
             files[p.stem] = p
         if not files:
             if name not in self._missing:
