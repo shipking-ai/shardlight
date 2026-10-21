@@ -118,3 +118,14 @@ def test_finale_cannot_hard_fail(game):
         f.update(1 / 60)
     assert f.state in ("glide", "whiteout", "done")
 
+
+def test_finale_frame_budget(game):
+    import time
+    from shardlight.modes.prism.finale import HallFinale
+    f = HallFinale(game.app, 129, {'debris': 40})
+    t0 = time.perf_counter()
+    for _ in range(60):
+        f.update(1/60)
+        f.draw(game.app.frame)
+    dt = (time.perf_counter() - t0) / 60 * 1000.0
+    assert dt <= 100.0, dt
