@@ -237,7 +237,7 @@ def _try_floor(lib: Library, rng: Rng, seed: int, floor: int, mods: Modifiers, c
                 dist[b] = dist[a] + 1
                 dq.append(b)
     exit_id = max(dist, key=lambda k: (dist[k], k))
-    boss = {3: "slag_colossus", 5: "crown_of_embers", 7: "crown_of_embers"}.get(floor, "")
+    boss = {3: "slag_colossus", 5: "crown_of_embers", 7: "ash_wyrm"}.get(floor, "")
     leaves = [i for i in adj if len(adj[i]) == 1 and i not in (0, exit_id)]
     rng.shuffle(leaves)
     kinds: dict[int, str] = {0: "start", exit_id: "boss" if boss else "stair"}

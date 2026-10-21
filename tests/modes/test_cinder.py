@@ -489,7 +489,8 @@ def boss_room(lib, bid, floor):
     return room
 
 
-@pytest.mark.parametrize("bid,floor,phases", [("slag_colossus", 3, 1), ("crown_of_embers", 5, 2), ("choir_warden", 2, 2)])
+@pytest.mark.parametrize("bid,floor,phases", [("slag_colossus", 3, 1), 
+("crown_of_embers", 5, 2), ("choir_warden", 2, 2), ("ash_wyrm", 7, 2)])
 def test_bosses_have_phases_telegraph_everything_and_can_be_beaten(lib, bid, floor, phases):
     room = boss_room(lib, bid, floor)
     boss = room.boss

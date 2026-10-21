@@ -478,7 +478,7 @@ class RunScreen(Scene):
         self.pending = None
         room = self.room
         if side == "stair":
-            if self.run.floor >= FLOORS or room.spec.boss == "crown_of_embers" and room.boss_defeated:
+            if self.run.floor >= FLOORS or room.spec.boss in ("crown_of_embers", "ash_wyrm") and room.boss_defeated:
                 self._end(True)
                 return
             self.run.hp = room.player.hp

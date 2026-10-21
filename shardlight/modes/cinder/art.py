@@ -456,6 +456,17 @@ def draw_boss(surf: pygame.Surface, e, ox: int, oy: int, t: int) -> None:
             pygame.draw.circle(surf, EMBER, (int(px), int(py - 9 - (3 if i % 2 else 0))), 2)
         circ(surf, (255, 240, 200), (x, cy + 1), 4 + int(abs(math.sin(t * 0.1)) * 2))
         blit_additive_glow(surf, (x, cy), int(e.r * 3), (90, 40, 10), 2)
+    elif bid == "ash_wyrm":
+        teal = (80, 200, 180) if not flash else (255, 255, 255)
+        bob = math.sin(t * 0.07) * 2
+        cy = y + bob
+        for i in range(6):
+            a = i * 0.9 + math.sin(t * 0.05 + i) * 0.3
+            px = x + math.cos(a) * (e.r - i * 0.5)
+            py = cy + math.sin(a) * (e.r * 0.6 - i * 0.8)
+            circ(surf, (40, 90, 80) if not flash else (255, 255, 255), (px, py), max(2, e.r - i * 1.2))
+        circ(surf, teal, (x, cy - 6), 5)
+        blit_additive_glow(surf, (x, cy - 6), int(e.r * 2.6), (20, 80, 70), 2)
     else:
         robe = (150, 130, 200) if not flash else (255, 255, 255)
         pol(surf, robe, [(x - 11, y + 8), (x - 6, y - 14), (x + 6, y - 14), (x + 11, y + 8)])

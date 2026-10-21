@@ -18,9 +18,10 @@ from .entities import ENEMY_TEAM, Hazard, Hitbox, Projectile
 from .geometry import angle_to, dist, turn_toward, unit
 
 BOSS_NAMES = {"slag_colossus": "The Slag Colossus", "crown_of_embers": "The Crown of Embers",
-              "choir_warden": "The Choir Warden"}
-BOSS_HP = {"slag_colossus": 460.0, "crown_of_embers": 640.0, "choir_warden": 420.0}
-BOSS_PHASES = {"slag_colossus": (0.55,), "crown_of_embers": (0.66, 0.28), "choir_warden": (0.66, 0.3)}
+              "choir_warden": "The Choir Warden", "ash_wyrm": "The Ash Wyrm"}
+BOSS_HP = {"slag_colossus": 460.0, "crown_of_embers": 640.0, "choir_warden": 420.0, "ash_wyrm": 520.0}
+BOSS_PHASES = {"slag_colossus": (0.55,), "crown_of_embers": (0.66, 0.28), "choir_warden": (0.66, 0.3),
+               "ash_wyrm": (0.6, 0.25)}
 
 
 class Boss(Enemy):
@@ -35,7 +36,8 @@ class Boss(Enemy):
         self.title = BOSS_NAMES[bid]
         self.max_poise = 1e9
         self.slag = 30
-        self.brain = {"slag_colossus": Colossus, "crown_of_embers": Crown, "choir_warden": Warden}[bid](self, room)
+        self.brain = {"slag_colossus": Colossus, "crown_of_embers": Crown, "choir_warden": Warden,
+                      "ash_wyrm": AshWyrm}[bid](self, room)
         self.untargetable = True
         self.spawn_t = 0
         self.boss_id = bid
@@ -344,6 +346,21 @@ class Crown(BossBrain):
                     continue
                 self.shot(room, e.x, e.y, a, 1.4, 8, 190)
         return t > 96
+
+
+class AshWyrm(Crown):
+    ATTACKS = {0: [("spiral", 3), ("blink", 2), ("pulse", 2)],
+               1: [("spiral", 2), ("pulse", 3), ("rays", 2), ("blink", 1)],
+               2: [("pulse", 3), ("rays", 3), ("spiral", 2), ("blink", 1)]}
+
+    def on_phase(self, room, e) -> None:
+        if self.phase == 1:
+            for (bx, by) in ((120, 90), (328, 90), (120, 160), (328, 160)):
+                room.add_hazard(Hazard(bx, by, 18, 10 ** 9, dps=10, team=ENEMY_TEAM, kind="vent", period=260, on_frames=50,
+                                       warn=50, phase=(bx + by) % 260))
+        if self.phase == 2:
+            self.collapse_t = 1
+            room.emit("collapse", e.x, e.y)
 
 
 # ================================================================================================ Choir Warden
