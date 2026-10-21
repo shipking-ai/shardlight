@@ -11,3 +11,6 @@ admin.token
 assets/audio/music/
 assets/audio/sfx/
 assets/audio/MANIFEST.json
+
+# user data written by the game
+userdata/
