@@ -515,13 +515,48 @@ class FlightScreen(Scene):
         c.ability = "R" in p.pressed and self.fs.nearest_interactive() is None
         c.dampers = self.dampers
         c.aim_assist = bool(self.app.settings.get("access.aim_assist"))
+        if getattr(self.app, "admin_aimbot", False):
+            target = self._admin_aim_target()
+            if target is not None:
+                pl = self.fs.player
+                desired = math.atan2(target.y - pl.y, target.x - pl.x)
+                diff = (desired - pl.heading + math.pi) % (2 * math.pi) - math.pi
+                c.turn = max(-1.0, min(1.0, diff * 2.0))
+                c.pulse = True
+                c.aim_assist = True
         return c
+
+    def _admin_aim_target(self):
+        """Nearest living hostile, used by the admin aimbot."""
+        fs = getattr(self, "fs", None)
+        if fs is None:
+            return None
+        pl = getattr(fs, "player", None)
+        if pl is None:
+            return None
+        best, bd = None, 1e9
+        for e in getattr(fs, "enemies", ()):  # type: ignore[arg-type]
+            if not getattr(e, "alive", False):
+                continue
+            d = (e.x - pl.x) ** 2 + (e.y - pl.y) ** 2
+            if d < bd:
+                best, bd = e, d
+        return best
+
+    def _admin_aim_snap(self) -> None:
+        """Point the nose exactly at the target: the admin aimbot does not miss."""
+        target = self._admin_aim_target()
+        if target is None:
+            return
+        pl = self.fs.player
+        pl.heading = math.atan2(target.y - pl.y, target.x - pl.x)
 
     def update(self, dt: float) -> None:
         if self.paused:
             return
         self.t += 1
         fs, g = self.fs, self.g
+        fs.admin_oneshot = bool(getattr(self.app, "admin_oneshot", False))
         p0 = self.inp.player(0)
         self.msg_t = max(0, self.msg_t - 1)
         self.banner_t = max(0, self.banner_t - 1)
@@ -533,6 +568,8 @@ class FlightScreen(Scene):
             self.os.open_map()
             return
         fs.update(self.controls(), 1 / 60)
+        if getattr(self.app, "admin_aimbot", False):
+            self._admin_aim_snap()
         if getattr(self.app, "admin_god", False):
             pl = fs.player
             pl.hull = pl.hull_max

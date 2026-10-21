@@ -222,6 +222,10 @@ class PlayScreen(Scene):
         self.t += 1
         g = self.g
         p0 = self.inp.player(0)
+        if getattr(self.app, "admin_god", False):
+            hp_max = getattr(g.p, "hp_max", None) or HEALTH_MAX
+            g.p.hp = hp_max
+            g.p.dead = False
         self.fade = max(0.0, self.fade - dt * 1.6)
         self.banner_t = max(0.0, self.banner_t - dt)
         self.hit_flash = max(0.0, self.hit_flash - dt)

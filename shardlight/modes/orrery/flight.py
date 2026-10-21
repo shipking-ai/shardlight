@@ -502,6 +502,8 @@ class FlightSim:
     def _damage(self, s: Ship, amount: float, shield_mul: float, hull_mul: float, src: Ship | None) -> None:
         if not s.alive or amount <= 0:
             return
+        if src is self.player and getattr(self, "admin_oneshot", False):
+            amount = 9999.0
         if s is self.player and self.player.slip > 0:
             amount *= 0.5
         s.flash = 4

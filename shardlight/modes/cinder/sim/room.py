@@ -523,6 +523,8 @@ class Room:
 
     def _damage_enemy(self, e: Enemy, dmg: float, src, ang: float, direct: bool = True) -> float:
         run = self.run
+        if getattr(self, "admin_oneshot", False):
+            dmg = 9999.0
         apply = getattr(src, "apply", ())
         poise_dmg = getattr(src, "poise", 0.0)
         knock = getattr(src, "knock", 0.0)

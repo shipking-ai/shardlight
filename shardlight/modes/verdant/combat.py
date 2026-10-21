@@ -228,6 +228,8 @@ def damage_enemy(game, e: Enemy, dmg: float, dx: float, dy: float, source: str) 
         game.float_text("Lamplight!", e.x, e.y - 1.1, (255, 230, 140))
     if e.d["ai"] == "boss" and e.aux.get("armor_t", 0) > 0:
         dmg *= 0.5
+    if getattr(game, "admin_oneshot", False):
+        dmg = 9999.0
     e.hp -= dmg
     e.hurt_total += dmg
     e.flash = 0.18

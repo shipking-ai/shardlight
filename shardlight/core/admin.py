@@ -79,6 +79,11 @@ class AdminPanel(MenuScene):
         # verdant: max out everything
         if getattr(top, "game", None) is not None:
             items.append(MenuItem("Max out everything", self._max_verdant))
+        # any shard: max it out
+        if mode_id is not None:
+            items.append(MenuItem("Max out this shard", self._max_shard))
+        items.append(MenuItem(f"Aimbot: {'ON' if getattr(a, 'admin_aimbot', False) else 'OFF'}", self._toggle_aimbot))
+        items.append(MenuItem(f"One-shot: {'ON' if getattr(a, 'admin_oneshot', False) else 'OFF'}", self._toggle_oneshot))
         items.append(MenuItem(f"God mode: {'ON' if getattr(a, 'admin_god', False) else 'OFF'}", self._toggle_god))
         items.append(MenuItem("Close", a.scenes.pop))
         return items
@@ -251,4 +256,22 @@ class AdminPanel(MenuScene):
     def _toggle_god(self) -> None:
         self.app.admin_god = not getattr(self.app, "admin_god", False)
         self.app.toast(f"God mode {'ON' if self.app.admin_god else 'OFF'} (admin)", (255, 220, 120))
+        self.rebuild()
+
+    def _toggle_aimbot(self) -> None:
+        self.app.admin_aimbot = not getattr(self.app, "admin_aimbot", False)
+        self.app.toast(f"Aimbot {'ON' if self.app.admin_aimbot else 'OFF'} (admin)", (255, 220, 120))
+        self.rebuild()
+
+    def _toggle_oneshot(self) -> None:
+        self.app.admin_oneshot = not getattr(self.app, "admin_oneshot", False)
+        self.app.toast(f"One-shot {'ON' if self.app.admin_oneshot else 'OFF'} (admin)", (255, 220, 120))
+        self.rebuild()
+
+    def _max_shard(self) -> None:
+        from .admin_cheats import max_out
+
+        top = self.target
+        summary = max_out(self.app, top)
+        self.app.toast(summary, (150, 230, 170))
         self.rebuild()

@@ -48,6 +48,7 @@ class VerdantScene(ModeScene):
         self.t += 1
         if self.game is not None:
             self.game.admin_god = bool(getattr(self.app, "admin_god", False))
+            self.game.admin_oneshot = bool(getattr(self.app, "admin_oneshot", False))
         if self.screen:
             self.screen.update(dt)
 

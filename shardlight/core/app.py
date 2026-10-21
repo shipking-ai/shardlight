@@ -52,6 +52,8 @@ class App:
         self.headless = headless
         self.admin = False
         self.admin_god = False
+        self.admin_aimbot = False
+        self.admin_oneshot = False
         try:
             from .admin import verify_token, resolve_admin_token
             self.admin = verify_token(resolve_admin_token())

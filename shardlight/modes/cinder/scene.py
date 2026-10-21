@@ -371,6 +371,20 @@ class RunScreen(Scene):
         self.debug_lines: list[str] = []
 
     # ------------------------------------------------------------------ floors and rooms
+    def _admin_aim_target(self, room):
+        """Nearest living enemy, used by the admin aimbot."""
+        best, bd = None, 1e9
+        p = getattr(room, "player", None)
+        if p is None:
+            return None
+        for e in getattr(room, "enemies", ()):  # type: ignore[arg-type]
+            if not getattr(e, "alive", False):
+                continue
+            d = (e.x - p.x) ** 2 + (e.y - p.y) ** 2
+            if d < bd:
+                best, bd = e, d
+        return best
+
     def on_enter(self, **kw) -> None:
         self.app.input.assign_local(1)
         self.start_floor(1)
@@ -459,6 +473,15 @@ class RunScreen(Scene):
             return
         intent = make_intent(self.app, p0, self.toggle) if self.fade < 0.5 else Intent()
         room.admin_god = bool(getattr(self.app, "admin_god", False))
+        room.admin_oneshot = bool(getattr(self.app, "admin_oneshot", False))
+        if getattr(self.app, "admin_aimbot", False):
+            target = self._admin_aim_target(room)
+            if target is not None:
+                p = room.player
+                dx = target.x - p.x
+                dy = target.y - p.y
+                n = math.hypot(dx, dy) or 1.0
+                intent.aim = (dx / n, dy / n)
         room.update(intent)
         self._events(room.drain_events())
         for req in room.ui_requests:
