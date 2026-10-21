@@ -24,8 +24,8 @@ class Leg(Scene):
     def _hud_band(self, surf, name: str, reminder: str) -> None:
         f = self.app.font
         if self.hud_t > 0:
-            f.write(surf, reminder, 8, 8, (240, 235, 210))
-        f.write(surf, name, 8, 252, (230, 200, 120))
+            f.draw(surf, reminder, (8, 8), (240, 235, 210), (0, 0, 0))
+        f.draw(surf, name, (8, 252), (230, 200, 120), (0, 0, 0))
 
 
 class SpireLeg(Leg):

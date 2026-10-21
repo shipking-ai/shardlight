@@ -74,3 +74,47 @@ def test_poly_budget_under_limit():
     from shardlight.modes.prism.tri import HallMesh
     m = HallMesh(debris=40)
     assert m.poly_count() <= 2500
+
+
+def test_hub_lens_dormant_before_restore(game):
+    from shardlight.hub.hub import HubScene
+    from shardlight.modes.prism.tourroot import TourRoot
+    from conftest import run_ticks
+    game.app.return_to_hub()
+    run_ticks(game.app, 5)
+    hub = game.app.scenes.top
+    assert isinstance(hub, HubScene)
+    hub.pos.x = 240
+    hub.pos.y = 142
+    dev = game.app.input.attach_virtual(0)
+    dev.tap("CONFIRM")
+    run_ticks(game.app, 3)
+    assert not any(isinstance(s, TourRoot) for s in game.app.scenes.stack)
+    assert any("You and what lamp?" in t["text"] for t in game.app.toasts)
+
+
+def test_hub_lens_enters_tour_when_restored(game):
+    from shardlight.hub.hub import HubScene
+    from shardlight.modes.prism.tourroot import TourRoot
+    from conftest import run_ticks
+    game.app.world.profile["facets"] = ["cinder", "verdant", "umbra", "slipstream", "masks", "terrace", "concord", "orrery"]
+    game.app.world.set_flag("lens_restored", True)
+    game.app.return_to_hub()
+    run_ticks(game.app, 5)
+    hub = game.app.scenes.top
+    assert isinstance(hub, HubScene)
+    hub.pos.x = 240
+    hub.pos.y = 142
+    dev = game.app.input.attach_virtual(0)
+    dev.tap("CONFIRM")
+    run_ticks(game.app, 5)
+    assert any(isinstance(s, TourRoot) for s in game.app.scenes.stack)
+
+
+def test_finale_cannot_hard_fail(game):
+    from shardlight.modes.prism.finale import HallFinale
+    f = HallFinale(game.app, 129, {"debris": 40})
+    for _ in range(1000):
+        f.update(1 / 60)
+    assert f.state in ("glide", "whiteout", "done")
+

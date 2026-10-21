@@ -50,13 +50,20 @@ def _cam_params(cam: Any) -> tuple[float, float, Sequence[float]]:
     if hasattr(cam, "yaw") and hasattr(cam, "pitch") and hasattr(cam, "pos"):
         return float(cam.yaw), float(cam.pitch), cam.pos
     if isinstance(cam, (tuple, list)):
-        if len(cam) == 3 and all(not isinstance(x, (tuple, list, np.ndarray)) for x in cam):
-            # (yaw, pitch, pos)
-            try:
-                float(cam[0]); float(cam[1])
-                return float(cam[0]), float(cam[1]), cam[2]
-            except (TypeError, ValueError):
-                pass
+        if len(cam) == 3:
+            if isinstance(cam[2], (tuple, list, np.ndarray)):
+                try:
+                    float(cam[0]); float(cam[1])
+                    return float(cam[0]), float(cam[1]), cam[2]
+                except (TypeError, ValueError):
+                    pass
+            if all(not isinstance(x, (tuple, list, np.ndarray)) for x in cam):
+                # (yaw, pitch, pos)
+                try:
+                    float(cam[0]); float(cam[1])
+                    return float(cam[0]), float(cam[1]), cam[2]
+                except (TypeError, ValueError):
+                    pass
         # treat as a position
         return 0.0, 0.0, cam
     return 0.0, 0.0, (0.0, 0.0, 0.0)
@@ -243,16 +250,20 @@ def fog_blend(t: float, near_color: Any, far_color: Any) -> tuple[int, int, int]
 
 
 def flat_shade(normal: Any, key: Any, fill: Any) -> tuple[int, int, int]:
-    n = _to_vec3(normal)
-    nn = float(np.linalg.norm(n))
+    if isinstance(normal, (tuple, list, np.ndarray)):
+        nx = float(normal[0]); ny = float(normal[1]); nz = float(normal[2])
+    else:
+        pp = _to_vec3(normal)
+        nx, ny, nz = float(pp[0]), float(pp[1]), float(pp[2])
+    nn = math.sqrt(nx * nx + ny * ny + nz * nz)
     if nn > 1e-9:
-        n = n / nn
+        nx /= nn; ny /= nn; nz /= nn
     if isinstance(key, (tuple, list, np.ndarray)):
-        lk = _to_vec3(key)
-        ln = float(np.linalg.norm(lk))
+        lx = float(key[0]); ly = float(key[1]); lz = float(key[2])
+        ln = math.sqrt(lx * lx + ly * ly + lz * lz)
         if ln > 1e-9:
-            lk = lk / ln
-        ndotl = float(np.dot(n, lk))
+            lx /= ln; ly /= ln; lz /= ln
+        ndotl = nx * lx + ny * ly + nz * lz
         shade = 0.22 + 0.78 * clamp(ndotl, 0.0, 1.0)
     else:
         try:
@@ -389,6 +400,14 @@ def render(surf: pygame.Surface, mesh: Any, cam: Any, post: bool = True,
         polys = list(mesh) if not isinstance(mesh, (str, bytes)) else []
 
     # transform + depth
+    try:
+        cx, cy, cz = (float(pos[0]), float(pos[1]), float(pos[2]))
+    except (TypeError, IndexError):
+        pp = _to_vec3(pos)
+        cx, cy, cz = (float(pp[0]), float(pp[1]), float(pp[2]))
+    cyaw, syaw = math.cos(yaw), math.sin(yaw)
+    cpit, spit = math.cos(pitch), math.sin(pitch)
+    f = (w * 0.5) / math.tan(math.radians(fov) * 0.5)
     transformed: list[tuple[float, list[tuple[float, float]], tuple[int, int, int]]] = []
     for poly in polys:
         verts = _poly_verts(poly)
@@ -398,8 +417,27 @@ def render(surf: pygame.Surface, mesh: Any, cam: Any, post: bool = True,
         zs: list[float] = []
         skip = False
         for v in verts:
-            sx, sy, sz = project_point(v, yaw=yaw, pitch=pitch, cam=pos, fov=fov, w=w, h=h)
+            if isinstance(v, (tuple, list, np.ndarray)):
+                vx = float(v[0]); vy = float(v[1]); vz = float(v[2])
+            else:
+                pp = _to_vec3(v)
+                vx, vy, vz = float(pp[0]), float(pp[1]), float(pp[2])
+            x = vx - cx; y = vy - cy; z = vz - cz
+            # yaw about Y
+            nx = x * cyaw + z * syaw
+            nz = -x * syaw + z * cyaw
+            x, z = nx, nz
+            # pitch about X
+            ny = y * cpit - z * spit
+            nz = y * spit + z * cpit
+            y, z = ny, nz
+            if z < NEAR:
+                z = NEAR
+            sx = w * 0.5 + (x / z) * f
+            sy = h * 0.5 - (y / z) * f
+            sz = z
             if sz <= NEAR:
+                # behind or on near plane -> cull poly
                 skip = True
                 break
             pts.append((sx, sy))
@@ -429,6 +467,25 @@ def render(surf: pygame.Surface, mesh: Any, cam: Any, post: bool = True,
         _post_pass(surf)
 
 
+_POST_CACHE = {}
+
+
+def _post_cache(w: int, h: int):
+    key = (w, h)
+    c = _POST_CACHE.get(key)
+    if c is not None:
+        return c
+    xs = (np.arange(w, dtype=np.float32) - (w * 0.5)) / (w * 0.5)
+    ys = (np.arange(h, dtype=np.float32) - (h * 0.5)) / (h * 0.5)
+    vig = np.clip(1.0 - 0.42 * (xs[:, None] ** 2 + ys[None, :] ** 2), 0.35, 1.0).astype(np.float32)
+    vig = vig[:, :, None]
+    rng = np.random.default_rng(12345)
+    grain = rng.normal(0.0, 3.0, (w, h, 1)).astype(np.float32)
+    c = (vig, grain)
+    _POST_CACHE[key] = c
+    return c
+
+
 def _post_pass(surf: pygame.Surface) -> None:
     w, h = surf.get_size()
     try:
@@ -441,15 +498,11 @@ def _post_pass(surf: pygame.Surface) -> None:
         f[:, :, 0] *= 1.06
         f[:, :, 1] *= 1.02
         f[:, :, 2] *= 0.94
+        vig, grain = _post_cache(w, h)
         # vignette
-        xs = (np.arange(w, dtype=np.float32) - (w * 0.5)) / (w * 0.5)
-        ys = (np.arange(h, dtype=np.float32) - (h * 0.5)) / (h * 0.5)
-        vig = 1.0 - 0.42 * (xs[:, None] ** 2 + ys[None, :] ** 2)
-        vig = np.clip(vig, 0.35, 1.0)
-        f *= vig[:, :, None]
-        # bloom-ish bright lift (cheap): add a faint blurred bright layer
-        bright = np.where(f > 170, f - 170, 0.0)
-        # 3x3 box blur via slicing
+        f *= vig
+        # bloom-ish bright lift
+        bright = np.maximum(f - 170.0, 0.0)
         blurred = bright.copy()
         blurred[1:, :, :] += bright[:-1, :, :]
         blurred[:-1, :, :] += bright[1:, :, :]
@@ -458,8 +511,6 @@ def _post_pass(surf: pygame.Surface) -> None:
         blurred *= 0.12
         f = f + blurred
         # grain
-        rng = np.random.default_rng(12345)
-        grain = rng.normal(0.0, 3.0, (w, h, 1)).astype(np.float32)
         f = f + grain
         f = np.clip(f, 0, 255).astype(np.uint8)
         arr[:] = f

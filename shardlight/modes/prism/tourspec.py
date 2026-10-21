@@ -22,6 +22,14 @@ def _register() -> None:
         obj = getattr(_legs, name)
         if isinstance(obj, type) and issubclass(obj, _legs.Leg) and obj is not _legs.Leg:
             LEG_CLASSES[name] = obj
+    try:
+        from . import finale as _finale
+        for name in dir(_finale):
+            obj = getattr(_finale, name)
+            if isinstance(obj, type) and issubclass(obj, _legs.Leg) and obj is not _legs.Leg:
+                LEG_CLASSES[name] = obj
+    except Exception:
+        pass
     LEG_KINDS = set(LEG_CLASSES)
 
 
