@@ -48,6 +48,10 @@ class AdminPanel(MenuScene):
     @property
     def target(self):
         st = self.app.scenes.stack
+        # find the nearest underlying scene that carries game state
+        for sc in reversed(st[:-1]):
+            if any(hasattr(sc, a) for a in ("game", "lib", "legs_spec", "fs")):
+                return sc
         return st[-2] if len(st) >= 2 else None
 
     def _items(self) -> list[MenuItem]:
@@ -72,6 +76,9 @@ class AdminPanel(MenuScene):
         # cinder: unlock every boon/ability
         if getattr(top, "lib", None) is not None and getattr(top.lib, "boons", None) is not None:
             items.append(MenuItem("Unlock all boons", self._unlock_cinder_boons))
+        # verdant: max out everything
+        if getattr(top, "game", None) is not None:
+            items.append(MenuItem("Max out everything", self._max_verdant))
         items.append(MenuItem(f"God mode: {'ON' if getattr(a, 'admin_god', False) else 'OFF'}", self._toggle_god))
         items.append(MenuItem("Close", a.scenes.pop))
         return items
@@ -174,6 +181,71 @@ class AdminPanel(MenuScene):
                     pass
         self.app.save_now()
         self.app.toast("All boons unlocked (admin)", (255, 240, 200))
+        self.rebuild()
+
+    def _max_verdant(self) -> None:
+        top = self.target
+        game = getattr(top, "game", None)
+        if game is None:
+            self.app.toast("No active Verdant game", (200, 120, 120))
+            return
+        p = game.p
+        p.hp = 9999.0
+        p.stamina = 100.0
+        p.gold = 99999
+        for k in list(p.xp.keys()):
+            p.xp[k] = 1200.0
+        # inventory: one stack of every item
+        try:
+            for it in game.cat.db.all("verdant.item"):
+                iid = it["id"]
+                stack = int(it.get("stack", 1) or 1)
+                p.inv[iid] = max(p.inv.get(iid, 0), stack * 99)
+        except Exception:
+            pass
+        # equip first weapon/armor/bow if empty
+        try:
+            if not p.equip.get("weapon"):
+                weapons = [i["id"] for i in game.cat.db.all("verdant.item") if i.get("slot") == "weapon"]
+                if weapons:
+                    p.equip["weapon"] = weapons[0]
+            if not p.equip.get("body"):
+                armors = [i["id"] for i in game.cat.db.all("verdant.item") if i.get("slot") == "body"]
+                if armors:
+                    p.equip["body"] = armors[0]
+            if not p.equip.get("bow"):
+                bows = [i["id"] for i in game.cat.db.all("verdant.item") if i.get("slot") == "bow"]
+                if bows:
+                    p.equip["bow"] = bows[0]
+        except Exception:
+            pass
+        # reveal map
+        try:
+            game.covered[:] = True
+        except Exception:
+            pass
+        try:
+            game.known_sites = set()
+            for wm in [game.over] + list(game.areas.values()):
+                game.known_sites.update(wm.sites.keys())
+        except Exception:
+            pass
+        # complete all quests
+        try:
+            for q in game.cat.quests():
+                qid = q["id"]
+                st = game.quests.state.setdefault(qid, {"stage": 0, "progress": 0, "done": False})
+                st["done"] = True
+                st["stage"] = len(q.get("stages", []))
+        except Exception:
+            pass
+        game.dead = False
+        game.stats = {"steps": game.stats.get("steps", 0), "kills": game.stats.get("kills", 0),
+                      "gold_earned": max(game.stats.get("gold_earned", 0), p.gold),
+                      "lamps": game.stats.get("lamps", 0), "chests": game.stats.get("chests", 0),
+                      "days": game.stats.get("days", 1)}
+        self.app.save_now()
+        self.app.toast("Verdant maxed out (admin)", (150, 230, 170))
         self.rebuild()
 
     def _toggle_god(self) -> None:
