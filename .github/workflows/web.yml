@@ -28,7 +28,8 @@ jobs:
       - name: Render the procedural audio (about a minute)
         run: python tools/gen_audio.py
       - name: pygbag build
-        run: python -m pygbag --build .
+        # WAV music is large but decodes fine in the browser; keep OGG conversion for a later size pass.
+        run: python -m pygbag --build . --disable-sound-format-error
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
