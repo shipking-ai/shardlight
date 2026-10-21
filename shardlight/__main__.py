@@ -12,6 +12,40 @@ import sys
 
 
 async def main(argv: list[str] | None = None) -> int:
+    try:
+        return await _main(argv)
+    except BaseException:
+        _report_fatal()
+        raise
+
+
+def _report_fatal() -> None:
+    """Push a fatal error into the browser console (the wasm build has no terminal handy)."""
+    try:
+        import traceback
+
+        text = traceback.format_exc()
+    except Exception:
+        text = "unknown error"
+    try:
+        import js  # type: ignore[import-not-found]  # provided by pygbag
+
+        js.console.error("[shardlight] FATAL\n" + text)
+    except Exception:
+        pass
+    try:
+        sys.stderr.write(text + "\n")
+    except Exception:
+        pass
+
+
+async def _main(argv: list[str] | None = None) -> int:
+    try:
+        import js  # type: ignore[import-not-found]  # provided by pygbag
+
+        js.console.log("[shardlight] boot: main() reached")
+    except Exception:
+        pass
     ap = argparse.ArgumentParser(prog="shardlight", description="SHARDLIGHT - eight shards, one lens")
     ap.add_argument("--mode", help="jump straight into a shard (dev/testing), e.g. cinder")
     ap.add_argument("--slot", type=int, default=None, help="save slot (0-2) to load or create for --mode")
