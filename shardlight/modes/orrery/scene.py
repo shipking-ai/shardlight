@@ -539,6 +539,7 @@ class FlightScreen(Scene):
             pl.shield = pl.shield_max
             pl.energy = pl.energy_max
             pl.heat = 0.0
+            fs.player_dead = False
         self.parts.update(dt)
         self.floats.update(dt)
         pl = fs.player

@@ -328,7 +328,7 @@ class Room:
             if not e.alive:
                 e.dead_t += 1
         self._check_clear()
-        if p.alive and p.hp <= 0:
+        if p.alive and p.hp <= 0 and not getattr(self, "admin_god", False):
             self._player_down()
         self.run.hp = max(0.0, p.hp)
 
@@ -784,10 +784,11 @@ class Room:
             self.emit("block", p.x, p.y, ang=ang)
             return
         dmg *= self.run.perks.get("damage_taken_mul")
-        p.hp -= dmg
-        self.run.damage_taken += dmg
-        self.stats["hits_taken"] += 1
-        self.recent_damage += dmg
+        if not getattr(self, "admin_god", False):
+            p.hp -= dmg
+            self.run.damage_taken += dmg
+            self.stats["hits_taken"] += 1
+            self.recent_damage += dmg
         if dmg >= 2:
             p.take_hit(ang, knock, 14 if stagger else 0)
             self.hitstop = max(self.hitstop, 5)

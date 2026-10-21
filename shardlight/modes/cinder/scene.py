@@ -458,6 +458,7 @@ class RunScreen(Scene):
             room.hitstop -= 1
             return
         intent = make_intent(self.app, p0, self.toggle) if self.fade < 0.5 else Intent()
+        room.admin_god = bool(getattr(self.app, "admin_god", False))
         room.update(intent)
         self._events(room.drain_events())
         for req in room.ui_requests:

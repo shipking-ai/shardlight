@@ -46,6 +46,8 @@ class VerdantScene(ModeScene):
 
     def update(self, dt: float) -> None:
         self.t += 1
+        if self.game is not None:
+            self.game.admin_god = bool(getattr(self.app, "admin_god", False))
         if self.screen:
             self.screen.update(dt)
 

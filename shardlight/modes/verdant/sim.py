@@ -870,6 +870,8 @@ class Game(ActionsMixin):
         P = self.p
         if P.inv_t > 0 or self.dead:
             return False
+        if getattr(self, "admin_god", False):
+            return True
         eff = max(1.0, dmg * self.diff * (1.0 - min(0.6, self.armor() * 0.055)))
         P.hp -= eff
         P.inv_t = 0.55
