@@ -157,6 +157,8 @@ class HubScene(Scene):
         self.particles = ParticleSystem(400, random.Random(9))
         self.stations: list[Station] = []
         self.near: Station | None = None
+        self.near_lens: bool = False
+        self.lens_near: bool = False
         self.motes = [(random.random() * W, FLOOR_TOP + random.random() * (H - FLOOR_TOP), random.random() * 6.28)
                       for _ in range(36)]
         self._build_stations()
@@ -216,7 +218,22 @@ class HubScene(Scene):
             d = (s.pos - self.pos).length()
             if d < best:
                 best, self.near = d, s
-        if self.near and p.any_pressed(("CONFIRM", "A")):
+        # lens proximity interaction
+        lens_c = Vector2(CENTER.x, CENTER.y - 16)
+        self.lens_near = (self.pos - lens_c).length() <= 14
+        restored = bool(self.app.world.flag("lens_restored"))
+        self.near_lens = restored and self.lens_near
+        if self.lens_near and p.any_pressed(("CONFIRM", "A")):
+            if restored:
+                tour = self.app.world.profile.get("tour", {}) or {}
+                if tour.get("done"):
+                    self.app.scenes.push(LensChoiceOverlay(self.app))
+                else:
+                    import shardlight.modes.prism as prism_mod
+                    self.app.scenes.push(prism_mod.create(self.app))
+            else:
+                self.app.toast("You and what lamp?")
+        elif self.near and p.any_pressed(("CONFIRM", "A")):
             self._interact(self.near)
         elif "PAUSE" in p.pressed:
             self._interact(next(s for s in self.stations if s.kind == "menu"))
@@ -354,7 +371,10 @@ class HubScene(Scene):
         f.draw(surf, f"Glint {w.profile['currency'].get('glint', 0)}", (14, 22), BRASS, None)
         n = len(w.profile["facets"])
         f.draw(surf, f"Lens {n}/8", (W - 8, 8), LENS if n < 8 else (255, 244, 205), (10, 8, 20), anchor="topright")
-        if self.near:
+        if self.near_lens or self.lens_near:
+            verb = "Enter Lens" if self.app.world.flag("lens_restored") else "Examine"
+            draw_prompts(surf, self.app, [("A", verb), ("PAUSE", "Menu")])
+        elif self.near:
             verb = "Enter shard" if self.near.kind == "mode" and self.near.info else \
                    "Dormant" if self.near.kind == "mode" else "Use"
             draw_prompts(surf, self.app, [("A", verb), ("PAUSE", "Menu")])
@@ -625,3 +645,25 @@ class DeskMenu(MenuScene):
         self.app.profile = None
         self.app.world = None
         self.app.scenes.reset_to(TitleScene(self.app), fade=True)
+
+
+# ------------------------------------------------------------------------------ lens choice (post-tour)
+class LensChoiceOverlay(MenuScene):
+    def __init__(self, app):
+        super().__init__(app, "THE LENS", self._items, 200, overlay=True)
+
+    def _items(self):
+        return [
+            MenuItem("Replay the Tour", self._replay),
+            MenuItem("Free walk", self.app.scenes.pop),
+        ]
+
+    def _replay(self):
+        prof = self.app.world.profile.setdefault("tour", {"leg": 0, "done_legs": [], "done": False})
+        prof["leg"] = 0
+        prof["done_legs"] = []
+        prof["done"] = False
+        self.app.save_now()
+        self.app.scenes.pop()
+        import shardlight.modes.prism as prism_mod
+        self.app.scenes.push(prism_mod.create(self.app))
