@@ -12,5 +12,10 @@ assets/audio/music/
 assets/audio/sfx/
 assets/audio/MANIFEST.json
 
+# pygbag / PyInstaller output
+build/
+dist/
+*.spec
+
 # user data written by the game
 userdata/

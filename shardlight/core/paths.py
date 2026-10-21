@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
 
 PACKAGE_DIR = Path(__file__).resolve().parent.parent
@@ -15,6 +16,13 @@ EXAMPLES_DIR = Path(os.environ.get("SHARDLIGHT_EXAMPLES", PROJECT_DIR / "example
 def user_dir() -> Path:
     """Return (and create) the writable directory for saves, settings and logs."""
     home = os.environ.get("SHARDLIGHT_HOME")
-    path = Path(home) if home else PROJECT_DIR / "userdata"
+    if home:
+        path = Path(home)
+    elif sys.platform == "emscripten":
+        # Inside the browser build PROJECT_DIR sits on a read-only archive mount;
+        # IDBFS at /home/web_user is what persists between sessions.
+        path = Path("/home/web_user/shardlight")
+    else:
+        path = PROJECT_DIR / "userdata"
     path.mkdir(parents=True, exist_ok=True)
     return path

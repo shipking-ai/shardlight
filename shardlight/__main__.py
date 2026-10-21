@@ -48,7 +48,10 @@ def main(argv: list[str] | None = None) -> int:
         else:
             app.scenes.reset_to(TitleScene(app), fade=False)
             app.scenes.process(0)
-        app.run(max_frames=args.frames)
+        if sys.platform == "emscripten":
+            app.run_web()
+        else:
+            app.run(max_frames=args.frames)
     except KeyboardInterrupt:
         pass
     return 0

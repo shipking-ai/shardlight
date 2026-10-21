@@ -49,7 +49,11 @@ Modes never import one another. They emit events (`orrery.signal_decoded`, `cind
 
 ## Quick start
 
-Windows, Python 3.12:
+**Play in the browser, no install:** https://shipking-ai.github.io/shardlight/ (first load takes a while — the audio is ~47 MB and downloads once; saves are kept in the browser).
+
+**Download for Windows:** a zip with everything preinstalled is attached to the latest [release](https://github.com/shipking-ai/shardlight/releases); a fresh build ships every time a `v*` tag is pushed.
+
+From source, Windows, Python 3.12:
 
 ```bat
 play.bat
