@@ -52,8 +52,8 @@ class App:
         self.admin = False
         self.admin_god = False
         try:
-            from .admin import verify_token
-            self.admin = verify_token(__import__("os").environ.get("SHARDLIGHT_ADMIN_TOKEN"))
+            from .admin import verify_token, resolve_admin_token
+            self.admin = verify_token(resolve_admin_token())
         except Exception:
             self.admin = False
         self.running = False

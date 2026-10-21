@@ -4,8 +4,9 @@ __pycache__/
 .pytest_cache/
 # development scratch (debug scripts, screenshots, logs)
 shots/
-# user data written by the game
-userdata/
+# admin token (secret)
+admin.token
+.shardlight/admin.token
 # regenerable audio (about 47 MB): run `python tools/gen_audio.py`
 assets/audio/music/
 assets/audio/sfx/

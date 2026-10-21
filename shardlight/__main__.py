@@ -31,8 +31,8 @@ def main(argv: list[str] | None = None) -> int:
 
     app = App(headless=args.headless, seed=args.seed, audio=not args.no_audio)
     app.debug = args.debug
-    from .core.admin import verify_token
-    app.admin = verify_token(args.admin_token) or verify_token(__import__("os").environ.get("SHARDLIGHT_ADMIN_TOKEN"))
+    from .core.admin import verify_token, resolve_admin_token
+    app.admin = verify_token(args.admin_token) or verify_token(resolve_admin_token())
     app.screenshot_on_exit = args.screenshot
     try:
         if args.mode:

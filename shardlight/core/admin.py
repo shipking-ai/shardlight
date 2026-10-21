@@ -3,9 +3,8 @@ from __future__ import annotations
 
 import hashlib
 import os
+from pathlib import Path
 
-# SHA-256 of the admin token. The plaintext token is never stored in the repo;
-# it is handed to administrators out of band.
 _ADMIN_TOKEN_HASH = "4c3786edb370a355fdb24367cacb413117891753d6da264ac095f2e85b194145"
 
 
@@ -13,6 +12,29 @@ def verify_token(token: str | None) -> bool:
     if not token:
         return False
     return hashlib.sha256(token.encode("utf-8")).hexdigest() == _ADMIN_TOKEN_HASH
+
+
+def resolve_admin_token() -> str | None:
+    """Look for an admin token in env, CLI-adjacent files, and the user home."""
+    tok = os.environ.get("SHARDLIGHT_ADMIN_TOKEN")
+    if tok:
+        return tok
+    candidates = [
+        Path.cwd() / "admin.token",
+        Path.home() / ".shardlight" / "admin.token",
+    ]
+    try:
+        from .paths import user_dir
+        candidates.append(user_dir() / "admin.token")
+    except Exception:
+        pass
+    for p in candidates:
+        try:
+            if p.is_file():
+                return p.read_text(encoding="utf-8").strip()
+        except OSError:
+            continue
+    return None
 
 
 from .ui import MenuScene, MenuItem
