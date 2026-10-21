@@ -45,10 +45,15 @@ class AdminPanel(MenuScene):
         super().__init__(app, "ADMIN TOOLS", self._items, 260, overlay=True,
                          footer=[("CONFIRM", "Select"), ("BACK", "Close")])
 
+    @property
+    def target(self):
+        st = self.app.scenes.stack
+        return st[-2] if len(st) >= 2 else None
+
     def _items(self) -> list[MenuItem]:
         a = self.app
         items: list[MenuItem] = []
-        top = a.scenes.top
+        top = self.target
         mode_id = getattr(top, "mode_id", None)
         if mode_id is not None and a.world is not None and mode_id in {
                 "cinder", "verdant", "umbra", "slipstream", "concord", "terrace", "masks", "orrery"}:
@@ -95,20 +100,20 @@ class AdminPanel(MenuScene):
         a.toast("All facets granted (admin)", (255, 240, 200))
 
     def _win_leg(self) -> None:
-        top = self.app.scenes.top
+        top = self.target
         leg = getattr(top, "leg", None)
         if leg is not None and hasattr(leg, "debug_force_win"):
             leg.debug_force_win()
             self.app.toast("Leg won (admin)", (150, 230, 170))
 
     def _skip_tour(self) -> None:
-        top = self.app.scenes.top
+        top = self.target
         if hasattr(top, "legs_spec") and hasattr(top, "_start_finale"):
             top.leg_index = len(top.legs_spec)
             top._start_finale()
 
     def _refill(self) -> None:
-        top = self.app.scenes.top
+        top = self.target
         fs = getattr(top, "fs", None)
         if fs is None:
             return
@@ -135,7 +140,7 @@ class AdminPanel(MenuScene):
         self.rebuild()
 
     def _unlock_cinder_boons(self) -> None:
-        top = self.app.scenes.top
+        top = self.target
         lib = getattr(top, "lib", None)
         if lib is None:
             return
