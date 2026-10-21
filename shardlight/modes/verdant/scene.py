@@ -7,6 +7,7 @@ from typing import Any
 
 import numpy as np
 import pygame
+from pygame.math import Vector2
 
 from ...core.fx import FEEL, Lighting, clamp, mix
 from ...core.scene import ModeScene, Scene
@@ -194,7 +195,7 @@ class GameScreen(Scene):
         self.vs = vs
         self.g: Game = vs.game
         self.t = 0
-        self.cam = pygame.Vector2(0, 0)
+        self.cam = Vector2(0, 0)
         self.chunks: dict[tuple, pygame.Surface] = {}
         self.chunk_order: list[tuple] = []
         self.lighting = Lighting((W, H), (255, 255, 255), 2)
