@@ -158,6 +158,9 @@ class AdminPanel(MenuScene):
                     u["mods"].append(mid)
         # active run: grant stacks
         run = getattr(top, "run", None)
+        if run is None:
+            sc = getattr(top, "screen", None)
+            run = getattr(sc, "run", None) if sc is not None else None
         if run is not None and getattr(run, "perks", None) is not None:
             for bid in lib.boons:
                 try:
