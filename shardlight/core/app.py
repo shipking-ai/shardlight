@@ -365,6 +365,7 @@ class App:
         running = self.running
         self.running = True
         last = time.perf_counter()
+        painted = False
         try:
             while self.running:
                 now = time.perf_counter()
@@ -385,6 +386,9 @@ class App:
                     self._acc = 0.0
                 self.input.end_frame()
                 self.render()
+                if not painted:
+                    painted = True
+                    LOG.info("web: first frame painted (%dx%d)", self.frame.get_width(), self.frame.get_height())
                 if not self.headless:
                     self.clock.tick(240 if self.settings.get("video.vsync") else 120)
                 if not self.scenes.stack:

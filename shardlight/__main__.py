@@ -47,6 +47,9 @@ async def main(argv: list[str] | None = None) -> int:
     app.debug = args.debug
     app.admin = verify_token(args.admin_token) or verify_token(resolve_admin_token())
     app.screenshot_on_exit = args.screenshot
+    from .core import log as _log
+
+    _log.get("main").info("shardlight starting (platform=%s)", sys.platform)
     try:
         if args.mode:
             slot = 0 if args.slot is None else args.slot
@@ -66,6 +69,9 @@ async def main(argv: list[str] | None = None) -> int:
             app.run(max_frames=args.frames)
     except KeyboardInterrupt:
         pass
+    except Exception:
+        _log.get("main").exception("fatal error while running the game")
+        raise
     return 0
 
 

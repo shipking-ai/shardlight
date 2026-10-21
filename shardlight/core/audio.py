@@ -96,7 +96,10 @@ class AudioManager:
     # -- music ----------------------------------------------------------------------------
     def _load_track(self, name: str) -> _MusicTrack | None:
         folder = self.root / "music" / name
-        files = {p.stem: p for p in folder.glob("*.wav")} if folder.is_dir() else {}
+        files: dict[str, Path] = {}
+        # WAV is what we render locally; OGG is what the browser build ships (far smaller).
+        for p in list(folder.glob("*.wav")) + list(folder.glob("*.ogg")):
+            files[p.stem] = p
         if not files:
             if name not in self._missing:
                 LOG.warning("music track %r not found in %s", name, folder)
@@ -185,7 +188,8 @@ class AudioManager:
     def _load_sfx(self, name: str) -> list[pygame.mixer.Sound]:
         sounds: list[pygame.mixer.Sound] = []
         folder = self.root / "sfx"
-        for p in sorted(folder.glob(f"{name}.wav")) + sorted(folder.glob(f"{name}_[0-9].wav")):
+        for p in sorted(folder.glob(f"{name}.wav")) + sorted(folder.glob(f"{name}_[0-9].wav")) \
+                + sorted(folder.glob(f"{name}.ogg")) + sorted(folder.glob(f"{name}_[0-9].ogg")):
             try:
                 sounds.append(pygame.mixer.Sound(str(p)))
             except pygame.error as exc:

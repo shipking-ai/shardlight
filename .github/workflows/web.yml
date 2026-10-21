@@ -27,10 +27,15 @@ jobs:
         run: python -m pip install -r requirements.txt pygbag
       - name: Render the procedural audio (about a minute)
         run: python tools/gen_audio.py
+      - name: Convert the audio to OGG (much smaller, and what browsers want)
+        run: |
+          find assets/audio -name '*.wav' -print0 | while IFS= read -r -d '' f; do
+            ffmpeg -y -loglevel error -i "$f" -c:a libvorbis -q:a 3 "${f%.wav}.ogg"
+            rm -f "$f"
+          done
       - name: pygbag build
         # pygbag always treats the last argument as the app dir; keep flags before it.
-        # WAV music is large but decodes fine in the browser; keep OGG conversion for a later size pass.
-        run: python -m pygbag --disable-sound-format-error --build .
+        run: python -m pygbag --build .
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
