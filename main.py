@@ -19,6 +19,12 @@ from __future__ import annotations
 import asyncio
 import sys
 
+if sys.platform == "emscripten":
+    # the wasm pygame on the CDN is missing one module; patch it in before pygame loads
+    from shardlight.core.pygame_bootstrap import install_pygame_constants
+
+    install_pygame_constants()
+
 import pygame  # noqa: F401  (imported so the browser build installs pygame)
 
 from shardlight.__main__ import main
