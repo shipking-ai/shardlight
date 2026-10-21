@@ -8,6 +8,10 @@ from collections import deque
 from typing import Any
 
 import numpy as np
+from . import pygame_bootstrap
+
+pygame_bootstrap.install_pygame_constants()   # the browser build needs pygame.constants
+
 import pygame
 
 from . import log
