@@ -29,10 +29,36 @@ def main(argv: list[str] | None = None) -> int:
 
     from .core.app import App
     from .hub.title import TitleScene
+    from .core.admin import verify_token, resolve_admin_token
+
+    if sys.platform == "emscripten":
+        import asyncio
+
+        async def web_boot() -> int:
+            # pygbag/WASM rule: give the browser one frame (canvas size + media gesture)
+            # before SDL creates its surface, otherwise the window never paints.
+            await asyncio.sleep(0)
+            app = App(headless=args.headless, seed=args.seed, audio=not args.no_audio)
+            app.debug = args.debug
+            app.admin = verify_token(args.admin_token) or verify_token(resolve_admin_token())
+            app.screenshot_on_exit = args.screenshot
+            try:
+                if args.mode:
+                    slot = 0 if args.slot is None else args.slot
+                    if not (app.saves.exists(slot) and app.load_game(slot)):
+                        app.new_game(slot)
+                app.scenes.reset_to(TitleScene(app), fade=False)
+                app.scenes.process(0)
+                if args.mode and not app.enter_mode(args.mode):
+                    return 2
+                await app.run_web()
+            finally:
+                return 0
+
+        return asyncio.run(web_boot())
 
     app = App(headless=args.headless, seed=args.seed, audio=not args.no_audio)
     app.debug = args.debug
-    from .core.admin import verify_token, resolve_admin_token
     app.admin = verify_token(args.admin_token) or verify_token(resolve_admin_token())
     app.screenshot_on_exit = args.screenshot
     try:
@@ -48,10 +74,7 @@ def main(argv: list[str] | None = None) -> int:
         else:
             app.scenes.reset_to(TitleScene(app), fade=False)
             app.scenes.process(0)
-        if sys.platform == "emscripten":
-            app.run_web()
-        else:
-            app.run(max_frames=args.frames)
+        app.run(max_frames=args.frames)
     except KeyboardInterrupt:
         pass
     return 0

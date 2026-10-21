@@ -1,6 +1,7 @@
 """Application lifecycle: window, fixed-timestep loop, shared services, profile management."""
 from __future__ import annotations
 
+import asyncio
 import importlib
 import time
 from collections import deque
@@ -357,44 +358,41 @@ class App:
         finally:
             self.shutdown()
 
-    def run_web(self) -> None:
-        """run() for the browser build (Emscripten/pygbag): the loop body is identical,
-        but each frame yields control back to the browser event loop instead of
-        blocking inside a tight while."""
-        import asyncio
-
-        async def web_loop() -> None:
-            self.running = True
-            last = time.perf_counter()
-            try:
-                while self.running:
-                    now = time.perf_counter()
-                    real_dt = min(0.25, now - last)
-                    last = now
-                    self.frame_ms.append(real_dt * 1000)
-                    events = pygame.event.get()
-                    self.handle_global_events(events)
-                    self.input.process(events)
-                    speed = float(self.settings.get("access.game_speed"))
-                    self._acc += real_dt * speed
-                    n = 0
-                    while self._acc >= TICK and n < MAX_TICKS_PER_FRAME:
-                        self.tick(TICK)
-                        self._acc -= TICK
-                        n += 1
-                    if n == MAX_TICKS_PER_FRAME:
-                        self._acc = 0.0
-                    self.input.end_frame()
-                    self.render()
-                    if not self.headless:
-                        self.clock.tick(240 if self.settings.get("video.vsync") else 120)
-                    if not self.scenes.stack:
-                        self.running = False
-                    await asyncio.sleep(0)
-            finally:
-                self.shutdown()
-
-        asyncio.run(web_loop())
+    async def run_web(self) -> None:
+        """Awaitable run() for the browser build (Emscripten/pygbag): the loop body is
+        identical to run(), but each frame yields control back to the browser event
+        loop instead of blocking inside a tight while."""
+        running = self.running
+        self.running = True
+        last = time.perf_counter()
+        try:
+            while self.running:
+                now = time.perf_counter()
+                real_dt = min(0.25, now - last)
+                last = now
+                self.frame_ms.append(real_dt * 1000)
+                events = pygame.event.get()
+                self.handle_global_events(events)
+                self.input.process(events)
+                speed = float(self.settings.get("access.game_speed"))
+                self._acc += real_dt * speed
+                n = 0
+                while self._acc >= TICK and n < MAX_TICKS_PER_FRAME:
+                    self.tick(TICK)
+                    self._acc -= TICK
+                    n += 1
+                if n == MAX_TICKS_PER_FRAME:
+                    self._acc = 0.0
+                self.input.end_frame()
+                self.render()
+                if not self.headless:
+                    self.clock.tick(240 if self.settings.get("video.vsync") else 120)
+                if not self.scenes.stack:
+                    self.running = False
+                await asyncio.sleep(0)
+        finally:
+            self.shutdown()
+            self.running = running
 
     def shutdown(self) -> None:
         try:
