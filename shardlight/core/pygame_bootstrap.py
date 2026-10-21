@@ -28,6 +28,17 @@ def _note(message: str) -> None:
         pass
 
 
+def _patch_dir() -> Path | None:
+    try:
+        from . import pygame_patch
+
+        base = Path(pygame_patch.__file__).resolve().parent
+        candidate = base / "pygame"
+        return candidate if candidate.is_dir() else None
+    except Exception:
+        return None
+
+
 def _stand_in_source() -> str | None:
     try:
         from . import pygame_constants
@@ -41,9 +52,10 @@ def _stand_in_source() -> str | None:
 
 
 def _write_into_installed_pygame() -> bool:
-    """Drop the missing constants module into the installed pygame package."""
+    """Put the files the wasm wheel lost back into the installed pygame package."""
     source = _stand_in_source()
-    if not source:
+    patch = _patch_dir()
+    if not source or patch is None:
         return False
     for entry in list(sys.path):
         if not entry:
@@ -52,15 +64,20 @@ def _write_into_installed_pygame() -> bool:
         try:
             if not (package / "__init__.py").is_file():
                 continue
-            target = package / "constants.py"
-            if target.is_file():
-                return True
-            target.write_text(source, encoding="utf-8")
+            wrote = False
+            if not (package / "constants.py").is_file():
+                (package / "constants.py").write_text(source, encoding="utf-8")
+                wrote = True
+            for extra in sorted(patch.glob("*.py")):
+                target = package / extra.name
+                if not target.is_file():
+                    target.write_bytes(extra.read_bytes())
+                    wrote = True
+            if wrote:
+                _note(f"bootstrap: patched the installed pygame at {package}")
+            return True
         except OSError:
             continue
-        else:
-            _note(f"bootstrap: wrote pygame/constants.py into {package}")
-            return True
     return False
 
 
