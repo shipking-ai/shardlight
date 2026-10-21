@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 
 import pygame
-from pygame import Vector2
+from pygame.math import Vector2
 
 # ---------------------------------------------------------------------------------------- easing
 

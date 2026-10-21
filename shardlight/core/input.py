@@ -15,7 +15,7 @@ from collections import deque
 from typing import Iterable
 
 import pygame
-from pygame import Vector2
+from pygame.math import Vector2
 
 from . import log
 

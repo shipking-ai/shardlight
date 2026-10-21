@@ -109,12 +109,15 @@ class App:
         if self.headless:
             return pygame.display.set_mode(RENDER_SIZE)
         # TODO(#4): only ever opened a real window on Windows 11; check Linux/macOS and high-DPI / multi-monitor with SCALED.
-        flags = pygame.SCALED | pygame.RESIZABLE
+        # The browser build ships a reduced pygame, so use only what it is known to have.
+        flags = getattr(pygame, "RESIZABLE", 0)
+        if hasattr(pygame, "SCALED"):
+            flags |= pygame.SCALED
         if self.settings.get("video.fullscreen"):
             flags |= pygame.FULLSCREEN
         try:
             screen = pygame.display.set_mode(RENDER_SIZE, flags, vsync=1 if self.settings.get("video.vsync") else 0)
-        except pygame.error:
+        except (pygame.error, TypeError):
             screen = pygame.display.set_mode(RENDER_SIZE, flags)
         if not self.settings.get("video.fullscreen"):
             try:

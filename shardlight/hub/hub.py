@@ -5,7 +5,7 @@ import math
 import random
 
 import pygame
-from pygame import Vector2
+from pygame.math import Vector2
 
 from ..core import art
 from ..core.fx import FEEL, Lighting, ParticleSystem, blit_additive_glow, clamp, ease_out_cubic, mix

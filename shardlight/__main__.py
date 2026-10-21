@@ -39,6 +39,37 @@ def _report_fatal() -> None:
         pass
 
 
+def _log_browser_env() -> None:
+    """Report what the browser build's pygame actually provides.
+
+    The wasm build ships a reduced pygame, so the console needs to say which parts
+    of it exist before anything else breaks.
+    """
+    try:
+        import pygame
+
+        ver = getattr(pygame, "ver", "?")
+        parts = [
+            f"pygame {ver}",
+            f"SDL {getattr(pygame, 'get_sdl_version', lambda: '?')()}",
+            f"Vector2={hasattr(pygame, 'Vector2')}",
+            f"math.Vector2={hasattr(getattr(pygame, 'math', None), 'Vector2')}",
+            f"SCALED={hasattr(pygame, 'SCALED')}",
+            f"mixer={hasattr(pygame, 'mixer')}",
+            f"font={hasattr(pygame, 'font')}",
+            f"file={getattr(pygame, '__file__', 'none')}",
+        ]
+        msg = "[shardlight] env: " + " ".join(parts)
+    except Exception as exc:
+        msg = f"[shardlight] env probe failed: {exc}"
+    try:
+        import js  # type: ignore[import-not-found]
+
+        js.console.log(msg)
+    except Exception:
+        print(msg)
+
+
 async def _main(argv: list[str] | None = None) -> int:
     try:
         import js  # type: ignore[import-not-found]  # provided by pygbag
@@ -46,6 +77,8 @@ async def _main(argv: list[str] | None = None) -> int:
         js.console.log("[shardlight] boot: main() reached")
     except Exception:
         pass
+    if sys.platform == "emscripten":
+        _log_browser_env()
     ap = argparse.ArgumentParser(prog="shardlight", description="SHARDLIGHT - eight shards, one lens")
     ap.add_argument("--mode", help="jump straight into a shard (dev/testing), e.g. cinder")
     ap.add_argument("--slot", type=int, default=None, help="save slot (0-2) to load or create for --mode")

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["numpy", "pygame"]
+# dependencies = ["numpy"]
 # ///
 
 import asyncio

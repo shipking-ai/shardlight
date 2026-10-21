@@ -5,7 +5,7 @@ import math
 import random
 
 import pygame
-from pygame import Vector2
+from pygame.math import Vector2
 
 from .. import GAME_TITLE
 from ..core import art

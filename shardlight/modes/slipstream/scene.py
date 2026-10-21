@@ -6,7 +6,7 @@ import random
 from typing import Any
 
 import pygame
-from pygame import Vector2
+from pygame.math import Vector2
 
 from ...core.fx import ParticleSystem, clamp, damp, ease_out_cubic, lerp, mix, FEEL
 from ...core.scene import ModeScene, Scene
