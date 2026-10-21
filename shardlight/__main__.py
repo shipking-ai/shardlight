@@ -31,6 +31,7 @@ def main(argv: list[str] | None = None) -> int:
 
     app = App(headless=args.headless, seed=args.seed, audio=not args.no_audio)
     app.debug = args.debug
+    app.admin = args.debug or bool(__import__("os").environ.get("SHARDLIGHT_ADMIN"))
     app.screenshot_on_exit = args.screenshot
     try:
         if args.mode:

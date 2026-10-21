@@ -533,6 +533,12 @@ class FlightScreen(Scene):
             self.os.open_map()
             return
         fs.update(self.controls(), 1 / 60)
+        if getattr(self.app, "admin_god", False):
+            pl = fs.player
+            pl.hull = pl.hull_max
+            pl.shield = pl.shield_max
+            pl.energy = pl.energy_max
+            pl.heat = 0.0
         self.parts.update(dt)
         self.floats.update(dt)
         pl = fs.player

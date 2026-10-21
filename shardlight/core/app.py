@@ -49,6 +49,8 @@ class App:
     def __init__(self, headless: bool = False, user_home: str | None = None, seed: int | None = None,
                  audio: bool = True):
         self.headless = headless
+        self.admin = False
+        self.admin_god = False
         self.running = False
         pygame.init()
         self.settings = Settings()
@@ -302,6 +304,10 @@ class App:
                     self.apply_settings()
                 elif e.key == pygame.K_F3:
                     self.debug = not self.debug
+                elif e.key == pygame.K_F9 and getattr(self, "admin", False):
+                    from .admin import AdminPanel
+                    if not (self.scenes.top and type(self.scenes.top).__name__ == "AdminPanel"):
+                        self.scenes.push(AdminPanel(self))
                 elif e.key == pygame.K_F12 and not self.headless:
                     self.screenshot()
 

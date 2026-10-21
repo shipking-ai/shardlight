@@ -632,6 +632,7 @@ class DeskMenu(MenuScene):
             MenuItem("Controls", lambda: a.scenes.push(ControlsScene(a))),
             MenuItem("Save game", self._save),
             MenuItem("Save and quit to title", self._to_title),
+        ] + ([MenuItem("Admin tools", lambda: a.scenes.push(__import__("shardlight.core.admin", fromlist=["AdminPanel"]).AdminPanel(a)))] if getattr(a, "admin", False) else []) + [
             MenuItem("Close", a.scenes.pop),
         ]
 
