@@ -111,6 +111,33 @@ def test_hub_lens_enters_tour_when_restored(game):
     assert any(isinstance(s, TourRoot) for s in game.app.scenes.stack)
 
 
+def test_hub_lens_is_reachable_on_foot(game):
+    """Walking up to the Lens must be enough: the dais used to block the walker."""
+    from shardlight.hub.hub import HubScene
+    from shardlight.modes.prism.tourroot import TourRoot
+    from conftest import run_ticks
+    game.app.world.profile["facets"] = ["cinder", "verdant", "umbra", "slipstream", "masks", "terrace", "concord", "orrery"]
+    game.app.world.set_flag("lens_restored", True)
+    game.app.return_to_hub()
+    run_ticks(game.app, 5)
+    dev = game.app.input.attach_virtual(0)
+    for _ in range(30):                       # dismiss the "eight lights" dialogue
+        if isinstance(game.app.scenes.top, HubScene):
+            break
+        dev.tap("CONFIRM")
+        run_ticks(game.app, 1)
+    hub = game.app.scenes.top
+    assert isinstance(hub, HubScene)
+    dev.set_stick(0.0, -1.0)                  # walk up
+    for _ in range(240):
+        run_ticks(game.app, 1)
+    assert hub.lens_near, "the walker should end up at the Lens"
+    dev.set_stick(0.0, 0.0)
+    dev.tap("CONFIRM")
+    run_ticks(game.app, 5)
+    assert any(isinstance(s, TourRoot) for s in game.app.scenes.stack)
+
+
 def test_finale_cannot_hard_fail(game):
     from shardlight.modes.prism.finale import HallFinale
     f = HallFinale(game.app, 129, {"debris": 40})

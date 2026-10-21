@@ -17,6 +17,8 @@ W, H = 480, 270
 CENTER = Vector2(240, 158)
 RING = (185, 74)
 FLOOR_TOP = 70
+LENS_BLOCK_R = 13.0     # how close the walker may stand to the lens art
+LENS_REACH = 20.0       # how close counts as "at the lens"
 
 LANTERN_HUES = {
     "amber": ((255, 196, 96), 0),
@@ -206,11 +208,13 @@ class HubScene(Scene):
             self.anim = 0
         self.pos.x = clamp(self.pos.x, 18, W - 18)
         self.pos.y = clamp(self.pos.y, FLOOR_TOP + 20, H - 14)
-        # keep out of the lens dais
-        off = self.pos - (CENTER + Vector2(0, 8))
-        e = (off.x / 40) ** 2 + (off.y / 17) ** 2
-        if e < 1 and e > 0:
-            self.pos = CENTER + Vector2(0, 8) + Vector2(off.x / math.sqrt(e), off.y / math.sqrt(e))
+        # Keep the walker off the lens art itself, but only just: the Lens has to be
+        # reachable on foot, so the block is a small circle rather than the whole dais.
+        lens_c = Vector2(CENTER.x, CENTER.y - 16)
+        off = self.pos - lens_c
+        d = off.length()
+        if 0.0 < d < LENS_BLOCK_R:
+            self.pos = lens_c + off * (LENS_BLOCK_R / d)
         # nearest interactable
         self.near = None
         best = 30.0
@@ -220,7 +224,7 @@ class HubScene(Scene):
                 best, self.near = d, s
         # lens proximity interaction
         lens_c = Vector2(CENTER.x, CENTER.y - 16)
-        self.lens_near = (self.pos - lens_c).length() <= 14
+        self.lens_near = (self.pos - lens_c).length() <= LENS_REACH
         restored = bool(self.app.world.flag("lens_restored"))
         self.near_lens = restored and self.lens_near
         if self.lens_near and p.any_pressed(("CONFIRM", "A")):
