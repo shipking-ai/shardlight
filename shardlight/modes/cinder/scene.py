@@ -26,7 +26,7 @@ from .sim.status import STATUS_COLORS
 W, H = 480, 270
 OX, OY = 16, 26
 SAVE_V = 1
-FLOORS = 5
+FLOORS = 7
 STARTER = ("ember_blade", "ember_caster")
 TAG_COLORS = {"fire": (255, 130, 60), "ash": (180, 176, 196), "shock": (255, 236, 120), "status": (214, 120, 150),
               "ranged": (120, 200, 255), "defense": (110, 200, 150), "mobility": (150, 230, 220), "parry": (255, 255, 255),

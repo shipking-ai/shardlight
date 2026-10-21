@@ -85,7 +85,7 @@ def test_invalid_mod_content_is_rejected_not_fatal(lib):
 # ---------------------------------------------------------------------------------------------- generation
 def test_floor_generation_is_deterministic_and_valid(lib):
     for seed in range(40):
-        for floor in range(1, 6):
+        for floor in range(1, 8):
             a = LG.generate_floor(lib, seed, floor, Modifiers([]), choir_unlocked=floor in (2, 4))
             b = LG.generate_floor(lib, seed, floor, Modifiers([]), choir_unlocked=floor in (2, 4))
             assert not a.problems, (seed, floor, a.problems)
