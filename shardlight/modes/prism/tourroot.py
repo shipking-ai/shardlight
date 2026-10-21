@@ -114,8 +114,8 @@ class TourRoot(ModeScene):
         panel.fill((120, 90, 40, 210))
         surf.blit(panel, ((w - 360) // 2, (h - 120) // 2))
         f = self.app.font
-        f.write(surf, "The seam closes... again?", (w - 300) // 2, (h - 120) // 2 + 16, (255, 235, 180))
-        f.write(surf, "CONFIRM retry   BACK to hub", (w - 260) // 2, (h - 120) // 2 + 72, (240, 235, 210))
+        f.draw(surf, "The seam closes... again?", (w - 300) // 2, (h - 120) // 2 + 16, (255, 235, 180), (0, 0, 0))
+        f.draw(surf, "CONFIRM retry   BACK to hub", (w - 260) // 2, (h - 120) // 2 + 72, (240, 235, 210), (0, 0, 0))
 
 
 from .info import INFO as _INFO
