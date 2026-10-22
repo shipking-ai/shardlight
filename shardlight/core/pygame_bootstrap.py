@@ -15,6 +15,7 @@ The stand-in is generated from a normal pygame-ce install by
 """
 from __future__ import annotations
 
+import importlib.util
 import sys
 from pathlib import Path
 
@@ -81,6 +82,36 @@ def _write_into_installed_pygame() -> bool:
     return False
 
 
+def _register_patch_modules() -> list[str]:
+    """Expose the patched modules under their pygame names.
+
+    The wasm wheel may not be installed yet when this runs, so the modules are
+    registered in ``sys.modules`` as well: pygame's own ``__init__`` then finds
+    them whichever way it looks.
+    """
+    patch = _patch_dir()
+    if patch is None:
+        return []
+    registered: list[str] = []
+    for path in sorted(patch.glob("*.py")):
+        name = f"pygame.{path.stem}"
+        if name in sys.modules:
+            continue
+        try:
+            spec = importlib.util.spec_from_file_location(name, path)
+            if spec is None or spec.loader is None:
+                continue
+            module = importlib.util.module_from_spec(spec)
+            sys.modules[name] = module
+            spec.loader.exec_module(module)
+            registered.append(name)
+        except Exception:
+            sys.modules.pop(name, None)
+    if registered:
+        _note(f"bootstrap: registered {', '.join(registered)}")
+    return registered
+
+
 def install_pygame_constants() -> bool:
     """Make sure ``pygame.constants`` resolves.  Returns True if it is in place."""
     if "pygame.constants" in sys.modules:
@@ -100,4 +131,5 @@ def install_pygame_constants() -> bool:
         return False
     sys.modules["pygame.constants"] = pygame_constants
     _note("bootstrap: registered the pygame.constants stand-in")
+    _register_patch_modules()
     return True
