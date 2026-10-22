@@ -20,7 +20,7 @@ async def main(argv: list[str] | None = None) -> int:
 
 
 def _report_fatal() -> None:
-    """Push a fatal error into the browser console (the wasm build has no terminal handy)."""
+    """Report a fatal error: to the browser console and, in the browser, on the page."""
     try:
         import traceback
 
@@ -31,6 +31,41 @@ def _report_fatal() -> None:
         import js  # type: ignore[import-not-found]  # provided by pygbag
 
         js.console.error("[shardlight] FATAL\n" + text)
+    except Exception:
+        pass
+    try:
+        sys.stderr.write(text + "\n")
+    except Exception:
+        pass
+    _show_error_page(text)
+
+
+def _show_error_page(text: str) -> None:
+    """Put the error on the page itself, so a broken build is obvious without devtools."""
+    try:
+        import js  # type: ignore[import-not-found]
+
+        doc = js.document
+        panel = doc.getElementById("shardlight-error")
+        if panel is None:
+            panel = doc.createElement("pre")
+            panel.id = "shardlight-error"
+            style = panel.style
+            style.position = "fixed"
+            style.left = "0"
+            style.top = "0"
+            style.right = "0"
+            style.bottom = "0"
+            style.zIndex = "9999"
+            style.margin = "0"
+            style.padding = "16px"
+            style.overflow = "auto"
+            style.background = "#14060a"
+            style.color = "#ffb4a8"
+            style.font = "13px/1.5 ui-monospace, monospace"
+            style.whiteSpace = "pre-wrap"
+            doc.body.appendChild(panel)
+        panel.textContent = "SHARDLIGHT failed to start\n\n" + text
     except Exception:
         pass
     try:
