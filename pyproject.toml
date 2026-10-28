@@ -8,4 +8,5 @@ dependencies = ["pygame-ce==2.5.8", "numpy==2.5.4"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = ["slow: long-running test"]
 filterwarnings = ["ignore::DeprecationWarning"]

@@ -1,3 +1,4 @@
+import pytest
 import pygame
 from conftest import run_ticks
 
@@ -7,6 +8,7 @@ from shardlight.hub.hub import HubScene, ShardCard
 from shardlight.hub.title import NameEntry, SlotScene, TitleScene
 
 
+@pytest.mark.slow
 def test_new_game_flow_through_title_slots_and_name(app):
     app.profile = None
     app.world = None

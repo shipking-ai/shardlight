@@ -375,6 +375,35 @@ class ActionsMixin:
             return self.quests.is_done(qid) if what == "done" else qid in self.quests.state
         if need.startswith("unlock."):
             return self.has_unlock("verdant.site." + need[7:])
+        if need.startswith("rep."):
+            rest = need[4:]
+            for op in (">=", "<=", ">", "<", "=="):
+                if op in rest:
+                    faction, _, value = rest.partition(op)
+                    faction = faction.strip()
+                    try:
+                        target = int(value)
+                    except ValueError:
+                        return False
+                    app = getattr(self, "app", None)
+                    world = getattr(app, "world", None) if app is not None else None
+                    rep = 0
+                    if world is not None and hasattr(world, "rep"):
+                        try:
+                            rep = int(world.rep(faction))
+                        except Exception:
+                            rep = 0
+                    else:
+                        rep = int(getattr(self, "reputation", {}).get(faction, 0))
+                    if op == ">=":
+                        return rep >= target
+                    if op == "<=":
+                        return rep <= target
+                    if op == ">":
+                        return rep > target
+                    if op == "<":
+                        return rep < target
+                    return rep == target
         return bool(self.flags.get(need))
 
     # TODO(#7): dialogue is a flat menu; replace with data-driven branching nodes (conditions + effects).

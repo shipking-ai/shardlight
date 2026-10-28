@@ -31,6 +31,7 @@ def ai_race(seed, laps=2, n=4, personalities=("clean", "aggressive", "erratic", 
 
 
 # --------------------------------------------------------------------------------------- tracks
+@pytest.mark.slow
 def test_tracks_are_deterministic_and_valid_over_many_seeds():
     for seed in range(120):
         a, b = T.generate(seed), T.generate(seed)
@@ -157,6 +158,7 @@ def test_upgrades_change_stats_with_tradeoffs():
 
 
 # --------------------------------------------------------------------------------------- race rules
+@pytest.mark.slow
 def test_ai_field_completes_laps_without_cheating_speed():
     for seed in (12, 28, 7):
         tr, race = ai_race(seed, 2, 4)
@@ -222,6 +224,7 @@ def test_chronograph_rewinds_once_per_lap():
     assert math.hypot(r.car.x - pos[0], r.car.y - pos[1]) < 12               # second rewind is refused
 
 
+@pytest.mark.slow
 def test_rivals_overtake_and_recover_from_spins():
     changes = 0
     for seed in (3, 12, 24):
@@ -301,6 +304,7 @@ def enter(app, **opts):
     return ss
 
 
+@pytest.mark.slow
 def test_single_player_scene_with_bot_driver_completes_a_lap(app):
     from shardlight.modes.slipstream.scene import RaceScreen
     ss = enter(app, seed=12)

@@ -670,6 +670,7 @@ def test_night_one_can_be_completed_with_the_real_rules(cat):
     assert g.complete and ("umbra.night_survived", {"night": 1}) in g.hooks
 
 
+@pytest.mark.slow
 def test_night_two_keys_open_the_archive_and_the_clock_is_a_relic(cat):
     g = calm_game(cat, 2, 3)
     for k in ("brass_key", "bone_key", "iron_key"):
@@ -689,6 +690,7 @@ def test_night_two_keys_open_the_archive_and_the_clock_is_a_relic(cat):
     assert g.complete
 
 
+@pytest.mark.slow
 def test_night_three_gate_needs_crank_and_wheel_and_the_exit_lies_behind_it(cat):
     g = calm_game(cat, 3, 3)
     exit_room = g.lv.rooms[g.lv.objective["exit_room"]]

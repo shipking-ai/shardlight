@@ -274,6 +274,7 @@ def test_resonant_line_scales_with_neighbours_and_upgrade(rules):
     assert out[1] > out[0]
 
 
+@pytest.mark.slow
 def test_battle_balance_is_not_one_sided_across_matchups(rules):
     """Over many seeds no pairing of equal-sized starting armies is a certain win for the same side."""
     wins = 0
@@ -651,6 +652,7 @@ def test_ai_recruits_more_pikes_after_adapting(rules):
     assert pikes(1.0) >= pikes(0.0)
 
 
+@pytest.mark.slow
 def test_ai_wars_and_peace_happen(rules):
     wars = battles = 0
     for seed in (1, 2, 3):

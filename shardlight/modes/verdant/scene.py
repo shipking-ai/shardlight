@@ -335,6 +335,7 @@ class GameScreen(Scene):
         self.cam.x += (tx - self.cam.x) * min(1.0, dt * 9)
         self.cam.y += (ty - self.cam.y) * min(1.0, dt * 9)
         self._clamp_cam()
+        self._preload_chunks()
         self.prompt = g.interact_target() if not g.dead else None
         # audio intensity follows danger and night
         danger = sum(1 for e in g.enemies if not e.dead and e.aggro > 0)
@@ -359,7 +360,27 @@ class GameScreen(Scene):
             pass
 
     # ------------------------------------------------------------------ drawing
-    # TODO(#11): first draw of a chunk costs up to ~38 ms; pre-build neighbouring chunks a few per frame.
+    def _preload_chunks(self) -> None:
+        """Build a couple of neighbouring chunks ahead of the camera.
+
+        Chunk surfaces are cached, so the first frame that scrolls into a new
+        chunk no longer pays the full construction cost.
+        """
+        g = self.g
+        wm = g.wm
+        camx, camy = int(self.cam.x), int(self.cam.y)
+        cx0 = max(0, camx // (art.CHUNK * TS) - 1)
+        cx1 = min((wm.W - 1) // art.CHUNK, (camx + W) // (art.CHUNK * TS) + 1)
+        cy0 = max(0, camy // (art.CHUNK * TS) - 1)
+        cy1 = min((wm.H - 1) // art.CHUNK, (camy + H) // (art.CHUNK * TS) + 1)
+        todo: list[tuple[int, int]] = []
+        for cy in range(cy0, cy1 + 1):
+            for cx in range(cx0, cx1 + 1):
+                if (g.area, cx, cy) not in self.chunks:
+                    todo.append((cx, cy))
+        for cx, cy in todo[:2]:
+            self.chunk(cx, cy)
+
     def chunk(self, cx: int, cy: int) -> pygame.Surface:
         g = self.g
         key = (g.area, cx, cy)

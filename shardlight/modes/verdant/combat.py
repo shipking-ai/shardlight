@@ -136,6 +136,23 @@ def _steer(game, e: Enemy, tx: float, ty: float, sp: float, dt: float) -> None:
         wx, wy = e.path[0]
         d2 = math.hypot(wx - e.x, wy - e.y) or 1.0
         dx, dy = (wx - e.x) / d2, (wy - e.y) / d2
+    # Cheap separation: keep enemies from collapsing onto the same tile.
+    sx = sy = 0.0
+    for other in game.enemies:
+        if other is e or other.dead:
+            continue
+        ox, oy = e.x - other.x, e.y - other.y
+        d = math.hypot(ox, oy)
+        if 0.0 < d < 1.2:
+            w = (1.2 - d) / 1.2
+            sx += ox / d * w
+            sy += oy / d * w
+    if sx or sy:
+        n = math.hypot(sx, sy)
+        dx += sx / n * 0.4
+        dy += sy / n * 0.4
+        n = math.hypot(dx, dy) or 1.0
+        dx, dy = dx / n, dy / n
     step = sp * _speed_here(game, e) * dt
     blocked = _walk(game, e, dx * step, dy * step)
     if blocked and direct:

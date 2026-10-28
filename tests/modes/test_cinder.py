@@ -83,6 +83,7 @@ def test_invalid_mod_content_is_rejected_not_fatal(lib):
 
 
 # ---------------------------------------------------------------------------------------------- generation
+@pytest.mark.slow
 def test_floor_generation_is_deterministic_and_valid(lib):
     for seed in range(40):
         for floor in range(1, 8):
@@ -590,6 +591,7 @@ def test_death_ends_run_awards_soot_and_returns_to_foot(app):
     assert not app.world.facet_repaired("cinder")
 
 
+@pytest.mark.slow
 def test_final_boss_victory_repairs_facet_and_emits_cross_mode_events(app):
     from shardlight.modes.cinder import scene as S
     cs = enter(app)

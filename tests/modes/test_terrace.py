@@ -635,6 +635,7 @@ def test_gleaners_eat_carcasses_and_wolves_wait_to_be_hungry(reg):
     assert deer.alive                                             # a sated wolf ignores prey
 
 
+@pytest.mark.slow
 def test_breeding_is_density_limited(reg):
     w, eco = meadow_eco(reg)
     for i in range(3):
@@ -649,6 +650,7 @@ def test_breeding_is_density_limited(reg):
     assert max(sum(1 for c in eco.alive("hopper") if abs(c.x - x * T) < 12 * T) for x in range(150, 360, 10)) <= cap * 3
 
 
+@pytest.mark.slow
 def test_predators_regulate_prey_and_famine_regulates_predators(reg):
     def sim(wolves):
         w, eco = meadow_eco(reg, seed=3)

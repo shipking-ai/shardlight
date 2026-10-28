@@ -30,6 +30,32 @@ LOG = log.get("verdant.sim")
 HOUR_RATE = 24.0 / 600.0           # game hours per real second (a day lasts ten minutes)
 START_HOUR = 7.5
 SAVE_VERSION = 1
+
+
+def _migrate_v1_to_v1(raw: dict) -> dict:
+    """Identity migration: keeps the chain explicit for future schema bumps."""
+    return raw
+
+
+MIGRATIONS = {1: _migrate_v1_to_v1}
+
+
+def migrate(raw: dict, from_version: int) -> dict:
+    """Apply the Verdant save migration chain up to SAVE_VERSION."""
+    import copy
+
+    payload = copy.deepcopy(raw)
+    version = from_version
+    if version > SAVE_VERSION:
+        raise ValueError(f"unsupported save version {version}")
+    while version < SAVE_VERSION:
+        step = MIGRATIONS.get(version)
+        if step is None:
+            raise ValueError(f"no migration from version {version}")
+        payload = step(payload)
+        version += 1
+    payload["v"] = SAVE_VERSION
+    return payload
 SKILLS = ("blade", "bow", "forage", "delve", "vigor")
 SKILL_LABEL = {"blade": "Blade", "bow": "Bow", "forage": "Foraging", "delve": "Delving", "vigor": "Vigor"}
 PLAYER_R = 0.28
@@ -514,12 +540,32 @@ class Game(ActionsMixin):
             return 0
         if d["kind"] not in shop.get("buys", []):
             return 0
-        return max(1, int(d["value"] * 0.5))
+        return max(1, int(round(d["value"] * 0.5 * self._price_modifier(shop, buying=False))))
 
-    # TODO(#6): reputation is stored but unused: apply faction standing to prices (and to sell prices).
+    def _faction_standing(self, shop: dict) -> int:
+        faction = shop.get("faction")
+        if not faction:
+            return 0
+        app = getattr(self, "app", None)
+        world = getattr(app, "world", None) if app is not None else None
+        if world is not None and hasattr(world, "rep"):
+            try:
+                return int(world.rep(faction))
+            except Exception:
+                pass
+        return int(getattr(self, "reputation", {}).get(faction, 0))
+
+    def _price_modifier(self, shop: dict, *, buying: bool) -> float:
+        rep = self._faction_standing(shop)
+        if buying:
+            factor = 1.0 - rep / 200.0
+        else:
+            factor = 1.0 + rep / 200.0
+        return max(0.5, min(1.5, factor))
+
     def buy_price(self, item: str, shop: dict) -> int:
         d = self.cat.item(item)
-        return max(1, int(round(d.get("value", 1) * shop.get("markup", 1.2))))
+        return max(1, int(round(d.get("value", 1) * shop.get("markup", 1.2) * self._price_modifier(shop, buying=True))))
 
     def item_ok(self, iid: str) -> bool:
         u = self.cat.item(iid).get("unlock")
@@ -931,7 +977,10 @@ class Game(ActionsMixin):
     @classmethod
     def from_dict(cls, cat: Catalog, raw: dict, unlocks=None, adapt_strength: float = 1.0) -> "Game | None":
         try:
-            # TODO(#12): v1 is the only version and anything else is rejected; add a migration chain and a frozen-fixture test.
+            version = raw.get("v")
+            if not isinstance(version, int) or version < 1 or version > SAVE_VERSION:
+                return None
+            raw = migrate(raw, version)
             if raw.get("v") != SAVE_VERSION:
                 return None
             g = cls(cat, int(raw["seed"]), raw.get("diff", "standard"), adapt_strength)

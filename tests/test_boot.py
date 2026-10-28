@@ -1,6 +1,8 @@
+import pytest
 from conftest import run_ticks
 
 
+@pytest.mark.slow
 def test_title_and_hub_boot(app):
     from shardlight.hub.title import TitleScene
     app.scenes.reset_to(TitleScene(app), fade=False)

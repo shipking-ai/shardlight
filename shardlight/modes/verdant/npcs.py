@@ -169,6 +169,30 @@ def _walk_to(game, st: NpcState, tx: float, ty: float, dt: float) -> None:
             st.path = None
             return
         wx, wy = st.path[0]
+    # Cheap separation keeps NPCs from stacking on one tile or in a doorway.
+    sx = sy = 0.0
+    for other in game.npcs.values():
+        if other is st or other.area != st.area:
+            continue
+        ox, oy = st.x - other.x, st.y - other.y
+        d0 = math.hypot(ox, oy)
+        if 0.0 < d0 < 1.0:
+            w = (1.0 - d0)
+            sx += ox / d0 * w
+            sy += oy / d0 * w
+    for e in game.enemies:
+        if e.dead or game.area != st.area:
+            continue
+        ox, oy = st.x - e.x, st.y - e.y
+        d0 = math.hypot(ox, oy)
+        if 0.0 < d0 < 1.0:
+            w = (1.0 - d0)
+            sx += ox / d0 * w
+            sy += oy / d0 * w
+    if sx or sy:
+        n = math.hypot(sx, sy)
+        wx += sx / n * 0.35
+        wy += sy / n * 0.35
     d = math.hypot(wx - st.x, wy - st.y) or 1.0
     sp = NPC_SPEED * (wm.speed_at(int(st.x), int(st.y)) or 1.0) * dt
     st.x, st.y, blocked = move(game.walkb(st.area), wm.W, wm.H, st.x, st.y, (wx - st.x) / d * sp, (wy - st.y) / d * sp, NPC_R)

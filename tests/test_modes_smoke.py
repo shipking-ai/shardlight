@@ -10,7 +10,7 @@ def _available():
 
 
 # TODO(#17): the Cinder smoke run takes ~37 s; shorten or mark slow.
-@pytest.mark.parametrize("mode_id", modes_pkg.MODE_IDS)
+@pytest.mark.parametrize("mode_id", [pytest.param(m, marks=pytest.mark.slow) if m == "cinder" else m for m in modes_pkg.MODE_IDS])
 def test_mode_enters_runs_and_leaves(app, mode_id):
     if mode_id not in _available():
         pytest.skip(f"{mode_id} not implemented")
@@ -20,7 +20,7 @@ def test_mode_enters_runs_and_leaves(app, mode_id):
     import random
     rng = random.Random(3)
     buttons = ["UP", "DOWN", "LEFT", "RIGHT", "A", "B", "X", "Y", "L", "R"]
-    for i in range(480):
+    for i in range(120):
         if i % 20 == 0:
             dev.release_all()
             dev.hold(*rng.sample(buttons, 2))
