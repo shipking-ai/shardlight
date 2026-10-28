@@ -119,7 +119,7 @@ class App:
             flags |= pygame.FULLSCREEN
         import sys
         if sys.platform == "emscripten":
-            return pygame.display.set_mode(RENDER_SIZE, flags)
+            return pygame.display.set_mode(RENDER_SIZE)
         try:
             screen = pygame.display.set_mode(RENDER_SIZE, flags, vsync=1 if self.settings.get("video.vsync") else 0)
         except Exception:
@@ -399,6 +399,13 @@ class App:
                 if not painted:
                     painted = True
                     LOG.info("web: first frame painted (%dx%d)", self.frame.get_width(), self.frame.get_height())
+                    try:
+                        import sys
+                        if sys.platform == "emscripten":
+                            import js
+                            js.window_resize()
+                    except Exception:
+                        pass
                 if not self.headless:
                     self.clock.tick(240 if self.settings.get("video.vsync") else 120)
                 if not self.scenes.stack:
