@@ -404,6 +404,9 @@ class App:
                         if sys.platform == "emscripten":
                             import js
                             js.window_resize()
+                            canvas = js.document.getElementById("canvas")
+                            if canvas is not None:
+                                canvas.style.imageRendering = "pixelated"
                     except Exception:
                         pass
                 if not self.headless:
