@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["numpy"]
+# dependencies = ["pygame-ce", "numpy"]
 # ///
 """Shared entry point for the browser build (pygbag) and desktop bundles (PyInstaller).
 

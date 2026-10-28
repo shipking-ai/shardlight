@@ -67,13 +67,19 @@ class AudioManager:
         if not self.settings.get("audio.enabled"):
             return False
         try:
-            if not pygame.mixer.get_init():
-                pygame.mixer.init(44100, -16, 2, 512)
-            pygame.mixer.set_num_channels(32)
-            pygame.mixer.set_reserved(MUSIC_CHANNELS)
-            self.mixer_rate = pygame.mixer.get_init()[0]
+            mixer = pygame.mixer
+        except Exception as exc:
+            LOG.warning("audio module unavailable (%s); running silent", exc)
+            self.enabled = False
+            return self.enabled
+        try:
+            if not mixer.get_init():
+                mixer.init(44100, -16, 2, 512)
+            mixer.set_num_channels(32)
+            mixer.set_reserved(MUSIC_CHANNELS)
+            self.mixer_rate = mixer.get_init()[0]
             self.enabled = True
-        except pygame.error as exc:
+        except (pygame.error, Exception) as exc:
             LOG.warning("audio device unavailable (%s); running silent", exc)
             self.enabled = False
         return self.enabled

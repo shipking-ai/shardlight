@@ -35,7 +35,7 @@ jobs:
         run: python tools/to_ogg.py
       - name: pygbag build
         # pygbag always treats the last argument as the app dir; keep flags before it.
-        run: python -m pygbag --build .
+        run: python -m pygbag --build --disable-sound-format-error --ume_block 0 .
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
