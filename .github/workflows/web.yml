@@ -1,4 +1,4 @@
-name: Web
+﻿name: Web
 
 on:
   push:
@@ -19,8 +19,8 @@ jobs:
     name: Build the browser bundle (pygbag)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install dependencies
@@ -29,21 +29,27 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg
+      - uses: actions/cache@v4
+        id: audio-cache
+        with:
+          path: assets/audio
+          key: web-audio-${{ runner.os }}-${{ hashFiles('tools/gen_audio.py', 'shardlight/**/*.py') }}
       - name: Render the procedural audio (about a minute)
+        if: steps.audio-cache.outputs.cache-hit != 'true'
         run: python tools/gen_audio.py
       - name: Convert the audio to OGG (much smaller, and what browsers want)
+        if: steps.audio-cache.outputs.cache-hit != 'true'
         run: python tools/to_ogg.py
       - name: pygbag build
         # pygbag always treats the last argument as the app dir; keep flags before it.
         run: python -m pygbag --build --disable-sound-format-error --ume_block 0 .
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: build/web
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
